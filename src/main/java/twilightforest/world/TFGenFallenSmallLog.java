@@ -36,7 +36,7 @@ public class TFGenFallenSmallLog extends TFGenerator {
         int logMeta;
         int logMetaBranch;
 
-        switch (rand.nextInt(7)) {
+        switch (rand.nextInt(6)) {
             default -> {
                 logID = TFBlocks.log;
                 logMeta = 0;
@@ -61,10 +61,10 @@ public class TFGenFallenSmallLog extends TFGenerator {
                 logID = Blocks.log;
                 logMeta = 2;
             }
-            case 6 -> {
+            /*case 6 -> {
                 logID = Blocks.log;
                 logMeta = 3;
-            }
+            }*/
         }
         logMetaBranch = logMeta;
 

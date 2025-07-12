@@ -1,30 +1,29 @@
 package twilightforest.client.model;
 
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.model.ModelSheep2;
+import net.minecraft.client.model.ModelSheep1;
 
-public class ModelTFBighornFur extends ModelSheep2 {
+public class ModelTFBighornFur extends ModelSheep1 {
 
     public ModelTFBighornFur() {
-        super();
-        head = new ModelRenderer(this, 0, 0);
-        head.addBox(-3F, -4F, -4F, 6, 6, 6, 0.6F);
-        head.setRotationPoint(0.0F, 6F, -8F);
-        body = new ModelRenderer(this, 28, 8);
-        body.addBox(-4F, -9F, -7F, 8, 15, 6, 0.5F);
-        body.setRotationPoint(0.0F, 5F, 2.0F);
-        float f = 0.4F;
-        leg1 = new ModelRenderer(this, 0, 16);
-        leg1.addBox(-2F, 0.0F, -2F, 4, 6, 4, f);
-        leg1.setRotationPoint(-3F, 12F, 7F);
-        leg2 = new ModelRenderer(this, 0, 16);
-        leg2.addBox(-2F, 0.0F, -2F, 4, 6, 4, f);
-        leg2.setRotationPoint(3F, 12F, 7F);
-        leg3 = new ModelRenderer(this, 0, 16);
-        leg3.addBox(-2F, 0.0F, -2F, 4, 6, 4, f);
-        leg3.setRotationPoint(-3F, 12F, -5F);
-        leg4 = new ModelRenderer(this, 0, 16);
-        leg4.addBox(-2F, 0.0F, -2F, 4, 6, 4, f);
-        leg4.setRotationPoint(3F, 12F, -5F);
+        this.head = new ModelRenderer(this, 1, 1);
+        this.head.setRotationPoint(0.0F, 6.0F, -8.0F);
+        this.head.addBox(-3.0F, -4.0F, -4.0F, 6, 6, 5, 0.6F);
+        this.body = new ModelRenderer(this, 28, 8);
+        this.body.addBox(-4.0F, -9.0F, -7.0F, 8, 15, 6, 1.75F);
+        this.body.setRotationPoint(0.0F, 5.0F, 2.0F);
+        float f = 0.5F;
+        this.leg1 = new ModelRenderer(this, 0, 16);
+        this.leg1.setRotationPoint(-3.0F, 12.0F, 7.0F);
+        this.leg1.addBox(-2.0F, 0.0F, -2.0F, 4, 6, 4, f);
+        this.leg2 = new ModelRenderer(this, 0, 16);
+        this.leg2.setRotationPoint(3.0F, 12.0F, 7.0F);
+        this.leg2.addBox(-2.0F, 0.0F, -2.0F, 4, 6, 4, f);
+        this.leg3 = new ModelRenderer(this, 0, 16);
+        this.leg3.setRotationPoint(-3.0F, 12.0F, -5.0F);
+        this.leg3.addBox(-2.0F, 0.0F, -2.0F, 4, 6, 4, f);
+        this.leg4 = new ModelRenderer(this, 0, 16);
+        this.leg4.setRotationPoint(3.0F, 12.0F, -5.0F);
+        this.leg4.addBox(-2.0F, 0.0F, -2.0F, 4, 6, 4, f);
     }
 }

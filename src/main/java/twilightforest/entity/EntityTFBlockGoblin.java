@@ -92,18 +92,29 @@ public class EntityTFBlockGoblin extends EntityMob implements IEntityMultiPart {
     }
 
     @Override
+    protected float getSoundPitch() {
+        return super.getSoundPitch() + 0.4F;
+    }
+
+    /**
+     * Returns the sound this mob makes while it's alive.
+     */
     protected String getLivingSound() {
-        return TwilightForestMod.ID + ":mob.redcap.redcap";
+        return "mob.zombie.say";
     }
 
-    @Override
+    /**
+     * Returns the sound this mob makes when it is hurt.
+     */
     protected String getHurtSound() {
-        return TwilightForestMod.ID + ":mob.redcap.hurt";
+        return "mob.zombie.hurt";
     }
 
-    @Override
+    /**
+     * Returns the sound this mob makes on death.
+     */
     protected String getDeathSound() {
-        return TwilightForestMod.ID + ":mob.redcap.die";
+        return "mob.zombie.death";
     }
 
     /**

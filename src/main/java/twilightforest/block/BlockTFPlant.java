@@ -147,30 +147,7 @@ public class BlockTFPlant extends BlockBush implements IShearable {
         int meta = par1IBlockAccess.getBlockMetadata(x, y, z);
 
         if (meta == META_MOSSPATCH) {
-            long seed = x * 3129871L ^ y * 116129781L ^ z;
-            seed = seed * seed * 42317861L + seed * 11L;
-
-            int xOff0 = (int) (seed >> 12 & 3L);
-            int xOff1 = (int) (seed >> 15 & 3L);
-            int zOff0 = (int) (seed >> 18 & 3L);
-            int zOff1 = (int) (seed >> 21 & 3L);
-
-            boolean xConnect0 = par1IBlockAccess.getBlock(x + 1, y, z) == this
-                    && par1IBlockAccess.getBlockMetadata(x + 1, y, z) == META_MOSSPATCH;
-            boolean xConnect1 = par1IBlockAccess.getBlock(x - 1, y, z) == this
-                    && par1IBlockAccess.getBlockMetadata(x - 1, y, z) == META_MOSSPATCH;
-            boolean zConnect0 = par1IBlockAccess.getBlock(x, y, z + 1) == this
-                    && par1IBlockAccess.getBlockMetadata(x, y, z + 1) == META_MOSSPATCH;
-            boolean zConnect1 = par1IBlockAccess.getBlock(x, y, z - 1) == this
-                    && par1IBlockAccess.getBlockMetadata(x, y, z - 1) == META_MOSSPATCH;
-
-            this.setBlockBounds(
-                    xConnect1 ? 0F : (1F + xOff1) / 16F,
-                    0.0F,
-                    zConnect1 ? 0F : (1F + zOff1) / 16F,
-                    xConnect0 ? 1F : (15F - xOff0) / 16F,
-                    1F / 16F,
-                    zConnect0 ? 1F : (15F - zOff0) / 16F);
+            this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         } else if (meta == META_CLOVERPATCH) {
             long seed = x * 3129871L ^ y * 116129781L ^ z;
             seed = seed * seed * 42317861L + seed * 11L;
@@ -336,9 +313,9 @@ public class BlockTFPlant extends BlockBush implements IShearable {
      * 
      * @param world    The current world
      * @param x        X Position
-     * @param Y        Y Position
-     * @param Z        Z Position
-     * @param metadata Current metadata
+     * @param y        Y Position
+     * @param z        Z Position
+     * @param meta Current metadata
      * @param fortune  Breakers fortune level
      * @return A ArrayList containing all items this block drops
      */

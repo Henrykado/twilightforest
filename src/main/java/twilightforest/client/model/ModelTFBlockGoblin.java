@@ -21,33 +21,33 @@ public class ModelTFBlockGoblin extends ModelBiped {
         bipedHeadwear.setRotationPoint(0F, 11F, 0F);
 
         this.helmet = new ModelRenderer(this, 24, 0);
-        this.helmet.addBox(-2.5F, -9.0F, -2.5F, 5, 9, 5);
+        this.helmet.addBox(-2.5F, -6.0F, -2.5F, 5, 8, 5);
         this.helmet.rotateAngleY = 45F / (180F / (float) Math.PI);
 
         this.bipedHeadwear.addChild(helmet);
 
         bipedBody = new ModelRenderer(this, 0, 21);
-        bipedBody.addBox(-3.5F, 0F, -2F, 7, 7, 4, 0F);
-        bipedBody.setRotationPoint(0F, 11F, 0F);
+        bipedBody.setRotationPoint(-0.5F, 13.0F, -1.0F);
+        bipedBody.addBox(-3.5F, 0.0F, -1.0F, 8, 7, 4, 0.0F);
 
         bipedRightArm = new ModelRenderer(this, 52, 0);
-        bipedRightArm.addBox(-3F, -1F, -2F, 3, 12, 3, 0F);
-        bipedRightArm.setRotationPoint(-3.5F, 12F, 0F);
+        bipedRightArm.setRotationPoint(-4.5F, 13.0F, 0.0F);
+        bipedRightArm.addBox(-2.0F, -1.0F, -2.0F, 3, 10, 3, 0.0F);
 
         bipedLeftArm = new ModelRenderer(this, 52, 0);
-        bipedLeftArm.addBox(0F, -1F, -1.5F, 3, 12, 3, 0F);
-        bipedLeftArm.setRotationPoint(3.5F, 12F, 0F);
+        bipedLeftArm.setRotationPoint(3.5F, 13.0F, 0.0F);
+        bipedLeftArm.addBox(0.0F, -1.0F, -1.5F, 3, 10, 3, 0.0F);
 
         bipedRightLeg = new ModelRenderer(this, 0, 12);
-        bipedRightLeg.addBox(-1.5F, 0F, -1.5F, 3, 6, 3, 0F);
-        bipedRightLeg.setRotationPoint(-2F, 18F, 0F);
+        bipedRightLeg.setRotationPoint(-2.5F, 20.0F, 0.0F);
+        bipedRightLeg.addBox(-1.5F, 0.0F, -1.5F, 4, 4, 3, 0.0F);
 
         bipedLeftLeg = new ModelRenderer(this, 0, 12);
-        bipedLeftLeg.addBox(-1.5F, 0F, -1.5F, 3, 6, 3, 0F);
-        bipedLeftLeg.setRotationPoint(2F, 18F, 0F);
+        bipedLeftLeg.setRotationPoint(1.5F, 20.0F, 0.0F);
+        bipedLeftLeg.addBox(-1.5F, 0.0F, -1.5F, 4, 4, 3, 0.0F);
 
         block = new ModelRenderer(this, 32, 16);
-        block.addBox(-4F, -8F, -4F, 8, 8, 8, 0F);
+        block.addBox(-4F, -5F, -4F, 8, 8, 8, 0F);
         block.setRotationPoint(6F, 0F, 0F);
 
         for (int i = 0; i < spikes.length; i++) {

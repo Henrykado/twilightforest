@@ -54,23 +54,6 @@ public class ItemTFYetiArmor extends ItemArmor {
     }
 
     /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    @Override
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
-        ItemStack istack = new ItemStack(item, 1, 0);
-        switch (this.armorType) {
-            case 0, 1, 2 -> istack.addEnchantment(Enchantment.protection, 2);
-            case 3 -> {
-                istack.addEnchantment(Enchantment.protection, 2);
-                istack.addEnchantment(Enchantment.featherFalling, 4);
-            }
-        }
-        itemList.add(istack);
-    }
-
-    /**
      * Return whether this item is repairable in an anvil.
      */
     @Override

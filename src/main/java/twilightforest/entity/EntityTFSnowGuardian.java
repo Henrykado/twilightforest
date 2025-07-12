@@ -101,15 +101,13 @@ public class EntityTFSnowGuardian extends EntityMob {
                 switch (type) {
                     default -> TFItems.ironwoodBoots;
                     case 1 -> TFItems.steeleafBoots;
-                    case 2 -> TFItems.knightlyBoots;
-                    case 3 -> TFItems.arcticBoots;
+                    case 2, 3 -> TFItems.arcticBoots;
                 };
             case 2 -> // legs
                 switch (type) {
                     default -> TFItems.ironwoodLegs;
                     case 1 -> TFItems.steeleafLegs;
-                    case 2 -> TFItems.knightlyLegs;
-                    case 3 -> TFItems.arcticLegs;
+                    case 2, 3 -> TFItems.arcticLegs;
                 };
             case 3 -> // chest
                 switch (type) {

@@ -54,12 +54,12 @@ public class TFBiomeSwamp extends TFBiomeBase {
         getTFBiomeDecorator().setMushroomsPerChunk(8);
         getTFBiomeDecorator().setReedsPerChunk(10);
         getTFBiomeDecorator().setClayPerChunk(1);
-        getTFBiomeDecorator().setTreesPerChunk(2);
+        getTFBiomeDecorator().setTreesPerChunk(1);
         getTFBiomeDecorator().setWaterlilyPerChunk(20);
         waterColorMultiplier = 0xE0FFAE;
 
         getTFBiomeDecorator().canopyPerChunk = -999;
-        getTFBiomeDecorator().lakesPerChunk = 2;
+        getTFBiomeDecorator().lakesPerChunk = 3;
         getTFBiomeDecorator().mangrovesPerChunk = 3;
 
         this.spawnableMonsterList.add(new SpawnListEntry(EntityTFMosquitoSwarm.class, 10, 1, 1));

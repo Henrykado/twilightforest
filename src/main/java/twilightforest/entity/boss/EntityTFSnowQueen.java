@@ -370,7 +370,7 @@ public class EntityTFSnowQueen extends EntityMob implements IBossDisplayData, IE
     private void dropBow() {
         int bowType = rand.nextInt(2);
         if (bowType == 0) {
-            this.entityDropItem(new ItemStack(TFItems.tripleBow), 0);
+            this.entityDropItem(new ItemStack(TFItems.iceBow), 0);
         } else {
             this.entityDropItem(new ItemStack(TFItems.seekerBow), 0);
         }

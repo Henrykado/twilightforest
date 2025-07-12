@@ -7,8 +7,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.network.IGuiHandler;
-import twilightforest.client.GuiTFCinderFurnace;
-import twilightforest.inventory.ContainerTFCinderFurnace;
 import twilightforest.inventory.ContainerTFUncrafting;
 
 public class TFCommonProxy implements IGuiHandler {
@@ -114,8 +112,6 @@ public class TFCommonProxy implements IGuiHandler {
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
         if (id == TwilightForestMod.GUI_ID_UNCRAFTING) {
             return new ContainerTFUncrafting(player.inventory, world, x, y, z);
-        } else if (id == TwilightForestMod.GUI_ID_FURNACE) {
-            return new ContainerTFCinderFurnace(player.inventory, world, x, y, z);
         } else {
             return null;
         }
@@ -125,8 +121,6 @@ public class TFCommonProxy implements IGuiHandler {
     public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
         if (id == TwilightForestMod.GUI_ID_UNCRAFTING) {
             return new twilightforest.client.GuiTFGoblinCrafting(player.inventory, world, x, y, z);
-        } else if (id == TwilightForestMod.GUI_ID_FURNACE) {
-            return new GuiTFCinderFurnace(player.inventory, world, x, y, z);
         } else {
             return null;
         }

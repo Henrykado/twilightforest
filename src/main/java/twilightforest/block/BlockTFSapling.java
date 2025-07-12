@@ -33,7 +33,7 @@ public class BlockTFSapling extends BlockSapling {
 
     private IIcon[] icons;
     private String[] iconNames = new String[] { "sapling_oak", "sapling_canopy", "sapling_mangrove", "sapling_darkwood",
-            "sapling_hollow_oak", "sapling_time", "sapling_transformation", "sapling_mining", "sapling_sorting",
+            "sapling_hollow_oak", "sapling_transformation",
             "sapling_rainboak" };
 
     protected BlockTFSapling() {
@@ -73,11 +73,8 @@ public class BlockTFSapling extends BlockSapling {
             case 2 -> new TFGenMangroveTree(true);
             case 3 -> new TFGenDarkCanopyTree(true);
             case 4 -> new TFGenHollowTree(true);
-            case 5 -> new TFGenTreeOfTime(true);
-            case 6 -> new TFGenTreeOfTransformation(true);
-            case 7 -> new TFGenMinersTree(true);
-            case 8 -> new TFGenSortingTree(true);
-            case 9 -> rand.nextInt(7) == 0 ? new TFGenLargeRainboak(true) : new TFGenSmallRainboak(true);
+            case 5 -> new TFGenTreeOfTransformation(true);
+            case 6 -> rand.nextInt(7) == 0 ? new TFGenLargeRainboak(true) : new TFGenSmallRainboak(true);
             default -> new TFGenSmallTwilightOak(true);
         };
 
@@ -146,9 +143,6 @@ public class BlockTFSapling extends BlockSapling {
         itemList.add(new ItemStack(item, 1, 4));
         itemList.add(new ItemStack(item, 1, 5));
         itemList.add(new ItemStack(item, 1, 6));
-        itemList.add(new ItemStack(item, 1, 7));
-        itemList.add(new ItemStack(item, 1, 8));
-        itemList.add(new ItemStack(item, 1, 9));
     }
 
 }

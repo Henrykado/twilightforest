@@ -43,21 +43,6 @@ public class ItemTFSteeleafArmor extends ItemArmor {
     }
 
     /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
-    @Override
-    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List<ItemStack> par3List) {
-        ItemStack istack = new ItemStack(par1, 1, 0);
-        switch (this.armorType) {
-            case 0 -> istack.addEnchantment(Enchantment.projectileProtection, 2);
-            case 1 -> istack.addEnchantment(Enchantment.blastProtection, 2);
-            case 2 -> istack.addEnchantment(Enchantment.fireProtection, 2);
-            case 3 -> istack.addEnchantment(Enchantment.featherFalling, 2);
-        }
-        par3List.add(istack);
-    }
-
-    /**
      * Return whether this item is repairable in an anvil.
      */
     @Override

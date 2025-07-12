@@ -489,6 +489,10 @@ public class TFClientProxy extends TFCommonProxy {
                 twilightforest.entity.boss.EntityTFHydraNeck.class,
                 new RenderTFGenericLiving(new ModelTFHydraNeck(), 1.0F, "hydra4.png"));
 
+        RenderingRegistry.registerEntityRenderingHandler(
+                twilightforest.entity.EntitySteelleaf.class,
+                new RenderSnowball(TFItems.steeleafIngot));
+
         // animated textures
         // TextureFXManager.instance().addAnimation(new TextureTFMagicLeavesFX(mc, BlockTFMagicLeaves.SPR_TIMELEAVES,
         // BlockTFMagicLeaves.SPR_TIMEFX));

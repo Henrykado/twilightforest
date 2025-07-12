@@ -87,7 +87,7 @@ public class EntityTFDeer extends EntityCow {
             this.dropItem(Items.leather, 1);
         }
 
-        var3 = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
+        /*var3 = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
 
         for (var4 = 0; var4 < var3; ++var4) {
             if (this.isBurning()) {
@@ -95,7 +95,7 @@ public class EntityTFDeer extends EntityCow {
             } else {
                 this.dropItem(TFItems.venisonRaw, 1);
             }
-        }
+        }*/
     }
 
     /**

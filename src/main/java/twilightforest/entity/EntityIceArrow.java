@@ -11,7 +11,7 @@ public class EntityIceArrow extends EntityArrow {
     }
 
     public EntityIceArrow(World world, EntityPlayer player, float velocity) {
-        super(world, player, velocity);
+        super(world, player, velocity * 2);
     }
 
     // Called to update the entity's position/logic.

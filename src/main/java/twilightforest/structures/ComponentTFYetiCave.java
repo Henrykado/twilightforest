@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 
+import twilightforest.block.TFBlocks;
 import twilightforest.entity.boss.EntityTFYetiAlpha;
 import twilightforest.world.TFWorld;
 
@@ -65,15 +66,20 @@ public class ComponentTFYetiCave extends ComponentTFHollowHill {
             int[] dest = getCoordsInHill2D(rand);
             generateBlockStalactite(world, Blocks.stone, 1.0F, true, dest[0], 1, dest[1], sbb);
         }
+        // star ice stalactites!
+        for (int i = 0; i < sn / 2; i++) {
+            int[] dest = getCoordsInHill2D(rand);
+            generateBlockStalactite(world, TFBlocks.starIce, 0.9F, true, dest[0], 1, dest[1], sbb);
+        }
         // ice stalactites!
-        for (int i = 0; i < sn; i++) {
+        for (int i = sn / 2; i < sn; i++) {
             int[] dest = getCoordsInHill2D(rand);
             generateBlockStalactite(world, Blocks.ice, 1.0F, true, dest[0], 1, dest[1], sbb);
         }
         // packed ice stalactites!
         for (int i = 0; i < sn; i++) {
             int[] dest = getCoordsInHill2D(rand);
-            generateBlockStalactite(world, Blocks.packed_ice, 0.9F, true, dest[0], 1, dest[1], sbb);
+            generateBlockStalactite(world, Blocks.packed_ice, 1.0F, true, dest[0], 1, dest[1], sbb);
         }
 
         // spawn alpha yeti

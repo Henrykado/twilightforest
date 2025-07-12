@@ -21,8 +21,7 @@ import twilightforest.item.TFItems;
 
 public class BlockTFWoodSlab extends BlockSlab {
 
-    public static final String[] names = new String[] { "twilight_oak", "canopy", "mangrove", "darkwood", "time",
-            "trans", "mine", "sort" };
+    public static final String[] names = new String[] { "twilight_oak", "canopy", "mangrove", "darkwood" };
 
     public BlockTFWoodSlab(boolean p_i45437_1_) {
         super(p_i45437_1_, Material.wood);

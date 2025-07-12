@@ -7,7 +7,6 @@ import net.minecraft.item.ItemBlock;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import twilightforest.TwilightForestMod;
-import twilightforest.block.BlockTFChest.WoodType;
 import twilightforest.item.ItemBlockTFCritter;
 import twilightforest.item.ItemBlockTFMeta;
 import twilightforest.item.ItemBlockTFNagastone;
@@ -135,12 +134,13 @@ public class TFBlocks {
     public static Block castleBlock;
     public static Block castleMagic;
     public static Block forceField;
-    public static Block cinderFurnace;
-    public static Block cinderFurnaceLit;
+    // public static Block cinderFurnace;
+    // public static Block cinderFurnaceLit;
     public static Block cinderLog;
     public static Block castleDoor;
     public static Block castleDoorVanished;
     public static Block castleUnlock;
+    public static Block starIce;
 
     public static void registerBlocks() {
 
@@ -172,22 +172,24 @@ public class TFBlocks {
         trapdoorTrans = (new BlockTFTrapDoor(5)).setBlockName("TFTrapDoorTrans");
         trapdoorMine = (new BlockTFTrapDoor(6)).setBlockName("TFTrapDoorMine");
         trapdoorSort = (new BlockTFTrapDoor(7)).setBlockName("TFTrapDoorSort");
-        chestTwilight = (new BlockTFChest(0, WoodType.TWILIGHT)).setBlockName("TFChestTwilight");
-        chestCanopy = (new BlockTFChest(0, WoodType.CANOPY)).setBlockName("TFChestCanopy");
-        chestMangrove = (new BlockTFChest(0, WoodType.MANGROVE)).setBlockName("TFChestMangrove");
-        chestDarkwood = (new BlockTFChest(0, WoodType.DARKWOOD)).setBlockName("TFChestDarkwood");
-        chestTime = (new BlockTFChest(0, WoodType.TIME)).setBlockName("TFChestTime");
-        chestTrans = (new BlockTFChest(0, WoodType.TRANS)).setBlockName("TFChestTrans");
-        chestMine = (new BlockTFChest(0, WoodType.MINING)).setBlockName("TFChestMine");
-        chestSort = (new BlockTFChest(0, WoodType.SORT)).setBlockName("TFChestSort");
-        trappedChestTwilight = (new BlockTFChest(1, WoodType.TWILIGHT)).setBlockName("TFChestTrapTwilight");
-        trappedChestCanopy = (new BlockTFChest(1, WoodType.CANOPY)).setBlockName("TFChestTrapCanopy");
-        trappedChestMangrove = (new BlockTFChest(1, WoodType.MANGROVE)).setBlockName("TFChestTrapMangrove");
-        trappedChestDarkwood = (new BlockTFChest(1, WoodType.DARKWOOD)).setBlockName("TFChestTrapDarkwood");
-        trappedChestTime = (new BlockTFChest(1, WoodType.TIME)).setBlockName("TFChestTrapTime");
-        trappedChestTrans = (new BlockTFChest(1, WoodType.TRANS)).setBlockName("TFChestTrapTrans");
-        trappedChestMine = (new BlockTFChest(1, WoodType.MINING)).setBlockName("TFChestTrapMine");
-        trappedChestSort = (new BlockTFChest(1, WoodType.SORT)).setBlockName("TFChestTrapSort");
+        /*
+         * chestTwilight = (new BlockTFChest(0, WoodType.TWILIGHT)).setBlockName("TFChestTwilight"); chestCanopy = (new
+         * BlockTFChest(0, WoodType.CANOPY)).setBlockName("TFChestCanopy"); chestMangrove = (new BlockTFChest(0,
+         * WoodType.MANGROVE)).setBlockName("TFChestMangrove"); chestDarkwood = (new BlockTFChest(0,
+         * WoodType.DARKWOOD)).setBlockName("TFChestDarkwood"); chestTime = (new BlockTFChest(0,
+         * WoodType.TIME)).setBlockName("TFChestTime"); chestTrans = (new BlockTFChest(0,
+         * WoodType.TRANS)).setBlockName("TFChestTrans"); chestMine = (new BlockTFChest(0,
+         * WoodType.MINING)).setBlockName("TFChestMine"); chestSort = (new BlockTFChest(0,
+         * WoodType.SORT)).setBlockName("TFChestSort"); trappedChestTwilight = (new BlockTFChest(1,
+         * WoodType.TWILIGHT)).setBlockName("TFChestTrapTwilight"); trappedChestCanopy = (new BlockTFChest(1,
+         * WoodType.CANOPY)).setBlockName("TFChestTrapCanopy"); trappedChestMangrove = (new BlockTFChest(1,
+         * WoodType.MANGROVE)).setBlockName("TFChestTrapMangrove"); trappedChestDarkwood = (new BlockTFChest(1,
+         * WoodType.DARKWOOD)).setBlockName("TFChestTrapDarkwood"); trappedChestTime = (new BlockTFChest(1,
+         * WoodType.TIME)).setBlockName("TFChestTrapTime"); trappedChestTrans = (new BlockTFChest(1,
+         * WoodType.TRANS)).setBlockName("TFChestTrapTrans"); trappedChestMine = (new BlockTFChest(1,
+         * WoodType.MINING)).setBlockName("TFChestTrapMine"); trappedChestSort = (new BlockTFChest(1,
+         * WoodType.SORT)).setBlockName("TFChestTrapSort");
+         */
         leaves = (new BlockTFLeaves()).setBlockName("TFLeaves").setBlockTextureName("leaves_oak");
         firefly = (new BlockTFFirefly()).setBlockName("TFFirefly");
         cicada = (new BlockTFCicada()).setBlockName("TFCicada");
@@ -276,12 +278,13 @@ public class TFBlocks {
         castleBlock = (new BlockTFCastleBlock()).setBlockName("CastleBrick");
         castleMagic = (new BlockTFCastleMagic()).setBlockName("CastleMagic");
         forceField = (new BlockTFForceField()).setBlockName("ForceField");
-        cinderFurnace = (new BlockTFCinderFurnace(false)).setBlockName("CinderFurnaceIdle");
-        cinderFurnaceLit = (new BlockTFCinderFurnace(true)).setBlockName("CinderFurnaceLit");
+        // cinderFurnace = (new BlockTFCinderFurnace(false)).setBlockName("CinderFurnaceIdle");
+        // cinderFurnaceLit = (new BlockTFCinderFurnace(true)).setBlockName("CinderFurnaceLit");
         cinderLog = (new BlockTFCinderLog()).setBlockName("CinderLog");
         castleDoor = (new BlockTFCastleDoor(false)).setBlockName("CastleDoor");
         castleDoorVanished = (new BlockTFCastleDoor(true)).setBlockName("CastleDoorVanished");
         castleUnlock = (new BlockTFCastleUnlock()).setBlockName("CastleUnlock");
+        starIce = (new BlockTFStarIce()).setBlockName("StarIce");
 
         // register blocks with their pickup values
         registerMyBlock(log);
@@ -302,42 +305,34 @@ public class TFBlocks {
         registerMyBlock(woodenStairsCanopy);
         registerMyBlock(woodenStairsMangrove);
         registerMyBlock(woodenStairsDarkwood);
-        registerMyBlock(woodenStairsTime);
+        /*registerMyBlock(woodenStairsTime);
         registerMyBlock(woodenStairsTrans);
         registerMyBlock(woodenStairsMine);
-        registerMyBlock(woodenStairsSort);
+        registerMyBlock(woodenStairsSort);*/
         registerMyBlock(doorTwilight);
         registerMyBlock(doorCanopy);
         registerMyBlock(doorMangrove);
         registerMyBlock(doorDarkwood);
-        registerMyBlock(doorTime);
+        /*registerMyBlock(doorTime);
         registerMyBlock(doorTrans);
         registerMyBlock(doorMine);
-        registerMyBlock(doorSort);
+        registerMyBlock(doorSort);*/
         registerMyBlock(trapdoorTwilight);
         registerMyBlock(trapdoorCanopy);
         registerMyBlock(trapdoorMangrove);
         registerMyBlock(trapdoorDarkwood);
-        registerMyBlock(trapdoorTime);
+        /*registerMyBlock(trapdoorTime);
         registerMyBlock(trapdoorTrans);
         registerMyBlock(trapdoorMine);
-        registerMyBlock(trapdoorSort);
-        registerMyBlock(chestTwilight);
-        registerMyBlock(chestCanopy);
-        registerMyBlock(chestMangrove);
-        registerMyBlock(chestDarkwood);
-        registerMyBlock(chestTime);
-        registerMyBlock(chestTrans);
-        registerMyBlock(chestMine);
-        registerMyBlock(chestSort);
-        registerMyBlock(trappedChestTwilight);
-        registerMyBlock(trappedChestCanopy);
-        registerMyBlock(trappedChestMangrove);
-        registerMyBlock(trappedChestDarkwood);
-        registerMyBlock(trappedChestTime);
-        registerMyBlock(trappedChestTrans);
-        registerMyBlock(trappedChestMine);
-        registerMyBlock(trappedChestSort);
+        registerMyBlock(trapdoorSort);*/
+        /*
+         * registerMyBlock(chestTwilight); registerMyBlock(chestCanopy); registerMyBlock(chestMangrove);
+         * registerMyBlock(chestDarkwood); registerMyBlock(chestTime); registerMyBlock(chestTrans);
+         * registerMyBlock(chestMine); registerMyBlock(chestSort); registerMyBlock(trappedChestTwilight);
+         * registerMyBlock(trappedChestCanopy); registerMyBlock(trappedChestMangrove);
+         * registerMyBlock(trappedChestDarkwood); registerMyBlock(trappedChestTime); registerMyBlock(trappedChestTrans);
+         * registerMyBlock(trappedChestMine); registerMyBlock(trappedChestSort);
+         */
         registerMyBlock(root);
         registerMyBlock(leaves);
         registerMyBlock(firefly, ItemBlockTFCritter.class);
@@ -368,9 +363,9 @@ public class TFBlocks {
         registerMyBlock(spiralStoneBricks);
         registerMyBlock(sapling);
         registerMyBlock(moonworm, ItemBlockTFCritter.class);
-        registerMyBlock(magicLog);
+        //registerMyBlock(magicLog);
         registerMyBlock(magicLeaves);
-        registerMyBlock(magicLogSpecial);
+        //registerMyBlock(magicLogSpecial);
         registerMyBlock(towerWood);
         registerMyBlock(towerDevice);
         registerMyBlock(towerTranslucent);
@@ -428,11 +423,12 @@ public class TFBlocks {
         registerMyBlock(castleBlock);
         registerMyBlock(castleMagic);
         registerMyBlock(forceField);
-        registerMyBlock(cinderFurnace, ItemBlock.class);
-        registerMyBlock(cinderFurnaceLit, ItemBlock.class);
-        registerMyBlock(cinderLog);
+        // registerMyBlock(cinderFurnace, ItemBlock.class);
+        // registerMyBlock(cinderFurnaceLit, ItemBlock.class);
+//        registerMyBlock(cinderLog);
         registerMyBlock(castleDoor);
         registerMyBlock(castleDoorVanished);
+        registerMyBlock(starIce, ItemBlock.class);
 
         // fire info
         Blocks.fire.setFireInfo(log, 5, 5);
@@ -443,10 +439,10 @@ public class TFBlocks {
         Blocks.fire.setFireInfo(woodenStairsCanopy, 5, 20);
         Blocks.fire.setFireInfo(woodenStairsMangrove, 5, 20);
         Blocks.fire.setFireInfo(woodenStairsDarkwood, 5, 20);
-        Blocks.fire.setFireInfo(woodenStairsTime, 5, 20);
+        /*Blocks.fire.setFireInfo(woodenStairsTime, 5, 20);
         Blocks.fire.setFireInfo(woodenStairsTrans, 5, 20);
         Blocks.fire.setFireInfo(woodenStairsMine, 5, 20);
-        Blocks.fire.setFireInfo(woodenStairsSort, 5, 20);
+        Blocks.fire.setFireInfo(woodenStairsSort, 5, 20);*/
         Blocks.fire.setFireInfo(leaves, 30, 60);
         Blocks.fire.setFireInfo(leaves3, 30, 60);
     }

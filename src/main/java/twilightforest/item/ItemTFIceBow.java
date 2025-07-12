@@ -31,7 +31,6 @@ public class ItemTFIceBow extends ItemTFBowBase {
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
         // repair with ice blocks
-        return par2ItemStack.getItem() == Item.getItemFromBlock(Blocks.ice) ? true
-                : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == Item.getItemFromBlock(Blocks.ice) || super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 }

@@ -43,7 +43,7 @@ public class ItemTFKnightlyArmor extends ItemArmor {
      * @param layer  The render layer, either 1 or 2, 2 is only used for CLOTH armor by default
      * @return Path of texture to bind, or null to use default
      */
-    public String getArmorTexture(ItemStack itemstack, Entity entity, int slot, String layer) {
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer) {
 
         if (slot == 2) {
             return TwilightForestMod.ARMOR_DIR + "knightly_2.png";
@@ -68,8 +68,7 @@ public class ItemTFKnightlyArmor extends ItemArmor {
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
         // repair with knightmetal ingots
-        return par2ItemStack.getItem() == TFItems.knightMetal ? true
-                : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == TFItems.knightMetal || super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 
     /**

@@ -393,7 +393,7 @@ public class BlockTFDoor extends Block {
             case 3:
                 door = TFItems.doorDarkwood;
                 break;
-            case 4:
+            /*case 4:
                 door = TFItems.doorTime;
                 break;
             case 5:
@@ -404,7 +404,7 @@ public class BlockTFDoor extends Block {
                 break;
             case 7:
                 door = TFItems.doorSort;
-                break;
+                break;*/
         }
 
         return door;

@@ -284,11 +284,11 @@ public class TFTinkerConstructIntegration {
                     TConstruct.ingotLiquidValue * 2);
 
             // Melting misc.
-            Smeltery.addMelting(
+            /*Smeltery.addMelting(
                     knightmetalFluidType,
                     new ItemStack(TFItems.knightmetalRing),
                     0,
-                    TConstruct.ingotLiquidValue * 4);
+                    TConstruct.ingotLiquidValue * 4);*/
             Smeltery.addMelting(
                     knightmetalFluidType,
                     new ItemStack(TFItems.chainBlock, 1, 0),

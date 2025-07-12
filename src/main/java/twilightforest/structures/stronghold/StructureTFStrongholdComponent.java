@@ -144,7 +144,7 @@ public abstract class StructureTFStrongholdComponent extends StructureTFComponen
         int nz = this.getZWithOffset(x, z);
 
         // limit sprawl to a reasonable amount
-        if (index > 50 || isOutOfRange(entrance, nx, ny, nz, 112)) {
+        if (index > 50 || isOutOfRange(entrance, nx, ny, nz, 48)) {
             return;
         }
 
@@ -196,7 +196,7 @@ public abstract class StructureTFStrongholdComponent extends StructureTFComponen
         int nz = this.getZWithOffset(x, z);
 
         // limit sprawl to a reasonable amount
-        if (index > 100 || isOutOfRange(parent, nx, ny, nz, 48)) {
+        if (index > 20 || isOutOfRange(parent, nx, ny, nz, 48)) {
             return;
         }
 

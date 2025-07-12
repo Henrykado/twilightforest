@@ -13,25 +13,25 @@ public class TFItems {
     public static ItemArmor.ArmorMaterial ARMOR_NAGA = EnumHelper
             .addArmorMaterial("NAGA_SCALE", 21, new int[] { 2, 7, 6, 3 }, 15);
     public static ItemArmor.ArmorMaterial ARMOR_IRONWOOD = EnumHelper
-            .addArmorMaterial("IRONWOOD", 20, new int[] { 2, 7, 5, 2 }, 15);
+            .addArmorMaterial("IRONWOOD", 40, new int[] { 1, 5, 4, 1 }, 15);
     public static ItemArmor.ArmorMaterial ARMOR_FIERY = EnumHelper
-            .addArmorMaterial("FIERY", 25, new int[] { 4, 9, 7, 4 }, 10);
+            .addArmorMaterial("FIERY", 25, new int[] { 3, 9, 7, 3 }, 10);
     public static ItemArmor.ArmorMaterial ARMOR_STEELEAF = EnumHelper
-            .addArmorMaterial("STEELEAF", 10, new int[] { 3, 8, 6, 3 }, 9);
+            .addArmorMaterial("STEELEAF", 20, new int[] { 2, 7, 6, 2 }, 20);
     public static ItemArmor.ArmorMaterial ARMOR_KNIGHTLY = EnumHelper
-            .addArmorMaterial("KNIGHTMETAL", 20, new int[] { 3, 8, 6, 3 }, 8);
+            .addArmorMaterial("KNIGHTMETAL", 24, new int[] { 3, 7, 2, 2 }, 8);
     public static ItemArmor.ArmorMaterial ARMOR_PHANTOM = EnumHelper
             .addArmorMaterial("KNIGHTPHANTOM", 30, new int[] { 3, 8, 6, 3 }, 8);
     public static ItemArmor.ArmorMaterial ARMOR_YETI = EnumHelper
-            .addArmorMaterial("YETI", 20, new int[] { 4, 7, 6, 3 }, 15);
+            .addArmorMaterial("YETI", 10, new int[] { 4, 7, 6, 3 }, 10);
     public static ItemArmor.ArmorMaterial ARMOR_ARCTIC = EnumHelper
-            .addArmorMaterial("ARCTIC", 10, new int[] { 2, 7, 5, 2 }, 8);
+            .addArmorMaterial("ARCTIC", 10, new int[] { 2, 5, 4, 1 }, 8);
     public static ItemArmor.ArmorMaterial ARMOR_DECORATIVE = EnumHelper
             .addArmorMaterial("DECORATIVE", 0, new int[] { 0, 0, 0, 0 }, 0);
 
-    public static Item.ToolMaterial TOOL_IRONWOOD = EnumHelper.addToolMaterial("IRONWOOD", 2, 512, 6.5F, 2, 25);
+    public static Item.ToolMaterial TOOL_IRONWOOD = EnumHelper.addToolMaterial("IRONWOOD", 2, 2048, 6.5F, 2, 25);
     public static Item.ToolMaterial TOOL_FIERY = EnumHelper.addToolMaterial("FIERY", 4, 1024, 9F, 4, 10);
-    public static Item.ToolMaterial TOOL_STEELEAF = EnumHelper.addToolMaterial("STEELEAF", 3, 131, 8.0F, 3, 9);
+    public static Item.ToolMaterial TOOL_STEELEAF = EnumHelper.addToolMaterial("STEELEAF", 3, 300, 7.0F, 2, 9);
     public static Item.ToolMaterial TOOL_KNIGHTLY = EnumHelper.addToolMaterial("KNIGHTMETAL", 3, 512, 8.0F, 3, 8);
     public static Item.ToolMaterial TOOL_GIANT = EnumHelper.addToolMaterial("GIANTSTONE", 1, 1024, 4.0F, 1.0F, 5);
     public static Item.ToolMaterial TOOL_ICE = EnumHelper.addToolMaterial("TFICE", 0, 32, 1.0F, 3.5F, 5);
@@ -43,8 +43,8 @@ public class TFItems {
     public static Item scepterTwilight;
     public static Item scepterLifeDrain;
     public static Item scepterZombie;
-    public static Item wandPacification;
-    public static Item oreMeter;
+    // public static Item wandPacification;
+    // public static Item oreMeter;
     public static Item magicMap;
     public static Item mazeMap;
     public static Item oreMap;
@@ -153,10 +153,10 @@ public class TFItems {
     public static Item doorCanopy;
     public static Item doorMangrove;
     public static Item doorDarkwood;
-    public static Item doorTime;
+    /*public static Item doorTime;
     public static Item doorTrans;
     public static Item doorMine;
-    public static Item doorSort;
+    public static Item doorSort;*/
 
     public static Item metaItem;
 
@@ -203,7 +203,7 @@ public class TFItems {
         scepterZombie = new ItemTFZombieWand().setUnlocalizedName("scepterZombie").setMaxStackSize(1).setFull3D();
         // wandPacification = new
         // ItemTF().setIconIndex(6).setUnlocalizedName("wandPacification").setMaxStackSize(1).setFull3D();
-        oreMeter = new ItemTFOreMeter().setUnlocalizedName("oreMeter").setMaxStackSize(1);
+        // oreMeter = new ItemTFOreMeter().setUnlocalizedName("oreMeter").setMaxStackSize(1);
         magicMap = new ItemTFMagicMap().setUnlocalizedName("magicMap").setMaxStackSize(1);
         mazeMap = new ItemTFMazeMap(false).setUnlocalizedName("mazeMap").setMaxStackSize(1);
         oreMap = new ItemTFMazeMap(true).setUnlocalizedName("oreMap").setMaxStackSize(1);
@@ -248,13 +248,13 @@ public class TFItems {
         fierySword = new ItemTFFierySword(TOOL_FIERY).setUnlocalizedName("fierySword").setMaxStackSize(1);
         fieryPick = new ItemTFFieryPick(TOOL_FIERY).setUnlocalizedName("fieryPick").setMaxStackSize(1);
         steeleafIngot = new ItemTF().setUnlocalizedName("steeleafIngot");
-        steeleafHelm = new ItemTFSteeleafArmor(ARMOR_IRONWOOD, steeleafRenderID, 0).setUnlocalizedName("steeleafHelm")
+        steeleafHelm = new ItemTFSteeleafArmor(ARMOR_STEELEAF, steeleafRenderID, 0).setUnlocalizedName("steeleafHelm")
                 .setMaxStackSize(1);
-        steeleafPlate = new ItemTFSteeleafArmor(ARMOR_IRONWOOD, steeleafRenderID, 1).setUnlocalizedName("steeleafPlate")
+        steeleafPlate = new ItemTFSteeleafArmor(ARMOR_STEELEAF, steeleafRenderID, 1).setUnlocalizedName("steeleafPlate")
                 .setMaxStackSize(1);
-        steeleafLegs = new ItemTFSteeleafArmor(ARMOR_IRONWOOD, steeleafRenderID, 2).setUnlocalizedName("steeleafLegs")
+        steeleafLegs = new ItemTFSteeleafArmor(ARMOR_STEELEAF, steeleafRenderID, 2).setUnlocalizedName("steeleafLegs")
                 .setMaxStackSize(1);
-        steeleafBoots = new ItemTFSteeleafArmor(ARMOR_IRONWOOD, steeleafRenderID, 3).setUnlocalizedName("steeleafBoots")
+        steeleafBoots = new ItemTFSteeleafArmor(ARMOR_STEELEAF, steeleafRenderID, 3).setUnlocalizedName("steeleafBoots")
                 .setMaxStackSize(1);
         steeleafSword = new ItemTFSteeleafSword(TOOL_STEELEAF).setUnlocalizedName("steeleafSword").setMaxStackSize(1);
         steeleafShovel = new ItemTFSteeleafShovel(TOOL_STEELEAF).setUnlocalizedName("steeleafShovel")
@@ -339,10 +339,10 @@ public class TFItems {
         doorCanopy = new ItemTFDoor(1).setUnlocalizedName("doorCanopy").setMaxStackSize(1);
         doorMangrove = new ItemTFDoor(2).setUnlocalizedName("doorMangrove").setMaxStackSize(1);
         doorDarkwood = new ItemTFDoor(3).setUnlocalizedName("doorDarkwood").setMaxStackSize(1);
-        doorTime = new ItemTFDoor(4).setUnlocalizedName("doorTime").setMaxStackSize(1);
+        /*doorTime = new ItemTFDoor(4).setUnlocalizedName("doorTime").setMaxStackSize(1);
         doorTrans = new ItemTFDoor(5).setUnlocalizedName("doorTrans").setMaxStackSize(1);
         doorMine = new ItemTFDoor(6).setUnlocalizedName("doorMine").setMaxStackSize(1);
-        doorSort = new ItemTFDoor(7).setUnlocalizedName("doorSort").setMaxStackSize(1);
+        doorSort = new ItemTFDoor(7).setUnlocalizedName("doorSort").setMaxStackSize(1);*/
 
         metaItem = new ItemTFMeta();
 
@@ -353,7 +353,7 @@ public class TFItems {
         registerTFItem(scepterLifeDrain, "Scepter of Life Draining");
         registerTFItem(scepterZombie, "Zombie Scepter");
         // registerTFItem(wandPacification, "Wand of Pacification [NYI]");
-        registerTFItem(oreMeter, "Ore Meter [WIP]");
+        // registerTFItem(oreMeter, "Ore Meter [WIP]");
         registerTFItem(magicMap, "Magic Map");
         registerTFItem(mazeMap, "Maze Map");
         registerTFItem(oreMap, "Maze/Ore Map");
@@ -373,8 +373,8 @@ public class TFItems {
         registerTFItem(ironwoodAxe, "Ironwood Axe");
         registerTFItem(ironwoodHoe, "Ironwood Hoe");
         registerTFItem(torchberries, "Torchberries");
-        registerTFItem(venisonRaw, "Raw Venison");
-        registerTFItem(venisonCooked, "Venison Steak");
+        //registerTFItem(venisonRaw, "Raw Venison");
+        //registerTFItem(venisonCooked, "Venison Steak");
         registerTFItem(hydraChop, "Hydra Chop");
         registerTFItem(fieryBlood, "Fiery Blood");
         registerTFItem(trophy, "Hydra Trophy");
@@ -392,13 +392,13 @@ public class TFItems {
         registerTFItem(steeleafLegs, "Steeleaf Legs");
         registerTFItem(steeleafBoots, "Steeleaf Boots");
         registerTFItem(steeleafSword, "Steeleaf Sword");
-        registerTFItem(steeleafShovel, "Steeleaf Shovel");
+        //registerTFItem(steeleafShovel, "Steeleaf Shovel");
         registerTFItem(steeleafPick, "Steeleaf Pick");
-        registerTFItem(steeleafAxe, "Steeleaf Axe");
-        registerTFItem(steeleafHoe, "Steeleaf Hoe");
+        //registerTFItem(steeleafAxe, "Steeleaf Axe");
+        //registerTFItem(steeleafHoe, "Steeleaf Hoe");
         registerTFItem(minotaurAxe, "Minotaur Axe");
         registerTFItem(mazebreakerPick, "Mazebreaker");
-        registerTFItem(transformPowder, "Transformation Powder");
+        //registerTFItem(transformPowder, "Transformation Powder");
         registerTFItem(meefRaw, "Raw Meef");
         registerTFItem(meefSteak, "Meef Steak");
         registerTFItem(meefStroganoff, "Meef Stroganoff");
@@ -406,7 +406,7 @@ public class TFItems {
         registerTFItem(emptyMagicMap, "Blank Magic Map");
         registerTFItem(emptyMazeMap, "Blank Maze Map");
         registerTFItem(emptyOreMap, "Blank Maze/Ore Map");
-        registerTFItem(oreMagnet, "Ore Magnet");
+        //registerTFItem(oreMagnet, "Ore Magnet");
         registerTFItem(crumbleHorn, "Crumble Horn");
         registerTFItem(peacockFan, "Peacock Feather Fan");
         registerTFItem(moonwormQueen, "Moonworm Queen");
@@ -416,7 +416,7 @@ public class TFItems {
         registerTFItem(charmOfKeeping2, "Charm of Keeping II");
         registerTFItem(charmOfKeeping3, "Charm of Keeping III");
         registerTFItem(towerKey, "Tower Key");
-        registerTFItem(borerEssence, "Borer Essence");
+        //registerTFItem(borerEssence, "Borer Essence");
         registerTFItem(carminite, "Carminite");
         registerTFItem(experiment115, "Experiment 115");
         registerTFItem(armorShard, "Armor Shards");
@@ -424,8 +424,8 @@ public class TFItems {
         registerTFItem(shardCluster, "Shard Cluster");
         registerTFItem(knightlyHelm, "Knightly Helm");
         registerTFItem(knightlyPlate, "Knightly Plate");
-        registerTFItem(knightlyLegs, "Knightly Legs");
-        registerTFItem(knightlyBoots, "Knightly Boots");
+        //registerTFItem(knightlyLegs, "Knightly Legs");
+        //registerTFItem(knightlyBoots, "Knightly Boots");
         registerTFItem(knightlySword, "Knightly Sword");
         registerTFItem(knightlyPick, "Knightly Pick");
         registerTFItem(knightlyAxe, "Knightly Axe");
@@ -453,7 +453,7 @@ public class TFItems {
         registerTFItem(enderBow);
         registerTFItem(iceSword);
         registerTFItem(glassSword);
-        registerTFItem(knightmetalRing);
+        //registerTFItem(knightmetalRing);
         registerTFItem(chainBlock);
         registerTFItem(cubeTalisman);
         registerTFItem(cubeOfAnnihilation);
@@ -461,10 +461,10 @@ public class TFItems {
         registerTFItem(doorCanopy);
         registerTFItem(doorMangrove);
         registerTFItem(doorDarkwood);
-        registerTFItem(doorTime);
+        /*registerTFItem(doorTime);
         registerTFItem(doorTrans);
         registerTFItem(doorMine);
-        registerTFItem(doorSort);
+        registerTFItem(doorSort);*/
 
         registerTFItem(metaItem);
 

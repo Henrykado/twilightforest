@@ -17,8 +17,7 @@ import twilightforest.item.TFItems;
 
 public class BlockTFWood extends Block {
 
-    public static final String[] names = new String[] { "twilight_oak", "canopy", "mangrove", "darkwood", "time",
-            "trans", "mine", "sort" };
+    public static final String[] names = new String[] { "twilight_oak", "canopy", "mangrove", "darkwood" };
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 
@@ -54,7 +53,7 @@ public class BlockTFWood extends Block {
      */
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<net.minecraft.item.ItemStack> list) {
-        for (int i = 0; i < 8; i++) list.add(new ItemStack(itemIn, 1, i));
+        for (int i = 0; i < 4; i++) list.add(new ItemStack(itemIn, 1, i));
     }
 
     @SideOnly(Side.CLIENT)

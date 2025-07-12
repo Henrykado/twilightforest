@@ -126,7 +126,7 @@ public class TFThaumcraftIntegration {
                     -1,
                     (new AspectList()).add(Aspect.DEATH, 1).add(Aspect.TRAVEL, 2).add(Aspect.GREED, 4));
             registerTCObjectTag(TFItems.towerKey, -1, (new AspectList()).add(Aspect.MECHANISM, 4).add(Aspect.MAGIC, 4));
-            registerTCObjectTag(
+            /*registerTCObjectTag(
                     TFItems.transformPowder,
                     -1,
                     (new AspectList()).add(Aspect.MAGIC, 8).add(Aspect.EXCHANGE, 4));
@@ -134,7 +134,7 @@ public class TFThaumcraftIntegration {
                     TFItems.borerEssence,
                     -1,
                     (new AspectList()).add(Aspect.BEAST, 2).add(Aspect.TREE, 2).add(Aspect.SOUL, 4)
-                            .add(Aspect.MAGIC, 2));
+                            .add(Aspect.MAGIC, 2));*/
             registerTCObjectTag(TFItems.armorShard, -1, (new AspectList()).add(Aspect.METAL, 1));
             registerTCObjectTag(TFItems.knightMetal, -1, (new AspectList()).add(Aspect.METAL, 8).add(Aspect.ORDER, 1));
             registerTCObjectTag(

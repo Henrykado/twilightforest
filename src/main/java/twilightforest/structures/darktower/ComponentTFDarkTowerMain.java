@@ -1040,7 +1040,7 @@ public class ComponentTFDarkTowerMain extends ComponentTFDarkTowerWing {
         placeBlockRotated(world, Blocks.crafting_table, 0, 14, y + 2, 4, rotation, sbb);
 
         // recipes in frames?
-        placeItemFrameRotated(world, 13, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
+        /*placeItemFrameRotated(world, 13, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
         placeItemFrameRotated(world, 14, y + 2, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
         placeItemFrameRotated(world, 15, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
         placeItemFrameRotated(world, 13, y + 3, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
@@ -1058,7 +1058,7 @@ public class ComponentTFDarkTowerMain extends ComponentTFDarkTowerWing {
         placeItemFrameRotated(world, 17, y + 3, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
         placeItemFrameRotated(world, 17, y + 4, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
         placeItemFrameRotated(world, 17, y + 4, 4, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
-        placeItemFrameRotated(world, 17, y + 4, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
+        placeItemFrameRotated(world, 17, y + 4, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);*/
 
         if (y < this.height - 13) {
             // device bottom

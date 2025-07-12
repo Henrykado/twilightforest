@@ -1,6 +1,7 @@
 package twilightforest.item;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,8 +26,8 @@ public class ItemTFGiantSword extends ItemSword {
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
         // repair with ironwood ingots
-        return par2ItemStack.getItem() == TFItems.ironwoodIngot ? true
-                : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == Item.getItemFromBlock(Blocks.stone)
+                || super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 
     /**

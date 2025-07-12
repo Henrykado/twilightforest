@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
@@ -192,14 +193,14 @@ public class TFTreasure {
                 common.add(Items.string, 4);
                 common.add(Items.bucket, 1);
                 uncommon.add(Items.bread, 1);
-                uncommon.add(TFItems.oreMagnet, 1);
+                //uncommon.add(TFItems.oreMagnet, 1);
                 uncommon.add(Items.gunpowder, 4);
                 uncommon.add(Items.arrow, 12);
                 uncommon.add(Blocks.torch, 12);
                 rare.add(Items.gold_ingot, 3);
                 rare.add(Items.iron_pickaxe, 1);
                 rare.add(TFItems.liveRoot, 3);
-                ultrarare.add(TFItems.transformPowder, 12);
+                //ultrarare.add(TFItems.transformPowder, 12);
                 ultrarare.add(Items.diamond, 1);
                 ultrarare.add(TFItems.steeleafIngot, 3);
             }
@@ -210,13 +211,12 @@ public class TFTreasure {
                 common.add(Blocks.ladder, 6);
                 common.add(Items.bucket, 1);
                 uncommon.add(Items.baked_potato, 2);
-                uncommon.add(TFItems.oreMagnet, 1);
+                //uncommon.add(TFItems.oreMagnet, 1);
                 uncommon.add(TFItems.ironwoodIngot, 4);
                 uncommon.add(Items.arrow, 12);
                 uncommon.add(Blocks.torch, 12);
-                rare.add(TFItems.nagaScale, 1);
                 if (!Loader.isModLoaded("dreamcraft")) rare.add(TFBlocks.uncraftingTable, 1);
-                rare.add(TFItems.transformPowder, 12);
+                //rare.add(TFItems.transformPowder, 12);
                 ultrarare.add(TFItems.peacockFan, 1);
                 ultrarare.add(Items.emerald, 6);
                 ultrarare.add(Items.diamond, 1);
@@ -229,7 +229,7 @@ public class TFTreasure {
                 common.add(Items.fish, 4);
                 common.add(TFItems.torchberries, 5);
                 uncommon.add(Items.pumpkin_pie, 1);
-                uncommon.add(TFItems.oreMagnet, 1);
+                //uncommon.add(TFItems.oreMagnet, 1);
                 uncommon.add(Items.gunpowder, 4);
                 uncommon.add(Items.arrow, 12);
                 uncommon.add(Blocks.torch, 12);
@@ -241,12 +241,12 @@ public class TFTreasure {
                         1,
                         Enchantment.fortune,
                         1);
-                rare.add(TFItems.transformPowder, 12);
+                //rare.add(TFItems.transformPowder, 12);
                 ultrarare.add(TFItems.moonwormQueen, 1);
                 ultrarare.add(TFBlocks.sapling, 1, 4);
                 ultrarare.add(Items.diamond, 2);
                 ultrarare.add(TFItems.charmOfLife1, 1);
-                ultrarare.add(TFItems.charmOfKeeping1, 1);
+                // ultrarare.add(TFItems.charmOfKeeping1, 1);
             }
             case 4 -> {
                 // hedge maze chest
@@ -261,6 +261,7 @@ public class TFTreasure {
                 uncommon.add(Items.pumpkin_seeds, 4);
                 uncommon.add(Items.arrow, 12);
                 uncommon.add(new ItemStack(TFItems.critter, 4, 0));
+                rare.add(TFItems.steeleafIngot, 6);
                 rare.add(Blocks.web, 3);
                 rare.add(Items.shears, 1);
                 rare.add(Items.saddle, 1);
@@ -274,24 +275,23 @@ public class TFTreasure {
             case 5 -> {
                 // labyrinth room chest
                 useless.clear();
+                common.add(Item.getItemFromBlock(Blocks.red_mushroom), 4);
+                common.add(Item.getItemFromBlock(Blocks.brown_mushroom), 4);
                 common.add(Items.iron_ingot, 4);
                 common.add(TFItems.mazeWafer, 12);
                 common.add(Items.gunpowder, 4);
-                common.add(TFItems.ironwoodIngot, 4);
                 common.add(new ItemStack(TFItems.critter, 5, 0));
                 common.add(Items.milk_bucket, 1);
-                uncommon.add(TFItems.steeleafIngot, 6);
-                uncommon.add(TFItems.steeleafLegs, 1);
-                uncommon.add(TFItems.steeleafPlate, 1);
-                uncommon.add(TFItems.steeleafHelm, 1);
-                uncommon.add(TFItems.steeleafBoots, 1);
-                uncommon.add(TFItems.steeleafPick, 1);
-                uncommon.add(TFItems.ironwoodPlate, 1);
-                uncommon.add(TFItems.ironwoodSword, 1);
-                uncommon.add(TFItems.charmOfKeeping1, 1);
-                rare.add(TFItems.mazeMapFocus, 1);
+                uncommon.add(TFItems.emptyMazeMap, 1);
+                uncommon.addEnchanted(new ItemStack(Items.golden_axe), Enchantment.sharpness, 5);
+                uncommon.addEnchanted(new ItemStack(Items.iron_chestplate), Enchantment.projectileProtection, 2);
+                uncommon.addEnchanted(new ItemStack(Items.iron_leggings), Enchantment.blastProtection, 2);
+                uncommon.addEnchanted(new ItemStack(Items.iron_boots), Enchantment.fireProtection, 2);
+                // uncommon.add(TFItems.charmOfKeeping1, 1);
+                // rare.add(TFItems.mazeMapFocus, 1);
                 rare.add(Blocks.tnt, 3);
                 rare.add(new ItemStack(Items.potionitem, 1, 16373)); // health ii
+                ultrarare.add(Items.diamond, 1);
             }
             case 6 -> {
                 // labyrinth dead end chest
@@ -302,15 +302,14 @@ public class TFTreasure {
                 common.add(Items.paper, 12);
                 common.add(Items.leather, 4);
                 common.add(Items.mushroom_stew, 1);
+                common.add(TFItems.emptyMazeMap, 1);
                 uncommon.add(Items.milk_bucket, 1);
                 uncommon.add(Items.paper, 5);
                 uncommon.add(Items.iron_ingot, 6);
-                uncommon.add(TFItems.ironwoodIngot, 8);
                 uncommon.add(new ItemStack(TFItems.critter, 5, 0));
-                uncommon.add(TFItems.charmOfKeeping1, 1);
-                rare.add(TFItems.steeleafIngot, 8);
+                // uncommon.add(TFItems.charmOfKeeping1, 1);
+                rare.add(TFItems.knightMetal, 8);
                 rare.add(Items.golden_apple, 1);
-                rare.add(Items.blaze_rod, 2);
             }
             case 7 -> {
                 // wizards tower treasure room chest
@@ -335,9 +334,9 @@ public class TFTreasure {
                 rare.add(new ItemStack(Items.potionitem, 1, 16305)); // regen ii
                 rare.add(new ItemStack(Items.potionitem, 1, 32725)); // splash health
                 rare.add(new ItemStack(Items.potionitem, 1, 32764)); // harming ii splash
-                rare.add(TFItems.transformPowder, 12);
+                //rare.add(TFItems.transformPowder, 12);
                 rare.add(TFItems.charmOfLife1, 1);
-                rare.add(TFItems.charmOfKeeping1, 1);
+                // rare.add(TFItems.charmOfKeeping1, 1);
                 ultrarare.addRandomEnchanted(Items.golden_axe, 20);
                 ultrarare.add(Items.ender_pearl, 1);
                 ultrarare.add(Blocks.obsidian, 4);
@@ -368,8 +367,8 @@ public class TFTreasure {
                 rare.add(new ItemStack(Items.potionitem, 1, 16369)); // regen ii
                 rare.add(new ItemStack(Items.potionitem, 1, 16373)); // health ii
                 rare.add(new ItemStack(Items.potionitem, 1, 16370)); // extended swiftness ii
-                rare.add(TFItems.transformPowder, 12);
-                rare.add(TFItems.charmOfKeeping1, 1);
+                //rare.add(TFItems.transformPowder, 12);
+                // rare.add(TFItems.charmOfKeeping1, 1);
                 ultrarare.addRandomEnchanted(Items.golden_pickaxe, 10);
                 ultrarare.addRandomEnchanted(Items.iron_sword, 20);
                 ultrarare.addRandomEnchanted(Items.bow, 30);
@@ -392,15 +391,15 @@ public class TFTreasure {
                 common.add(Items.milk_bucket, 1);
                 common.add(Items.melon_seeds, 5);
                 uncommon.add(Items.bread, 8);
-                uncommon.add(Items.cooked_beef, 6);
-                uncommon.add(Items.cooked_porkchop, 8);
-                uncommon.add(Items.baked_potato, 8);
-                uncommon.add(Items.cooked_chicken, 10);
-                uncommon.add(Items.cooked_fished, 8);
+                uncommon.add(Items.cooked_beef, 2);
+                uncommon.add(Items.cooked_porkchop, 4);
+                uncommon.add(Items.baked_potato, 4);
+                uncommon.add(Items.cooked_chicken, 5);
+                uncommon.add(Items.cooked_fished, 3);
                 rare.add(Items.speckled_melon, 12);
-                rare.add(Items.apple, 12);
+                rare.add(Items.apple, 10);
                 rare.add(Items.map, 1);
-                rare.add(TFItems.charmOfKeeping1, 1);
+                // rare.add(TFItems.charmOfKeeping1, 1);
                 ultrarare.add(Items.golden_apple, 2);
                 ultrarare.add(Items.golden_carrot, 2);
                 ultrarare.add(Items.cake, 1);
@@ -417,48 +416,18 @@ public class TFTreasure {
                 common.add(new ItemStack(Items.potionitem, 1, 16369)); // regen ii
                 common.add(new ItemStack(Items.potionitem, 1, 16373)); // health ii
                 common.add(new ItemStack(Items.potionitem, 1, 16370)); // extended swiftness ii
-                uncommon.addEnchanted(new ItemStack(Items.bow), Enchantment.infinity, 1, Enchantment.punch, 2);
-                uncommon.addEnchanted(new ItemStack(Items.bow), Enchantment.power, 3, Enchantment.flame, 1);
-                uncommon.addEnchanted(
-                        new ItemStack(TFItems.steeleafShovel),
-                        Enchantment.efficiency,
-                        4,
-                        Enchantment.unbreaking,
-                        2);
-                uncommon.addEnchanted(new ItemStack(TFItems.steeleafAxe), Enchantment.efficiency, 5);
-                uncommon.add(TFItems.steeleafIngot, 12);
-                uncommon.addEnchanted(new ItemStack(TFItems.steeleafPlate), Enchantment.protection, 3);
-                uncommon.addEnchanted(new ItemStack(TFItems.steeleafLegs), Enchantment.fireProtection, 4);
-                uncommon.addEnchanted(new ItemStack(TFItems.steeleafBoots), Enchantment.protection, 2);
-                uncommon.addEnchanted(new ItemStack(TFItems.steeleafHelm), Enchantment.respiration, 3);
+                uncommon.addEnchanted(new ItemStack(Items.bow), Enchantment.infinity, 1);
+                uncommon.addEnchanted(new ItemStack(Items.bow), Enchantment.flame, 1);
                 rare.add(Blocks.emerald_block, 1);
                 rare.add(Blocks.ender_chest, 1);
+                rare.addEnchanted(new ItemStack(Items.iron_pickaxe), Enchantment.silkTouch, 1);
                 rare.addEnchanted(
-                        new ItemStack(TFItems.steeleafPick),
-                        Enchantment.efficiency,
-                        4,
-                        Enchantment.silkTouch,
-                        1);
-                rare.addEnchanted(
-                        new ItemStack(TFItems.steeleafSword),
-                        Enchantment.sharpness,
-                        4,
-                        Enchantment.knockback,
-                        2);
-                rare.addEnchanted(
-                        new ItemStack(TFItems.steeleafSword),
+                        new ItemStack(Items.iron_sword),
                         Enchantment.baneOfArthropods,
                         5,
                         Enchantment.fireAspect,
                         2);
-                rare.addEnchanted(
-                        new ItemStack(TFItems.mazebreakerPick),
-                        Enchantment.efficiency,
-                        4,
-                        Enchantment.unbreaking,
-                        3,
-                        Enchantment.fortune,
-                        2);
+                rare.addEnchanted(new ItemStack(TFItems.mazebreakerPick), Enchantment.efficiency, 3);
             }
             case 11 -> {
                 // dark tower regular treasure cache, contains supplies
@@ -470,10 +439,9 @@ public class TFTreasure {
                 common.add(Items.redstone, 6);
                 uncommon.add(Blocks.redstone_lamp, 3);
                 uncommon.add(Items.iron_ingot, 6);
-                uncommon.add(TFItems.ironwoodIngot, 8);
+                uncommon.add(Items.redstone, 12);
                 uncommon.add(new ItemStack(TFItems.critter, 5, 0));
-                uncommon.add(TFItems.charmOfKeeping1, 1);
-                rare.add(TFItems.steeleafIngot, 8);
+                // uncommon.add(TFItems.charmOfKeeping1, 1);
                 rare.add(Items.diamond, 2);
             }
             case 12 -> {
@@ -487,15 +455,8 @@ public class TFTreasure {
                 common.add(new ItemStack(TFItems.critter, 5, 0));
                 common.add(Items.redstone, 12);
                 common.add(Items.glowstone_dust, 12);
-                uncommon.add(TFItems.steeleafIngot, 6);
-                uncommon.add(TFItems.steeleafLegs, 1);
-                uncommon.add(TFItems.steeleafPlate, 1);
-                uncommon.add(TFItems.steeleafHelm, 1);
-                uncommon.add(TFItems.steeleafBoots, 1);
-                uncommon.add(TFItems.steeleafPick, 1);
-                uncommon.add(TFItems.ironwoodPlate, 1);
-                uncommon.add(TFItems.ironwoodSword, 1);
-                uncommon.add(TFItems.charmOfKeeping1, 1);
+                // uncommon.add(TFItems.charmOfKeeping1, 1);
+                uncommon.add(TFItems.towerKey, 1);
                 rare.add(TFItems.charmOfLife1, 1);
                 rare.addEnchantedBook(Enchantment.featherFalling, 3);
                 rare.addEnchantedBook(Enchantment.knockback, 2);
@@ -504,7 +465,7 @@ public class TFTreasure {
             case 13 -> {
                 // dark tower boss treasure
                 useless.clear();
-                common.add(TFItems.carminite, 3);
+                common.add(TFItems.carminite, 12);
                 uncommon.add(TFItems.fieryTears, 5);
                 rare.add(new ItemStack(TFItems.trophy, 1, 3));
             }
@@ -526,12 +487,15 @@ public class TFTreasure {
                 rare.add(Items.pumpkin_pie, 12);
                 rare.add(Items.apple, 12);
                 rare.add(TFItems.charmOfLife1, 1);
-                rare.add(TFItems.charmOfKeeping1, 1);
+                // rare.add(TFItems.charmOfKeeping1, 1);
+                rare.add(TFItems.ironwoodSword, 1);
+                rare.add(TFItems.ironwoodPick, 1);
+                rare.add(TFItems.ironwoodAxe, 1);
+                rare.add(TFItems.ironwoodHelm, 1);
+                rare.add(TFItems.ironwoodPlate, 1);
+                rare.add(TFItems.ironwoodLegs, 1);
+                rare.add(TFItems.ironwoodBoots, 1);
                 ultrarare.add(new ItemStack(TFBlocks.sapling, 1, 4));
-                ultrarare.add(new ItemStack(TFBlocks.sapling, 1, 5));
-                ultrarare.add(new ItemStack(TFBlocks.sapling, 1, 6));
-                ultrarare.add(new ItemStack(TFBlocks.sapling, 1, 7));
-                ultrarare.add(new ItemStack(TFBlocks.sapling, 1, 8));
             }
             case 15 -> {
                 // stronghold regular treasure cache, contains supplies
@@ -543,15 +507,15 @@ public class TFTreasure {
                 common.add(Items.iron_ingot, 2);
                 uncommon.add(Items.bucket, 1);
                 uncommon.add(Items.iron_ingot, 6);
-                uncommon.add(TFItems.ironwoodIngot, 6);
                 uncommon.add(new ItemStack(TFItems.critter, 5, 0));
-                uncommon.add(TFItems.charmOfKeeping1, 1);
+                // uncommon.add(TFItems.charmOfKeeping1, 1);
                 uncommon.add(TFItems.armorShard, 3);
                 rare.add(TFItems.knightMetal, 8);
                 rare.addRandomEnchanted(Items.bow, 20);
                 rare.addRandomEnchanted(Items.iron_sword, 20);
-                rare.addRandomEnchanted(TFItems.ironwoodSword, 15);
-                rare.addRandomEnchanted(TFItems.steeleafSword, 10);
+                //rare.addRandomEnchanted(TFItems.knightlySword, 10);
+                rare.add(TFItems.knightlyPick, 1);
+                rare.addRandomEnchanted(TFItems.knightlyAxe, 10);
                 ultrarare.addEnchantedBook(Enchantment.baneOfArthropods, 4);
                 ultrarare.addEnchantedBook(Enchantment.sharpness, 4);
                 ultrarare.addEnchantedBook(Enchantment.smite, 4);
@@ -570,32 +534,23 @@ public class TFTreasure {
                 common.add(TFItems.ironwoodIngot, 4);
                 common.add(new ItemStack(TFItems.critter, 5, 0));
                 common.add(Items.milk_bucket, 1);
-                uncommon.add(TFItems.steeleafIngot, 6);
-                uncommon.add(TFItems.steeleafLegs, 1);
-                uncommon.add(TFItems.steeleafPlate, 1);
-                uncommon.add(TFItems.steeleafHelm, 1);
-                uncommon.add(TFItems.steeleafBoots, 1);
-                uncommon.add(TFItems.steeleafPick, 1);
-                uncommon.add(TFItems.ironwoodPlate, 1);
-                uncommon.add(TFItems.ironwoodSword, 1);
-                uncommon.add(TFItems.charmOfLife1, 1);
-                rare.add(TFItems.mazeMapFocus, 1);
+                uncommon.add(TFItems.knightlyPick, 1);
+                uncommon.addRandomEnchanted(TFItems.knightlyAxe, 10);
+                // rare.add(TFItems.mazeMapFocus, 1);
                 rare.addRandomEnchanted(Items.bow, 30);
                 rare.addRandomEnchanted(Items.iron_sword, 30);
                 rare.addRandomEnchanted(TFItems.ironwoodSword, 25);
-                rare.addRandomEnchanted(TFItems.steeleafSword, 20);
-                rare.addRandomEnchanted(Items.diamond_sword, 15);
+                //rare.addRandomEnchanted(TFItems.knightlySword, 15);
+                ultrarare.addRandomEnchanted(Items.diamond_sword, 15);
             }
             case 17 -> {
                 // stronghold boss treasure
                 useless.clear();
-                common.addRandomEnchanted(TFItems.knightlySword, 20);
-                common.addRandomEnchanted(TFItems.knightlyPick, 20);
-                common.addRandomEnchanted(TFItems.knightlyAxe, 20);
-                uncommon.addRandomEnchanted(TFItems.phantomHelm, 20);
-                uncommon.addRandomEnchanted(TFItems.phantomPlate, 20);
-                rare.addRandomEnchanted(TFItems.phantomHelm, 30);
-                rare.addRandomEnchanted(TFItems.phantomPlate, 30);
+                uncommon.addRandomEnchanted(TFItems.knightlySword, 15);
+                uncommon.addRandomEnchanted(TFItems.knightlyPick, 15);
+                uncommon.addRandomEnchanted(TFItems.knightlyAxe, 15);
+                common.add(TFItems.phantomHelm, 1);
+                common.add(TFItems.phantomPlate, 1);
                 rare.add(new ItemStack(TFItems.trophy, 1, 6));
             }
             case 18 -> {
@@ -603,18 +558,17 @@ public class TFTreasure {
                 common.add(Items.stick, 12);
                 common.add(new ItemStack(Items.coal, 12));
                 common.add(Items.arrow, 12);
-                common.add(TFItems.mazeWafer, 9);
+                common.add(Items.carrot, 7);
+                common.add(Items.baked_potato, 4);
                 common.add(Blocks.ice, 4);
                 common.add(Blocks.packed_ice, 4);
-                common.add(TFItems.ironwoodIngot, 2);
                 uncommon.add(TFBlocks.auroraBlock, 12);
-                uncommon.add(TFItems.ironwoodIngot, 6);
                 uncommon.add(new ItemStack(TFItems.critter, 5, 0));
-                uncommon.add(TFItems.charmOfKeeping1, 1);
+                // uncommon.add(TFItems.charmOfKeeping1, 1);
                 uncommon.add(TFItems.arcticFur, 3);
+                uncommon.add(Items.golden_carrot, 3);
                 rare.add(TFItems.arcticFur, 8);
-                rare.add(TFItems.iceBow, 1);
-                rare.add(TFItems.enderBow, 1);
+                //rare.add(TFItems.iceBow, 1);
                 rare.add(TFItems.iceSword, 1);
                 ultrarare.addEnchantedBook(Enchantment.sharpness, 4);
                 ultrarare.addEnchantedBook(Enchantment.power, 4);
@@ -628,7 +582,8 @@ public class TFTreasure {
                 useless.clear();
                 common.add(Blocks.ice, 4);
                 common.add(Blocks.packed_ice, 4);
-                common.add(TFItems.mazeWafer, 12);
+                common.add(Items.carrot, 7);
+                common.add(Items.baked_potato, 4);
                 common.add(TFItems.iceBomb, 4);
                 common.add(new ItemStack(TFItems.critter, 5, 0));
                 uncommon.add(TFItems.arcticFur, 6);
@@ -636,13 +591,13 @@ public class TFTreasure {
                 uncommon.add(TFItems.arcticPlate, 1);
                 uncommon.add(TFItems.arcticHelm, 1);
                 uncommon.add(TFItems.arcticBoots, 1);
-                uncommon.add(TFItems.knightlyPlate, 1);
-                uncommon.add(TFItems.knightlySword, 1);
-                uncommon.add(TFItems.charmOfLife1, 1);
-                rare.addRandomEnchanted(TFItems.iceBow, 30);
-                rare.addRandomEnchanted(TFItems.enderBow, 5);
-                rare.addRandomEnchanted(TFItems.iceSword, 25);
-                rare.addRandomEnchanted(TFItems.glassSword, 20);
+                //uncommon.add(TFItems.knightlyPlate, 1);
+                //uncommon.add(TFItems.knightlySword, 1);
+                // uncommon.add(TFItems.charmOfLife1, 1);
+                //rare.addRandomEnchanted(TFItems.iceBow, 30);
+                // rare.addRandomEnchanted(TFItems.enderBow, 5);
+                rare.addRandomEnchanted(TFItems.iceSword, 20);
+                rare.add(TFItems.glassSword, 1);
             }
             case 21 -> {
                 // troll garden

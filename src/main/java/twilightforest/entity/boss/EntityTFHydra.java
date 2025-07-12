@@ -29,6 +29,8 @@ import twilightforest.TFAchievementPage;
 import twilightforest.TFFeature;
 import twilightforest.TwilightForestMod;
 import twilightforest.block.TFBlocks;
+import twilightforest.entity.EntityIceArrow;
+import twilightforest.item.ItemTFIceSword;
 import twilightforest.item.TFItems;
 import twilightforest.world.ChunkProviderTwilightForest;
 import twilightforest.world.TFWorldChunkManager;
@@ -862,6 +864,12 @@ public class EntityTFHydra extends EntityLiving implements IBossDisplayData, IEn
     public boolean attackEntityFromPart(EntityTFHydraPart part, DamageSource damagesource, float damageAmount) {
         // System.out.println("Taking an attack on part " + part.getPartName() + " of type " +
         // damagesource.damageType);
+
+        if (damagesource.getSourceOfDamage() instanceof EntityIceArrow
+                || (damagesource.getEntity() instanceof EntityPlayer player
+                    && player.getCurrentEquippedItem().getItem() instanceof ItemTFIceSword)) {
+            damageAmount += 4;
+        }
 
         // if we're in a wall, kill that wall
         if (!worldObj.isRemote && damagesource == DamageSource.inWall && part.getBoundingBox() != null) {

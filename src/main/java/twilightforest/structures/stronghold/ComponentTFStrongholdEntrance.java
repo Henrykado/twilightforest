@@ -32,21 +32,26 @@ public class ComponentTFStrongholdEntrance extends StructureTFStrongholdComponen
     public void buildComponent(StructureComponent parent, List<StructureComponent> pieceList, Random random) {
         super.buildComponent(parent, pieceList, random);
 
+        int boss = 0;
+
         // make a random component in each direction
         lowerPieces.prepareStructurePieces();
         addNewComponent(parent, pieceList, random, 0, 4, 1, 18);
         lowerPieces.prepareStructurePieces();
         if (listContainsBossRoom(pieceList)) {
+            boss = 1;
             lowerPieces.markBossRoomUsed();
         }
         addNewComponent(parent, pieceList, random, 1, -1, 1, 13);
         lowerPieces.prepareStructurePieces();
         if (listContainsBossRoom(pieceList)) {
+            boss = 1;
             lowerPieces.markBossRoomUsed();
         }
         addNewComponent(parent, pieceList, random, 2, 13, 1, -1);
         lowerPieces.prepareStructurePieces();
         if (listContainsBossRoom(pieceList)) {
+            boss = 1;
             lowerPieces.markBossRoomUsed();
         }
         addNewComponent(parent, pieceList, random, 3, 18, 1, 4);
@@ -59,7 +64,6 @@ public class ComponentTFStrongholdEntrance extends StructureTFStrongholdComponen
         int tCorridors = 0;
         int deadEnd = 0;
         int tRooms = 0;
-        int bossRooms = 0;
 
         // compute and generate MEGASHIELD
         for (StructureComponent component : pieceList) {
@@ -78,17 +82,19 @@ public class ComponentTFStrongholdEntrance extends StructureTFStrongholdComponen
             if (component instanceof ComponentTFStrongholdTreasureRoom) {
                 tRooms++;
             }
-            if (component instanceof ComponentTFStrongholdBossRoom) {
-                bossRooms++;
-            }
         }
 
         // FMLLog.fine("MEGASHIELD computed! %d, %d, %d to %d, %d, %d.\n", shieldBox.minX, shieldBox.minY,
         // shieldBox.minZ, shieldBox.maxX, shieldBox.maxY, shieldBox.maxZ);
-        // FMLLog.fine("Stronghold at this point contains %d elements.\n", pieceList.size());
+        FMLLog.info("[Twilight Forest] Stronghold at this point contains %d elements.\n", pieceList.size());
         //
-        // FMLLog.fine("Room count! TStairs = %d, TCorr = %d, Dead End = %d, TRoom = %d, Boss = %d \n", tStairs,
-        // tCorridors, deadEnd, tRooms, bossRooms);
+        FMLLog.info(
+                "[Twilight Forest] Room count! TStairs = %d, TCorr = %d, Dead End = %d, TRoom = %d, Boss = %d \n",
+                tStairs,
+                tCorridors,
+                deadEnd,
+                tRooms,
+                boss);
 
         // StructureTFStrongholdShield shield = new StructureTFStrongholdShield(shieldBox.minX - 1, shieldBox.minY,
         // shieldBox.minZ - 1, shieldBox.maxX, shieldBox.maxY, shieldBox.maxZ);

@@ -34,7 +34,7 @@ public class GenLayerTFBiomes extends GenLayer {
         for (int dz = 0; dz < depth; dz++) {
             for (int dx = 0; dx < width; dx++) {
                 initChunkSeed(dx + x, dz + z);
-                if (nextInt(15) == 0) {
+                if (nextInt(10) == 0) {
                     // make rare biome
                     dest[dx + dz * width] = rareBiomes[nextInt(rareBiomes.length)].biomeID;
                 } else {

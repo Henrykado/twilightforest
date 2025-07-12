@@ -34,8 +34,7 @@ public class ItemTFNagaArmor extends ItemArmor {
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
         // repair with naga scale
-        return par2ItemStack.getItem() == TFItems.nagaScale ? true
-                : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == TFItems.nagaScale || super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 
     /**

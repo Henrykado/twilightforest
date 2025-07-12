@@ -1,10 +1,6 @@
 package twilightforest.item;
 
-import java.util.List;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -21,23 +17,12 @@ public class ItemTFIronwoodSword extends ItemSword {
     }
 
     /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
-    @Override
-    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List<ItemStack> par3List) {
-        ItemStack istack = new ItemStack(par1, 1, 0);
-        istack.addEnchantment(Enchantment.knockback, 1);
-        par3List.add(istack);
-    }
-
-    /**
      * Return whether this item is repairable in an anvil.
      */
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack) {
         // repair with ironwood ingots
-        return par2ItemStack.getItem() == TFItems.ironwoodIngot ? true
-                : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == TFItems.ironwoodIngot || super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 
     /**

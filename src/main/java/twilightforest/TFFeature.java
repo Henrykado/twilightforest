@@ -51,6 +51,7 @@ import twilightforest.entity.EntityTFMinotaur;
 import twilightforest.entity.EntityTFPinchBeetle;
 import twilightforest.entity.EntityTFRedcap;
 import twilightforest.entity.EntityTFRedcapSapper;
+import twilightforest.entity.EntityTFSkeletonDruid;
 import twilightforest.entity.EntityTFSlimeBeetle;
 import twilightforest.entity.EntityTFSnowGuardian;
 import twilightforest.entity.EntityTFSwarmSpider;
@@ -76,8 +77,7 @@ public class TFFeature {
             .enableTerrainAlterations();
     public static final TFFeature hedgeMaze = new TFFeature(4, 2, "Hedge Maze").enableTerrainAlterations();
     public static final TFFeature nagaCourtyard = new TFFeature(5, 3, "Naga Courtyard").enableTerrainAlterations();
-    public static final TFFeature lichTower = new TFFeature(6, 1, "Lich Tower")
-            .setRequiredAchievement(TFAchievementPage.twilightKillNaga);
+    public static final TFFeature lichTower = new TFFeature(6, 1, "Lich Tower");
     public static final TFFeature iceTower = new TFFeature(7, 2, "Ice Tower")
             .setRequiredAchievement(TFAchievementPage.twilightProgressYeti);
     public static final TFFeature questIsland = new TFFeature(8, 1, "Quest Island").disableStructure();
@@ -86,8 +86,7 @@ public class TFFeature {
     public static final TFFeature floatRuins = new TFFeature(11, 3, "Floating Ruins").disableStructure();
     public static final TFFeature hydraLair = new TFFeature(12, 2, "Hydra Lair")
             .setRequiredAchievement(TFAchievementPage.twilightProgressLabyrinth).enableTerrainAlterations();
-    public static final TFFeature labyrinth = new TFFeature(13, 3, "Labyrinth").enableDecorations()
-            .setRequiredAchievement(TFAchievementPage.twilightKillLich);
+    public static final TFFeature labyrinth = new TFFeature(13, 3, "Labyrinth").enableDecorations();
     public static final TFFeature darkTower = new TFFeature(14, 1, "Dark Tower")
             .setRequiredAchievement(TFAchievementPage.twilightProgressKnights);
     public static final TFFeature tfStronghold = new TFFeature(15, 3, "Knight Stronghold").enableDecorations()
@@ -143,18 +142,18 @@ public class TFFeature {
 
         labyrinth.addMonster(EntityTFMinotaur.class, 20, 2, 4);
         labyrinth.addMonster(EntityCaveSpider.class, 10, 4, 4);
-        labyrinth.addMonster(EntityCreeper.class, 10, 4, 4);
+        // labyrinth.addMonster(EntityCreeper.class, 10, 4, 4);
         labyrinth.addMonster(EntityTFMazeSlime.class, 10, 4, 4);
-        labyrinth.addMonster(EntityEnderman.class, 1, 1, 4);
+        labyrinth.addMonster(EntityEnderman.class, 1, 1, 2);
         labyrinth.addMonster(EntityTFFireBeetle.class, 10, 4, 4);
         labyrinth.addMonster(EntityTFSlimeBeetle.class, 10, 4, 4);
         labyrinth.addMonster(EntityTFPinchBeetle.class, 10, 2, 4);
 
         darkTower.addMonster(EntityTFTowerGolem.class, 10, 4, 4);
-        darkTower.addMonster(EntitySkeleton.class, 10, 4, 4);
-        darkTower.addMonster(EntityCreeper.class, 10, 4, 4);
-        darkTower.addMonster(EntityEnderman.class, 2, 1, 4);
-        darkTower.addMonster(EntityWitch.class, 1, 1, 1);
+        darkTower.addMonster(EntitySkeleton.class, 10, 1, 1);
+        darkTower.addMonster(EntityCreeper.class, 5, 4, 4);
+        darkTower.addMonster(EntityEnderman.class, 1, 1, 4);
+        // darkTower.addMonster(EntityWitch.class, 1, 1, 1);
         darkTower.addMonster(EntityTFMiniGhast.class, 10, 1, 4);
         darkTower.addMonster(EntityTFTowerBroodling.class, 10, 8, 8);
         darkTower.addMonster(EntityTFPinchBeetle.class, 10, 2, 4);
@@ -163,16 +162,18 @@ public class TFFeature {
         // aquarium squids (only in aquariums between y = 35 and y = 64. :/
         darkTower.addWaterCreature(EntitySquid.class, 10, 4, 4);
 
-        tfStronghold.addMonster(EntityTFBlockGoblin.class, 10, 4, 4);
+        tfStronghold.addMonster(EntityTFBlockGoblin.class, 10, 1, 3);
         tfStronghold.addMonster(EntityTFGoblinKnightLower.class, 5, 1, 2);
-        tfStronghold.addMonster(EntityTFHelmetCrab.class, 10, 4, 4);
-        tfStronghold.addMonster(EntityTFSlimeBeetle.class, 10, 4, 4);
-        tfStronghold.addMonster(EntityTFRedcapSapper.class, 2, 1, 4);
-        tfStronghold.addMonster(EntityTFKobold.class, 10, 4, 8);
-        tfStronghold.addMonster(EntityCreeper.class, 10, 4, 4);
+        tfStronghold.addMonster(EntityTFHelmetCrab.class, 10, 1, 3);
+        tfStronghold.addMonster(EntityTFSlimeBeetle.class, 6, 3, 4);
+        tfStronghold.addMonster(EntitySkeleton.class, 6, 3, 3);
+        tfStronghold.addMonster(EntityTFSkeletonDruid.class, 3, 1, 1);
+        tfStronghold.addMonster(EntityTFRedcapSapper.class, 3, 1, 1);
+        // tfStronghold.addMonster(EntityTFKobold.class, 1, 4, 8);
+        // tfStronghold.addMonster(EntityCreeper.class, 10, 4, 4);
         tfStronghold.addMonster(EntitySlime.class, 5, 4, 4);
 
-        yetiCave.addMonster(EntityTFYeti.class, 10, 4, 4);
+        yetiCave.addMonster(EntityTFYeti.class, 10, 2, 3);
 
         iceTower.addMonster(EntityTFSnowGuardian.class, 10, 4, 4);
         iceTower.addMonster(EntityTFIceShooter.class, 10, 4, 4);

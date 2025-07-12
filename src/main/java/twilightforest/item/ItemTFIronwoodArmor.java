@@ -30,7 +30,6 @@ public class ItemTFIronwoodArmor extends ItemArmor {
 
     @Override
     public String getArmorTexture(ItemStack itemstack, Entity entity, int slot, String layer) {
-
         if (itemstack.getItem() == TFItems.ironwoodPlate || itemstack.getItem() == TFItems.ironwoodHelm
                 || itemstack.getItem() == TFItems.ironwoodBoots) {
             return TwilightForestMod.ARMOR_DIR + "ironwood_1.png";
@@ -39,21 +38,6 @@ public class ItemTFIronwoodArmor extends ItemArmor {
             return TwilightForestMod.ARMOR_DIR + "ironwood_2.png";
         }
         return TwilightForestMod.ARMOR_DIR + "ironwood_1.png";
-    }
-
-    /**
-     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
-     */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    @Override
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
-        ItemStack istack = new ItemStack(item, 1, 0);
-        switch (this.armorType) {
-            case 0 -> istack.addEnchantment(Enchantment.aquaAffinity, 1);
-            case 1, 2 -> istack.addEnchantment(Enchantment.protection, 1);
-            case 3 -> istack.addEnchantment(Enchantment.featherFalling, 1);
-        }
-        itemList.add(istack);
     }
 
     // Return whether this item is repairable in an anvil.

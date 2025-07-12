@@ -13,19 +13,19 @@ import twilightforest.structures.StructureTFComponent;
 public class TFStrongholdPieces {
 
     private static final TFStrongholdPieceWeight[] pieceWeightArray = new TFStrongholdPieceWeight[] {
-            new TFStrongholdPieceWeight(ComponentTFStrongholdSmallHallway.class, 40, 0),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdLeftTurn.class, 20, 0),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdCrossing.class, 10, 4),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdRightTurn.class, 20, 0),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdDeadEnd.class, 5, 0),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdBalconyRoom.class, 10, 3, 2),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdTrainingRoom.class, 10, 2),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdSmallStairs.class, 10, 0),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdTreasureCorridor.class, 5, 0),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdAtrium.class, 5, 2, 3),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdFoundry.class, 5, 1, 4),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdTreasureRoom.class, 5, 1, 4),
-            new TFStrongholdPieceWeight(ComponentTFStrongholdBossRoom.class, 10, 1, 4) };
+            new TFStrongholdPieceWeight(ComponentTFStrongholdSmallHallway.class, 10, 0),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdLeftTurn.class, 15, 0),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdCrossing.class, 10, 1),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdRightTurn.class, 15, 0),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdDeadEnd.class, 0, 0),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdBalconyRoom.class, 10, 2, 2),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdTrainingRoom.class, 10, 1),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdSmallStairs.class, 15, 0),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdTreasureCorridor.class, 5, 3),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdAtrium.class, 10, 2, 3),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdFoundry.class, 7, 1, 3),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdTreasureRoom.class, 7, 1, 4),
+            new TFStrongholdPieceWeight(ComponentTFStrongholdBossRoom.class, 7, 1, 4) };
 
     private List<TFStrongholdPieceWeight> pieceList;
     static int totalWeight = 0;
@@ -133,8 +133,10 @@ public class TFStrongholdPieces {
             }
         }
 
+        StructureTFStrongholdComponent deadEnd;
+
         // dead end?
-        StructureTFStrongholdComponent deadEnd = new ComponentTFStrongholdDeadEnd(index, facing, x, y, z);
+        deadEnd = new ComponentTFStrongholdDeadEnd(index, facing, x, y, z);
 
         if (StructureComponent.findIntersecting(list, deadEnd.getBoundingBox()) == null) {
             return deadEnd;

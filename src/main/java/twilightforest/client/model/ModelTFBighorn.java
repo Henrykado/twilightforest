@@ -1,49 +1,41 @@
 package twilightforest.client.model;
 
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.model.ModelSheep1;
+import net.minecraft.client.model.ModelSheep2;
 
-public class ModelTFBighorn extends ModelSheep1 {
+public class ModelTFBighorn extends ModelSheep2 {
+    public final ModelRenderer horn1;
+    public final ModelRenderer horn2;
 
     public ModelTFBighorn() {
-        super();
-        head = new ModelRenderer(this, 0, 0);
-        head.addBox(-3F, -4F, -6F, 6, 6, 7, 0F);
-        head.setRotationPoint(0F, 6F, -8F);
+        this.head = new ModelRenderer(this, 0, 0);
+        this.head.addBox(-3.0F, -4.0F, -6.0F, 6, 6, 7, 0.0F);
+        this.head.setRotationPoint(0.0F, 6.0F, -8.0F);
+        this.body = new ModelRenderer(this, 36, 10);
+        this.body.addBox(-4.0F, -9.0F, -7.0F, 8, 16, 6, 0.0F);
+        this.body.setRotationPoint(0.0F, 5.0F, 2.0F);
 
-        body = new ModelRenderer(this, 36, 10);
-        body.addBox(-4F, -9F, -7F, 8, 15, 6, 0F);
-        body.setRotationPoint(0F, 5F, 2F);
-
-        leg1 = new ModelRenderer(this, 0, 16);
-        leg1.addBox(-2F, 0.0F, -2F, 4, 12, 4, 0F);
-        leg1.setRotationPoint(-3F, 12F, 7F);
-
-        leg2 = new ModelRenderer(this, 0, 16);
-        leg2.addBox(-2F, 0.0F, -2F, 4, 12, 4, 0F);
-        leg2.setRotationPoint(3F, 12F, 7F);
-
-        leg3 = new ModelRenderer(this, 0, 16);
-        leg3.addBox(-2F, 0.0F, -2F, 4, 12, 4, 0F);
-        leg3.setRotationPoint(-3F, 12F, -5F);
-
-        leg4 = new ModelRenderer(this, 0, 16);
-        leg4.addBox(-2F, 0.0F, -2F, 4, 12, 4, 0F);
-        leg4.setRotationPoint(3F, 12F, -5F);
-
-        // curly horn 1
-        head.setTextureOffset(28, 16).addBox(-5F, -4F, -4F, 2, 2, 2, 0F);
-        head.setTextureOffset(16, 13).addBox(-6F, -5F, -3F, 2, 2, 4, 0F);
-        head.setTextureOffset(16, 19).addBox(-7F, -4F, 0F, 2, 5, 2, 0F);
-        head.setTextureOffset(18, 27).addBox(-8F, 0F, -2F, 2, 2, 3, 0F);
-        head.setTextureOffset(28, 27).addBox(-9F, -1F, -3F, 2, 2, 1, 0F);
-
-        // curly horn 2
-        head.setTextureOffset(28, 16).addBox(3F, -4F, -4F, 2, 2, 2, 0F);
-        head.setTextureOffset(16, 13).addBox(4F, -5F, -3F, 2, 2, 4, 0F);
-        head.setTextureOffset(16, 19).addBox(5F, -4F, 0F, 2, 5, 2, 0F);
-        head.setTextureOffset(18, 27).addBox(6F, 0F, -2F, 2, 2, 3, 0F);
-        head.setTextureOffset(28, 27).addBox(7F, -1F, -3F, 2, 2, 1, 0F);
+        this.horn1 = new ModelRenderer(this, 17, 17);
+        this.horn1.addBox(-5.0F, -6.0F, -3.0F, 3, 6, 6, 0.0F);
+        this.horn2 = new ModelRenderer(this, 17, 17);
+        this.horn2.addBox(2.0F, -6.0F, -3.0F, 3, 6, 6, 0.0F);
+        this.head.addChild(horn1);
+        this.head.addChild(horn2);
+        /*
+         * this.horn1 = new ModelRenderer(this, 50, -6); this.horn1.setRotationPoint(0.0F, 0.0F, 0.0F);
+         * this.horn1.addBox(4.8F, -3.9F, -0.9F, 0, 8, 7, 0.0F); this.setRotateAngle(horn1, 0.17453292519943295F,
+         * 0.7853981634F, 0.0F); this.horn2 = new ModelRenderer(this, 50, -6); this.horn2.setRotationPoint(0.0F, 0.0F,
+         * 0.0F); this.horn2.addBox(-4.8F, -3.9F, -0.9F, 0, 8, 7, 0.0F); this.setRotateAngle(horn2,
+         * 0.17453292519943295F, -0.7853981634F, 0.0F); this.head.addChild(this.horn2); this.head.addChild(this.horn1);
+         */
     }
 
+    /**
+     * This is a helper function from Tabula to set the rotation of model parts
+     */
+    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
 }

@@ -767,6 +767,12 @@ public class ChunkProviderTwilightForest implements IChunkProvider {
         return rand.nextFloat();
     }
 
+    private float pseudoRandNextInt(int bx, int bz, int bound) {
+        Random rand = new Random(this.worldObj.getSeed() + (bx * 321534781) ^ (bz * 756839));
+        rand.setSeed(rand.nextLong());
+        return rand.nextInt(bound);
+    }
+
     /**
      * Adds glaciers onto the map
      * 
@@ -797,9 +803,13 @@ public class ChunkProviderTwilightForest implements IChunkProvider {
                     int gHeight = 32;
                     int gTop = topLevel + gHeight + 1;
 
-                    for (int y = topLevel + 1; y <= gTop && y < 128; y++) {
+                    for (int y = topLevel + 1; y <= gTop - 2 && y < 128; y++) {
                         int index = x * TFWorld.CHUNKHEIGHT * 16 | z * TFWorld.CHUNKHEIGHT | y;
                         blocks[index] = Blocks.ice;
+                    }
+                    for (int y = gTop - 1; y <= gTop - 1 + pseudoRandNextInt(x, z,3) && y < 128; y++) {
+                        int index = x * TFWorld.CHUNKHEIGHT * 16 | z * TFWorld.CHUNKHEIGHT | y;
+                        blocks[index] = Blocks.snow;
                     }
                 }
             }

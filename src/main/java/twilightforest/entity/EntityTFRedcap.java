@@ -90,6 +90,11 @@ public class EntityTFRedcap extends EntityMob {
     }
 
     @Override
+    protected float getSoundPitch() {
+        return super.getSoundPitch() - 0.2F;
+    }
+
+    @Override
     protected String getLivingSound() {
         return TwilightForestMod.ID + ":mob.redcap.redcap";
     }

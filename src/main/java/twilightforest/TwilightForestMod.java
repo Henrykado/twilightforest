@@ -47,7 +47,6 @@ import twilightforest.tileentity.TileEntityTFCReactorActive;
 import twilightforest.tileentity.TileEntityTFCake;
 import twilightforest.tileentity.TileEntityTFChest;
 import twilightforest.tileentity.TileEntityTFCicada;
-import twilightforest.tileentity.TileEntityTFCinderFurnace;
 import twilightforest.tileentity.TileEntityTFFirefly;
 import twilightforest.tileentity.TileEntityTFFlameJet;
 import twilightforest.tileentity.TileEntityTFGhastTrapActive;
@@ -190,6 +189,7 @@ public class TwilightForestMod {
     public static int idVehicleSpawnChainBlock = 18;
     public static int idVehicleSpawnCubeOfAnnihilation = 19;
     public static int idVehicleSpawnSlideBlock = 20;
+    static int extraIds = 21;
 
     public static int idBiomeLake;
     public static int idBiomeTwilightForest;
@@ -897,7 +897,7 @@ public class TwilightForestMod {
         EntityRegistry.registerModEntity(
                 twilightforest.entity.EntityTFCubeOfAnnihilation.class,
                 "tfcubeannihilation",
-                this.idVehicleSpawnCubeOfAnnihilation,
+                idVehicleSpawnCubeOfAnnihilation,
                 this,
                 80,
                 1,
@@ -905,10 +905,18 @@ public class TwilightForestMod {
         EntityRegistry.registerModEntity(
                 twilightforest.entity.EntityTFSlideBlock.class,
                 "tfslideblock",
-                this.idVehicleSpawnSlideBlock,
+                idVehicleSpawnSlideBlock,
                 this,
                 80,
                 1,
+                true);
+        EntityRegistry.registerModEntity(
+                twilightforest.entity.EntitySteelleaf.class,
+                "tfSteelleaf",
+                extraIds++,
+                this,
+                80,
+                3,
                 true);
     }
 
@@ -935,7 +943,6 @@ public class TwilightForestMod {
         GameRegistry.registerTileEntity(TileEntityTFGhastTrapInactive.class, "Inactive Ghast Trap");
         GameRegistry.registerTileEntity(TileEntityTFGhastTrapActive.class, "Active Ghast Trap");
         GameRegistry.registerTileEntity(TileEntityTFCReactorActive.class, "Active Carminite Reactor");
-        GameRegistry.registerTileEntity(TileEntityTFCinderFurnace.class, "Cinder Furnace");
         GameRegistry.registerTileEntity(TileEntityTFChest.class, "TF Chest");
     }
 

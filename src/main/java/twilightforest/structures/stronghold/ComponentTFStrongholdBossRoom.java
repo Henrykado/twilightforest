@@ -53,10 +53,10 @@ public class ComponentTFStrongholdBossRoom extends StructureTFStrongholdComponen
         this.fillWithRandomizedBlocks(world, sbb, 4, 1, 23, 22, 5, 25, false, rand, deco.randomBlocks);
 
         // obsidian filler
-        this.fillWithMetadataBlocks(world, sbb, 1, 1, 1, 2, 5, 25, Blocks.obsidian, 0, Blocks.obsidian, 0, false);
-        this.fillWithMetadataBlocks(world, sbb, 24, 1, 1, 25, 5, 25, Blocks.obsidian, 0, Blocks.obsidian, 0, false);
-        this.fillWithMetadataBlocks(world, sbb, 4, 1, 1, 22, 5, 2, Blocks.obsidian, 0, Blocks.obsidian, 0, false);
-        this.fillWithMetadataBlocks(world, sbb, 4, 1, 24, 22, 5, 25, Blocks.obsidian, 0, Blocks.obsidian, 0, false);
+        this.fillWithMetadataBlocks(world, sbb, 1, 1, 1, 2, 5, 25, Blocks.glowstone, 0, Blocks.obsidian, 0, false);
+        this.fillWithMetadataBlocks(world, sbb, 24, 1, 1, 25, 5, 25, Blocks.glowstone, 0, Blocks.obsidian, 0, false);
+        this.fillWithMetadataBlocks(world, sbb, 4, 1, 1, 22, 5, 2, Blocks.glowstone, 0, Blocks.obsidian, 0, false);
+        this.fillWithMetadataBlocks(world, sbb, 4, 1, 24, 22, 5, 25, Blocks.glowstone, 0, Blocks.obsidian, 0, false);
 
         // corner pillars
         this.fillWithRandomizedBlocks(world, sbb, 4, 1, 4, 4, 5, 7, false, rand, deco.randomBlocks);
@@ -91,7 +91,7 @@ public class ComponentTFStrongholdBossRoom extends StructureTFStrongholdComponen
         placeSarcophagus(world, sbb, 18, 1, 15, 0);
 
         // doorway
-        this.fillWithAir(world, sbb, 12, 1, 1, 14, 4, 2);
+        this.fillWithAir(world, sbb, 12, 1, -1, 14, 4, 2);
         this.fillWithBlocks(world, sbb, 12, 1, 3, 14, 4, 3, Blocks.iron_bars, Blocks.iron_bars, false);
 
         int var8 = this.getXWithOffset(0, 0);

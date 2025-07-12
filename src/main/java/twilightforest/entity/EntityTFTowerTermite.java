@@ -225,7 +225,10 @@ public class EntityTFTowerTermite extends EntityMob {
      * Returns the item ID for the item the mob drops on death.
      */
     protected Item getDropItem() {
-        return TFItems.borerEssence;
+        if (this.rand.nextInt(4) == 0) {
+            return TFItems.carminite;
+        }
+        return null;
     }
 
     /**
