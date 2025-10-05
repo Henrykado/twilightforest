@@ -11,13 +11,13 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import twilightforest.TwilightForestMod;
 import twilightforest.block.BlockTFFireJet;
 import twilightforest.block.BlockTFPlant;
 import twilightforest.block.BlockTFTowerDevice;
 import twilightforest.block.TFBlocks;
+import twilightforest.compat.Mods;
 
 public class TFRecipes {
 
@@ -551,8 +551,8 @@ public class TFRecipes {
                 new ItemStack(TFBlocks.starIce, 1),
                 new ItemStack(Blocks.ice),
                 new ItemStack(Items.glowstone_dust));
-
-        if (!Loader.isModLoaded("dreamcraft")) {
+				
+        if (!Mods.GTNH.isLoaded()) {
             GameRegistry.addShapelessRecipe(
                     new ItemStack(TFItems.knightMetal, 9),
                     new Object[] { new ItemStack(TFBlocks.knightmetalStorage) });

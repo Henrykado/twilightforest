@@ -31,6 +31,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import twilightforest.biomes.TFBiomeBase;
 import twilightforest.block.TFBlocks;
+import twilightforest.compat.Mods;
 import twilightforest.entity.TFCreatures;
 import twilightforest.integration.TFBaublesIntegration;
 import twilightforest.integration.TFNeiIntegration;
@@ -103,6 +104,7 @@ public class TwilightForestMod {
     public static boolean areBaublesLoaded = false;
     public static boolean isNeiLoaded = false;
     public static boolean enableTiCIntegration = false;
+    public static boolean enableEfRIntegration = false;
     public static int maxBiomeIDs = 256; // vanilla default
 
     // performance
@@ -216,6 +218,10 @@ public class TwilightForestMod {
     public static int NagaScale_ID;
     public static int Steeleaf_ID;
 
+    // efr
+    public static boolean shulkerSpawnInLichTower;
+    public static boolean shulkerSpawnInUrGhastTower;
+
     // used to report conflicts
     public static boolean hasBiomeIdConflicts = false;
     public static boolean hasAssignedBiomeID = false;
@@ -255,15 +261,15 @@ public class TwilightForestMod {
         new StructureTFMajorFeatureStart();
 
         // check if various integrations are required
-        isSkinportLoaded = Loader.isModLoaded("skinport");
-        isNeiLoaded = Loader.isModLoaded("NotEnoughItems");
-        if (Loader.isModLoaded("Baubles")) {
+        isSkinportLoaded = Mods.skinport.isLoaded();
+        isNeiLoaded = Mods.NEI.isLoaded();
+        if (Mods.baubles.isLoaded()) {
             areBaublesLoaded = BaubleType.values().length > 3;
         } else {
             areBaublesLoaded = false;
         }
-        isGTNHLoaded = Loader.isModLoaded("dreamcraft");
-        if (Loader.isModLoaded("endlessids")) {
+        isGTNHLoaded = Mods.GTNH.isLoaded();
+        if (Mods.endlessids.isLoaded()) {
             maxBiomeIDs = 65536;
         }
 
@@ -1042,6 +1048,25 @@ public class TwilightForestMod {
         configFile.get("Tinker Integration", "NagaScale_ID", 44).comment = "Tinker Material ID for NagaScale.";
         Steeleaf_ID = configFile.get("Tinker Integration", "Steeleaf_ID", 45).getInt(45);
         configFile.get("Tinker Integration", "Steeleaf_ID", 45).comment = "Tinker Material ID for Steeleaf.";
+
+        enableEfRIntegration = configFile.get("Et Futurum Requiem Integration", "EnableEfRIntegration", true)
+                .getBoolean(true);
+        configFile.get(
+                "Et Futurum Requiem Integration",
+                "EnableEfRIntegration",
+                true).comment = "Enable Integration with Et Futurum Requiem";
+        shulkerSpawnInLichTower = configFile.get("Et Futurum Requiem Integration", "ShulkerSpawnInLichTower", true)
+                .getBoolean(true);
+        configFile.get(
+                "Et Futurum Requiem Integration",
+                "ShulkerSpawnInLichTower",
+                true).comment = "Should Shulkers spawn in Lich Towers";
+        shulkerSpawnInUrGhastTower = configFile
+                .get("Et Futurum Requiem Integration", "ShulkerSpawnInUrGhastTower", true).getBoolean(true);
+        configFile.get(
+                "Et Futurum Requiem Integration",
+                "ShulkerSpawnInUrGhastTower",
+                true).comment = "Should Shulkers spawn in Ur Ghast Towers";
 
         // fixed values, don't even read the config
         idMobWildBoar = 177;
