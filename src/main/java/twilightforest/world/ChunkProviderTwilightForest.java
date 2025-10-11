@@ -807,7 +807,7 @@ public class ChunkProviderTwilightForest implements IChunkProvider {
                         int index = x * TFWorld.CHUNKHEIGHT * 16 | z * TFWorld.CHUNKHEIGHT | y;
                         blocks[index] = Blocks.ice;
                     }
-                    for (int y = gTop - 1; y <= gTop - 1 + pseudoRandNextInt(x, z,3) && y < 128; y++) {
+                    for (int y = gTop - 1; y <= gTop - 1 + pseudoRandNextInt(x, z, 3) && y < 128; y++) {
                         int index = x * TFWorld.CHUNKHEIGHT * 16 | z * TFWorld.CHUNKHEIGHT | y;
                         blocks[index] = Blocks.snow;
                     }

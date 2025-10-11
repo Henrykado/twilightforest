@@ -25,10 +25,11 @@ public class TFRecipes {
 
         // ore dictionary
         OreDictionary.registerOre("logWood", new ItemStack(TFBlocks.log, 1, OreDictionary.WILDCARD_VALUE));
-        //OreDictionary.registerOre("logWood", new ItemStack(TFBlocks.magicLog, 1, OreDictionary.WILDCARD_VALUE));
+        // OreDictionary.registerOre("logWood", new ItemStack(TFBlocks.magicLog, 1, OreDictionary.WILDCARD_VALUE));
         for (int i = 0; i < 10; i++) OreDictionary.registerOre("treeSapling", new ItemStack(TFBlocks.sapling, 1, i));
         OreDictionary.registerOre("treeLeaves", new ItemStack(TFBlocks.leaves, 1, OreDictionary.WILDCARD_VALUE));
-        //OreDictionary.registerOre("treeLeaves", new ItemStack(TFBlocks.magicLeaves, 1, OreDictionary.WILDCARD_VALUE));
+        // OreDictionary.registerOre("treeLeaves", new ItemStack(TFBlocks.magicLeaves, 1,
+        // OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("plankWood", new ItemStack(TFBlocks.towerWood, 1, OreDictionary.WILDCARD_VALUE));
         for (int i = 0; i < 8; i++)
             OreDictionary.registerOre("plankWood", new ItemStack(TFBlocks.planks, i, OreDictionary.WILDCARD_VALUE));
@@ -195,9 +196,9 @@ public class TFRecipes {
                 Enchantment.fireProtection,
                 2,
                 new Object[] { "###", "# #", "# #", '#', TFItems.nagaScale });
-        /*GameRegistry.addRecipe(
-                new ItemStack(TFItems.legsNaga),
-                "###", "# #", "# #", '#', TFItems.nagaScale);*/
+        /*
+         * GameRegistry.addRecipe( new ItemStack(TFItems.legsNaga), "###", "# #", "# #", '#', TFItems.nagaScale);
+         */
 
         GameRegistry.addRecipe(
                 new ShapelessOreRecipe(
@@ -306,9 +307,10 @@ public class TFRecipes {
 
         GameRegistry.addRecipe(
                 new ItemStack(TFBlocks.uncraftingTable),
-                new Object[] { "#X#", "#S#", "###", '#', Blocks.crafting_table, 'X', TFItems.carminite, 'S', Items.skull });
+                new Object[] { "#X#", "#S#", "###", '#', Blocks.crafting_table, 'X', TFItems.carminite, 'S',
+                        Items.skull });
 
-        //GameRegistry.addSmelting(TFItems.venisonRaw, new ItemStack(TFItems.venisonCooked), 0.3F);
+        // GameRegistry.addSmelting(TFItems.venisonRaw, new ItemStack(TFItems.venisonCooked), 0.3F);
 
         GameRegistry.addRecipe(
                 new ShapelessOreRecipe(
@@ -360,41 +362,32 @@ public class TFRecipes {
                 new Object[] { "###", " X ", " X ", '#', TFItems.fieryIngot, 'X', Items.blaze_rod });
 
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafHelm),
+                new ItemStack(TFItems.steeleafHelm),
                 new Object[] { "###", "# #", '#', TFItems.steeleafIngot });
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafPlate),
+                new ItemStack(TFItems.steeleafPlate),
                 new Object[] { "# #", "###", "###", '#', TFItems.steeleafIngot });
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafLegs),
+                new ItemStack(TFItems.steeleafLegs),
                 new Object[] { "###", "# #", "# #", '#', TFItems.steeleafIngot });
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafBoots),
+                new ItemStack(TFItems.steeleafBoots),
                 new Object[] { "# #", "# #", '#', TFItems.steeleafIngot });
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafSword),
+                new ItemStack(TFItems.steeleafSword),
                 new Object[] { "#", "#", "X", '#', TFItems.steeleafIngot, 'X', Items.stick });
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafShovel),
+                new ItemStack(TFItems.steeleafShovel),
                 new Object[] { "#", "X", "X", '#', TFItems.steeleafIngot, 'X', Items.stick });
         GameRegistry.addRecipe(
-                new ItemStack(
-                TFItems.steeleafPick),
+                new ItemStack(TFItems.steeleafPick),
                 new Object[] { "###", " X ", " X ", '#', TFItems.steeleafIngot, 'X', Items.stick });
         GameRegistry.addRecipe(
-                new ItemStack(
-                        TFItems.steeleafAxe),
-                new Object[]{"##", "#X", " X", '#', TFItems.steeleafIngot, 'X', Items.stick});
+                new ItemStack(TFItems.steeleafAxe),
+                new Object[] { "##", "#X", " X", '#', TFItems.steeleafIngot, 'X', Items.stick });
         GameRegistry.addRecipe(
-                new ItemStack(
-                        TFItems.steeleafHoe),
-                new Object[]{"##", " X", " X", '#', TFItems.steeleafIngot, 'X', Items.stick});
+                new ItemStack(TFItems.steeleafHoe),
+                new Object[] { "##", " X", " X", '#', TFItems.steeleafIngot, 'X', Items.stick });
 
         GameRegistry.addSmelting(TFItems.meefRaw, new ItemStack(TFItems.meefSteak), 0.3F);
 
@@ -466,12 +459,11 @@ public class TFRecipes {
         GameRegistry.addRecipe(
                 new ItemStack(TFItems.knightlyPlate),
                 new Object[] { "# #", "###", "###", '#', TFItems.knightMetal });
-        /*GameRegistry.addRecipe(
-                new ItemStack(TFItems.knightlyLegs),
-                new Object[] { "###", "# #", "# #", '#', TFItems.knightMetal });
-        GameRegistry.addRecipe(
-                new ItemStack(TFItems.knightlyBoots),
-                new Object[] { "# #", "# #", '#', TFItems.knightMetal });*/
+        /*
+         * GameRegistry.addRecipe( new ItemStack(TFItems.knightlyLegs), new Object[] { "###", "# #", "# #", '#',
+         * TFItems.knightMetal }); GameRegistry.addRecipe( new ItemStack(TFItems.knightlyBoots), new Object[] { "# #",
+         * "# #", '#', TFItems.knightMetal });
+         */
 
         GameRegistry.addRecipe(
                 new ItemStack(TFItems.knightlySword),
@@ -486,22 +478,14 @@ public class TFRecipes {
                 new ItemStack(TFItems.knightlyAxe),
                 new Object[] { "##", "X#", "X ", '#', TFItems.knightMetal, 'X', Items.stick });
 
+        GameRegistry.addRecipe(new ItemStack(TFItems.yetiHelm), new Object[] { "###", "# #", '#', TFItems.alphaFur });
         GameRegistry.addRecipe(
-                new ItemStack(
-                        TFItems.yetiHelm),
-                new Object[]{"###", "# #", '#', TFItems.alphaFur});
+                new ItemStack(TFItems.yetiPlate),
+                new Object[] { "# #", "###", "###", '#', TFItems.alphaFur });
         GameRegistry.addRecipe(
-                new ItemStack(
-                        TFItems.yetiPlate),
-                new Object[]{"# #", "###", "###", '#', TFItems.alphaFur});
-        GameRegistry.addRecipe(
-                new ItemStack(
-                        TFItems.yetiLegs),
-                new Object[]{"###", "# #", "# #", '#', TFItems.alphaFur});
-        GameRegistry.addRecipe(
-                new ItemStack(
-                        TFItems.yetiBoots),
-                new Object[]{"# #", "# #", '#', TFItems.alphaFur});
+                new ItemStack(TFItems.yetiLegs),
+                new Object[] { "###", "# #", "# #", '#', TFItems.alphaFur });
+        GameRegistry.addRecipe(new ItemStack(TFItems.yetiBoots), new Object[] { "# #", "# #", '#', TFItems.alphaFur });
 
         GameRegistry
                 .addRecipe(new ItemStack(TFItems.arcticHelm), new Object[] { "###", "# #", '#', TFItems.arcticFur });
@@ -539,13 +523,12 @@ public class TFRecipes {
 
         GameRegistry.addRecipe(
                 new ItemStack(TFItems.chainBlock),
-                new Object[] { "BMM", "  M", "MM ", 'M', TFItems.knightMetal,
-                        'B', TFBlocks.knightmetalStorage });
+                new Object[] { "BM ", "  M", "MM ", 'M', Items.iron_ingot, 'B', TFBlocks.knightmetalStorage });
 
         GameRegistry.addRecipe(
                 new ItemStack(TFItems.tripleBow),
-                new Object[] { "SC ", "S T", "SC ", 'S', Items.string,
-                        'C', TFItems.carminite, 'T', TFItems.fieryTears });
+                new Object[] { "SC ", "S T", "SC ", 'S', Items.string, 'C', TFItems.carminite, 'T',
+                        TFItems.fieryTears });
 
         GameRegistry.addShapelessRecipe(
                 new ItemStack(TFBlocks.starIce, 1),

@@ -1,6 +1,5 @@
 package twilightforest.entity;
 
-import codechicken.lib.math.MathHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -12,13 +11,12 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 public class EntitySteelleaf extends EntityThrowable {
-    public EntitySteelleaf(World p_i1759_1_)
-    {
+
+    public EntitySteelleaf(World p_i1759_1_) {
         super(p_i1759_1_);
     }
 
-    public EntitySteelleaf(World world, EntityLivingBase thrower)
-    {
+    public EntitySteelleaf(World world, EntityLivingBase thrower) {
         super(world, thrower);
 
         randomizeVelocity();
@@ -36,13 +34,12 @@ public class EntitySteelleaf extends EntityThrowable {
     public void randomizeVelocity() {
         boolean negX = motionX > 0 && motionZ < 0;
         boolean negZ = motionX < 0 && motionZ > 0;
-        /*if (motionX < 0 && motionY > 0) {
-            //keep y positive
-        } else if (motionX > 0 && motionY < 0) {
-            //keep x positive
-        }*/
+        /*
+         * if (motionX < 0 && motionY > 0) { //keep y positive } else if (motionX > 0 && motionY < 0) { //keep x
+         * positive }
+         */
         if (!negX && !negZ) {
-            //keep one the same
+            // keep one the same
             negX = rand.nextInt(2) == 0;
             negZ = !negX;
         }
@@ -55,9 +52,9 @@ public class EntitySteelleaf extends EntityThrowable {
     double newMotionX;
     double newMotionY;
     double newMotionZ;
+
     @Override
-    public void onUpdate()
-    {
+    public void onUpdate() {
         super.onUpdate();
 
         if (ticksExisted % 10 == 0) {
@@ -72,78 +69,47 @@ public class EntitySteelleaf extends EntityThrowable {
             this.setDead();
         }
 
-        /*int degrees = (this.ticksExisted * 3) % 360;
-        float radianAngle = degrees * 10 * (float) Math.PI / 180;
-
-        float radius = Math.min(7.5F, (Math.max(40, ticksExisted) - 40) / 40F + 1.5F);
-
-        float sine = MathHelper.sin(radianAngle) * radius;
-        float cosine = MathHelper.cos(radianAngle) * radius;
-
-        this.motionX = (getThrower().posX + cosine) - posX;
-        this.motionY = getThrower().posY + 1 - posY;
-        this.motionZ = (getThrower().posZ + sine) - posZ;*/
+        /*
+         * int degrees = (this.ticksExisted * 3) % 360; float radianAngle = degrees * 10 * (float) Math.PI / 180; float
+         * radius = Math.min(7.5F, (Math.max(40, ticksExisted) - 40) / 40F + 1.5F); float sine =
+         * MathHelper.sin(radianAngle) * radius; float cosine = MathHelper.cos(radianAngle) * radius; this.motionX =
+         * (getThrower().posX + cosine) - posX; this.motionY = getThrower().posY + 1 - posY; this.motionZ =
+         * (getThrower().posZ + sine) - posZ;
+         */
 
         // i give up
-        /*double throwerX = getThrower().posX;
-        double throwerZ = getThrower().posZ;
-
-        double speed = 0.05;
-        if (posX > throwerX + 1) {
-            posX = throwerX + 1;
-            motionX = 0;
-            motionZ = speed;
-        } else if (posZ > throwerZ + 1) {
-            posZ = throwerZ + 1;
-            motionX = -speed;
-            motionZ = 0;
-        } else if (posX < throwerX - 1) {
-            posX = throwerX - 1;
-            motionX = 0;
-            motionZ = -speed;
-        } else if (posZ < throwerZ - 1) {
-            posZ = throwerZ - 1;
-            motionX = speed;
-            motionZ = 0;
-        }
-        // z++ -> x--
-        // x-- -> z--
-        // z-- -> x++
-        // x++ -> z++
-
-        //FMLLog.info(motionX + " " + motionZ);
-
-        //motionX = targetX;
-        //motionZ = targetZ;
-
-        motionY = (getThrower().posY + 1) - posY;*/
+        /*
+         * double throwerX = getThrower().posX; double throwerZ = getThrower().posZ; double speed = 0.05; if (posX >
+         * throwerX + 1) { posX = throwerX + 1; motionX = 0; motionZ = speed; } else if (posZ > throwerZ + 1) { posZ =
+         * throwerZ + 1; motionX = -speed; motionZ = 0; } else if (posX < throwerX - 1) { posX = throwerX - 1; motionX =
+         * 0; motionZ = -speed; } else if (posZ < throwerZ - 1) { posZ = throwerZ - 1; motionX = speed; motionZ = 0; }
+         * // z++ -> x-- // x-- -> z-- // z-- -> x++ // x++ -> z++ //FMLLog.info(motionX + " " + motionZ); //motionX =
+         * targetX; //motionZ = targetZ; motionY = (getThrower().posY + 1) - posY;
+         */
 
         // i give up 2
 
-        //moveEntity(motionX, motionY, motionZ);
+        // moveEntity(motionX, motionY, motionZ);
 
-        /*this.setPosition(getThrower().posX + (cossine - sine),
-                            getThrower().posY + 1,
-                            getThrower().posZ + (sine + cossine)
-        );*/
+        /*
+         * this.setPosition(getThrower().posX + (cossine - sine), getThrower().posY + 1, getThrower().posZ + (sine +
+         * cossine) );
+         */
 
         //
     }
 
     @Override
-    protected float getGravityVelocity()
-    {
+    protected float getGravityVelocity() {
         return 0.0F;
     }
 
-    protected void onImpact(MovingObjectPosition p_70227_1_)
-    {
-        if (!this.worldObj.isRemote)
-        {
-            if (p_70227_1_.entityHit != null)
-            {
+    protected void onImpact(MovingObjectPosition p_70227_1_) {
+        if (!this.worldObj.isRemote) {
+            if (p_70227_1_.entityHit != null) {
                 if (this.getThrower() instanceof EntityPlayer) {
-                    p_70227_1_.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) this.getThrower()), 3F);
+                    p_70227_1_.entityHit
+                            .attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) this.getThrower()), 3F);
                 } else {
                     p_70227_1_.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.getThrower()), 3F);
                 }

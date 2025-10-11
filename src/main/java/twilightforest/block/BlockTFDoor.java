@@ -393,18 +393,10 @@ public class BlockTFDoor extends Block {
             case 3:
                 door = TFItems.doorDarkwood;
                 break;
-            /*case 4:
-                door = TFItems.doorTime;
-                break;
-            case 5:
-                door = TFItems.doorTrans;
-                break;
-            case 6:
-                door = TFItems.doorMine;
-                break;
-            case 7:
-                door = TFItems.doorSort;
-                break;*/
+            /*
+             * case 4: door = TFItems.doorTime; break; case 5: door = TFItems.doorTrans; break; case 6: door =
+             * TFItems.doorMine; break; case 7: door = TFItems.doorSort; break;
+             */
         }
 
         return door;

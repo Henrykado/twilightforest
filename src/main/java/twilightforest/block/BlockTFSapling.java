@@ -22,19 +22,15 @@ import twilightforest.world.TFGenDarkCanopyTree;
 import twilightforest.world.TFGenHollowTree;
 import twilightforest.world.TFGenLargeRainboak;
 import twilightforest.world.TFGenMangroveTree;
-import twilightforest.world.TFGenMinersTree;
 import twilightforest.world.TFGenSmallRainboak;
 import twilightforest.world.TFGenSmallTwilightOak;
-import twilightforest.world.TFGenSortingTree;
-import twilightforest.world.TFGenTreeOfTime;
 import twilightforest.world.TFGenTreeOfTransformation;
 
 public class BlockTFSapling extends BlockSapling {
 
     private IIcon[] icons;
     private String[] iconNames = new String[] { "sapling_oak", "sapling_canopy", "sapling_mangrove", "sapling_darkwood",
-            "sapling_hollow_oak", "sapling_transformation",
-            "sapling_rainboak" };
+            "sapling_hollow_oak", "sapling_transformation", "sapling_rainboak" };
 
     protected BlockTFSapling() {
         super();

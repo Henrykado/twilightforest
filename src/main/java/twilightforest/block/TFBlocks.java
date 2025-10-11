@@ -305,26 +305,25 @@ public class TFBlocks {
         registerMyBlock(woodenStairsCanopy);
         registerMyBlock(woodenStairsMangrove);
         registerMyBlock(woodenStairsDarkwood);
-        /*registerMyBlock(woodenStairsTime);
-        registerMyBlock(woodenStairsTrans);
-        registerMyBlock(woodenStairsMine);
-        registerMyBlock(woodenStairsSort);*/
+        /*
+         * registerMyBlock(woodenStairsTime); registerMyBlock(woodenStairsTrans); registerMyBlock(woodenStairsMine);
+         * registerMyBlock(woodenStairsSort);
+         */
         registerMyBlock(doorTwilight);
         registerMyBlock(doorCanopy);
         registerMyBlock(doorMangrove);
         registerMyBlock(doorDarkwood);
-        /*registerMyBlock(doorTime);
-        registerMyBlock(doorTrans);
-        registerMyBlock(doorMine);
-        registerMyBlock(doorSort);*/
+        /*
+         * registerMyBlock(doorTime); registerMyBlock(doorTrans); registerMyBlock(doorMine); registerMyBlock(doorSort);
+         */
         registerMyBlock(trapdoorTwilight);
         registerMyBlock(trapdoorCanopy);
         registerMyBlock(trapdoorMangrove);
         registerMyBlock(trapdoorDarkwood);
-        /*registerMyBlock(trapdoorTime);
-        registerMyBlock(trapdoorTrans);
-        registerMyBlock(trapdoorMine);
-        registerMyBlock(trapdoorSort);*/
+        /*
+         * registerMyBlock(trapdoorTime); registerMyBlock(trapdoorTrans); registerMyBlock(trapdoorMine);
+         * registerMyBlock(trapdoorSort);
+         */
         /*
          * registerMyBlock(chestTwilight); registerMyBlock(chestCanopy); registerMyBlock(chestMangrove);
          * registerMyBlock(chestDarkwood); registerMyBlock(chestTime); registerMyBlock(chestTrans);
@@ -363,9 +362,9 @@ public class TFBlocks {
         registerMyBlock(spiralStoneBricks);
         registerMyBlock(sapling);
         registerMyBlock(moonworm, ItemBlockTFCritter.class);
-        //registerMyBlock(magicLog);
+        // registerMyBlock(magicLog);
         registerMyBlock(magicLeaves);
-        //registerMyBlock(magicLogSpecial);
+        // registerMyBlock(magicLogSpecial);
         registerMyBlock(towerWood);
         registerMyBlock(towerDevice);
         registerMyBlock(towerTranslucent);
@@ -425,7 +424,7 @@ public class TFBlocks {
         registerMyBlock(forceField);
         // registerMyBlock(cinderFurnace, ItemBlock.class);
         // registerMyBlock(cinderFurnaceLit, ItemBlock.class);
-//        registerMyBlock(cinderLog);
+        // registerMyBlock(cinderLog);
         registerMyBlock(castleDoor);
         registerMyBlock(castleDoorVanished);
         registerMyBlock(starIce, ItemBlock.class);
@@ -439,10 +438,10 @@ public class TFBlocks {
         Blocks.fire.setFireInfo(woodenStairsCanopy, 5, 20);
         Blocks.fire.setFireInfo(woodenStairsMangrove, 5, 20);
         Blocks.fire.setFireInfo(woodenStairsDarkwood, 5, 20);
-        /*Blocks.fire.setFireInfo(woodenStairsTime, 5, 20);
-        Blocks.fire.setFireInfo(woodenStairsTrans, 5, 20);
-        Blocks.fire.setFireInfo(woodenStairsMine, 5, 20);
-        Blocks.fire.setFireInfo(woodenStairsSort, 5, 20);*/
+        /*
+         * Blocks.fire.setFireInfo(woodenStairsTime, 5, 20); Blocks.fire.setFireInfo(woodenStairsTrans, 5, 20);
+         * Blocks.fire.setFireInfo(woodenStairsMine, 5, 20); Blocks.fire.setFireInfo(woodenStairsSort, 5, 20);
+         */
         Blocks.fire.setFireInfo(leaves, 30, 60);
         Blocks.fire.setFireInfo(leaves3, 30, 60);
     }

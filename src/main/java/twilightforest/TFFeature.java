@@ -183,18 +183,18 @@ public class TFFeature {
         // aquarium squids (only in aquariums between y = 35 and y = 64. :/
         darkTower.addWaterCreature(EntitySquid.class, 10, 4, 4);
 
-        tfStronghold.addMonster(EntityTFBlockGoblin.class, 10, 1, 3);
+        tfStronghold.addMonster(EntityTFBlockGoblin.class, 3, 1, 3);
         tfStronghold.addMonster(EntityTFGoblinKnightLower.class, 5, 1, 2);
-        tfStronghold.addMonster(EntityTFHelmetCrab.class, 10, 1, 3);
+        tfStronghold.addMonster(EntityTFHelmetCrab.class, 3, 1, 3);
         tfStronghold.addMonster(EntityTFSlimeBeetle.class, 6, 3, 4);
         tfStronghold.addMonster(EntitySkeleton.class, 6, 3, 3);
-        tfStronghold.addMonster(EntityTFSkeletonDruid.class, 3, 1, 1);
-        tfStronghold.addMonster(EntityTFRedcapSapper.class, 3, 1, 1);
+        tfStronghold.addMonster(EntityTFSkeletonDruid.class, 1, 1, 1);
+        tfStronghold.addMonster(EntityTFRedcapSapper.class, 2, 1, 1);
         // tfStronghold.addMonster(EntityTFKobold.class, 1, 4, 8);
         // tfStronghold.addMonster(EntityCreeper.class, 10, 4, 4);
         tfStronghold.addMonster(EntitySlime.class, 5, 4, 4);
 
-        yetiCave.addMonster(EntityTFYeti.class, 10, 2, 3);
+        yetiCave.addMonster(EntityTFYeti.class, 8, 2, 3);
 
         iceTower.addMonster(EntityTFSnowGuardian.class, 10, 4, 4);
         iceTower.addMonster(EntityTFIceShooter.class, 10, 4, 4);

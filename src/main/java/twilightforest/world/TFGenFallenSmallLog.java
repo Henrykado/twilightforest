@@ -61,10 +61,9 @@ public class TFGenFallenSmallLog extends TFGenerator {
                 logID = Blocks.log;
                 logMeta = 2;
             }
-            /*case 6 -> {
-                logID = Blocks.log;
-                logMeta = 3;
-            }*/
+            /*
+             * case 6 -> { logID = Blocks.log; logMeta = 3; }
+             */
         }
         logMetaBranch = logMeta;
 

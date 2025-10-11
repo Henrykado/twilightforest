@@ -1,6 +1,5 @@
 package twilightforest.item;
 
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -8,10 +7,10 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.world.World;
 import twilightforest.TwilightForestMod;
 
 public class ItemTFIronwoodAxe extends ItemAxe {
@@ -32,7 +31,7 @@ public class ItemTFIronwoodAxe extends ItemAxe {
 
     @Override
     public boolean onBlockDestroyed(ItemStack itemStack, World world, Block blockID, int x, int y, int z,
-                                    EntityLivingBase par7EntityLiving) {
+            EntityLivingBase par7EntityLiving) {
         if (super.onBlockDestroyed(itemStack, world, blockID, x, y, z, par7EntityLiving)) {
             return true;
         } else {
@@ -50,8 +49,8 @@ public class ItemTFIronwoodAxe extends ItemAxe {
                 .registerIcon(TwilightForestMod.ID + ":" + this.getUnlocalizedName().substring(5));
     }
 
-    public float func_150893_a(ItemStack p_150893_1_, Block p_150893_2_)
-    {
-        return p_150893_2_.getMaterial() != Material.leaves ? super.func_150893_a(p_150893_1_, p_150893_2_) : this.efficiencyOnProperMaterial;
+    public float func_150893_a(ItemStack p_150893_1_, Block p_150893_2_) {
+        return p_150893_2_.getMaterial() != Material.leaves ? super.func_150893_a(p_150893_1_, p_150893_2_)
+                : this.efficiencyOnProperMaterial;
     }
 }

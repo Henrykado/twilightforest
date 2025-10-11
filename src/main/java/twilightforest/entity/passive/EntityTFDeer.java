@@ -11,7 +11,6 @@ import net.minecraft.world.World;
 
 import twilightforest.TFAchievementPage;
 import twilightforest.TwilightForestMod;
-import twilightforest.item.TFItems;
 
 /**
  * Deer are like quiet, non-milkable cows!
@@ -87,15 +86,11 @@ public class EntityTFDeer extends EntityCow {
             this.dropItem(Items.leather, 1);
         }
 
-        /*var3 = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
-
-        for (var4 = 0; var4 < var3; ++var4) {
-            if (this.isBurning()) {
-                this.dropItem(TFItems.venisonCooked, 1);
-            } else {
-                this.dropItem(TFItems.venisonRaw, 1);
-            }
-        }*/
+        /*
+         * var3 = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2); for (var4 = 0; var4 < var3; ++var4) { if
+         * (this.isBurning()) { this.dropItem(TFItems.venisonCooked, 1); } else { this.dropItem(TFItems.venisonRaw, 1);
+         * } }
+         */
     }
 
     /**

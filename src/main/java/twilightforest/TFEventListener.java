@@ -4,10 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
-import codechicken.nei.recipe.Recipe;
-import mantle.utils.CraftingHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockSapling;
@@ -16,7 +13,6 @@ import net.minecraft.command.CommandGameRule;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -25,9 +21,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.item.crafting.RecipesCrafting;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
@@ -39,7 +33,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.CommandEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
@@ -65,8 +58,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import thaumcraft.client.gui.GuiArcaneWorkbench;
-import thaumcraft.common.container.ContainerArcaneWorkbench;
 import twilightforest.biomes.TFBiomeBase;
 import twilightforest.block.BlockTFLog;
 import twilightforest.block.TFBlocks;
@@ -75,6 +66,7 @@ import twilightforest.entity.EntityTFCharmEffect;
 import twilightforest.entity.EntityTFPinchBeetle;
 import twilightforest.entity.EntityTFYeti;
 import twilightforest.integration.TFBaublesIntegration;
+import twilightforest.item.ItemTFKnightlyArmor;
 import twilightforest.item.ItemTFPhantomArmor;
 import twilightforest.item.ItemTFSteeleafArmor;
 import twilightforest.item.TFItems;
@@ -299,8 +291,7 @@ public class TFEventListener {
 
                 // add things we add
                 event.drops.addAll(addThese);
-            }
-            else if (event.harvester.inventory.getCurrentItem().getItem() == TFItems.ironwoodAxe) {
+            } else if (event.harvester.inventory.getCurrentItem().getItem() == TFItems.ironwoodAxe) {
                 for (ItemStack input : event.drops) {
                     Block itemBlock = Block.getBlockFromItem(input.getItem());
 
@@ -308,8 +299,7 @@ public class TFEventListener {
                     if (itemBlock instanceof BlockTFLog) {
                         event.drops.clear();
                         event.drops.add(new ItemStack(TFBlocks.planks));
-                    }
-                    else if (itemBlock instanceof BlockLog) {
+                    } else if (itemBlock instanceof BlockLog) {
                         event.drops.clear();
                         event.drops.add(new ItemStack(Blocks.planks));
                     }
@@ -770,34 +760,49 @@ public class TFEventListener {
         return true;
     }
 
+    public boolean isWearingKnightmetalSet(EntityPlayer player) {
+        return (player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() instanceof ItemTFKnightlyArmor)
+                && (player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() instanceof ItemTFKnightlyArmor);
+    }
 
-    /**
-     * Stop the player from sneaking while riding an unfriendly creature
-     */
+    public boolean isWeaingSteelleafSet(EntityPlayer player) {
+        int count = 0;
+        for (int i = 0; i < 4; i++) {
+            count += player.inventory.armorInventory[i] != null
+                    && player.inventory.armorInventory[i].getItem() instanceof ItemTFSteeleafArmor ? 1 : 0;
+        }
+        return count == 4;
+    }
+
     @SubscribeEvent
     public boolean livingUpdate(LivingUpdateEvent event) {
         if (event.entity instanceof EntityPlayer player) {
-            if (event.entity.isSneaking()
-                    && isRidingUnfriendly(event.entityLiving)) {
+            //Stop the player from sneaking while riding an unfriendly creature
+            if (event.entity.isSneaking() && isRidingUnfriendly(event.entityLiving)) {
                 event.entity.setSneaking(false);
             }
 
-            FMLLog.info(String.valueOf(player.worldObj.getWorldTime()));
-            if (!player.worldObj.isRemote && player.worldObj.getWorldTime() % 500 == 0
-                    && player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() instanceof ItemTFSteeleafArmor
+            if (!player.worldObj.isRemote && player.worldObj.getWorldTime() % 200 == 0
+                    && isWeaingSteelleafSet(player)
                     && player.worldObj.isDaytime()
-
-                    && player.getBrightness(1.0F) > 0.5F
-                    && player.worldObj.canBlockSeeTheSky(MathHelper.floor_double(player.posX), MathHelper.floor_double(player.posY), MathHelper.floor_double(player.posZ))
-            )
-            {
+                    && player.worldObj.canBlockSeeTheSky(
+                            MathHelper.floor_double(player.posX),
+                            MathHelper.floor_double(player.posY),
+                            MathHelper.floor_double(player.posZ))) {
                 player.heal(1);
-
-                if (player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() instanceof ItemTFSteeleafArmor)
-                    player.heal(1);
+            }
+            else if (!player.worldObj.isRemote && isWearingKnightmetalSet(player)) {
+                // boost dmg
             }
         }
         return true;
+    }
+
+    @SubscribeEvent
+    public void knightmetalSetBonus(LivingHurtEvent event) {
+        if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer && isWearingKnightmetalSet((EntityPlayer) event.entity)) {
+            event.ammount += 1;
+        }
     }
 
     /**
@@ -1080,38 +1085,6 @@ public class TFEventListener {
                     (EntityPlayerMP) event.player,
                     event.player.worldObj.getGameRules()
                             .getGameRuleBooleanValue(TwilightForestMod.ENFORCED_PROGRESSION_RULE));
-        }
-    }
-
-    @SubscribeEvent
-    public void playerJumped(LivingEvent.LivingJumpEvent event) {
-        if (event.entity instanceof EntityPlayer player) {
-            if (player.inventory.armorInventory[0] != null && player.inventory.armorInventory[3].getItem() instanceof ItemTFSteeleafArmor) {
-                player.motionY = 0.5;
-
-                if (player.inventory.armorInventory[1] != null && player.inventory.armorInventory[3].getItem() instanceof ItemTFSteeleafArmor) {
-                    player.motionY += 0.1;
-                }
-
-                if (player.isPotionActive(Potion.jump))
-                {
-                    player.motionY += (double)((float)(player.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F);
-                }
-
-                for (int i = 0; i < 3; i++) {
-                    double posX = player.posX + player.rand.nextDouble() / 4;
-                    double posZ = player.posZ + player.rand.nextDouble() / 4;
-                    player.worldObj.spawnParticle(
-                            "cloud",
-                            posX,
-                            player.posY - 0.8,
-                            posZ,
-                            Math.min(Math.max(posX - player.posX, -0.01), 0.01),
-                            0,
-                            Math.min(Math.max(posZ - player.posZ, -0.01), 0.01)
-                    );
-                }
-            }
         }
     }
 

@@ -1,10 +1,8 @@
 package twilightforest.client.renderer.blocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
@@ -50,20 +48,21 @@ public class RenderBlockTFPlants implements ISimpleBlockRenderingHandler {
         renderer.renderStandardBlock(block, x, y, z);
 
         renderer.overrideBlockTexture = BlockTFPlant.mayappleSide;
-        //renderer.renderCrossedSquares(block, x + 0.5d, y, z - 0.5d);
+        // renderer.renderCrossedSquares(block, x + 0.5d, y, z - 0.5d);
 
         Tessellator tessellator = Tessellator.instance;
         tessellator.setBrightness(block.getMixedBrightnessForBlock(renderer.blockAccess, x, y, z));
         int l = block.colorMultiplier(renderer.blockAccess, x, y, z);
-        float f = (float)(l >> 16 & 255) / 255.0F;
-        float f1 = (float)(l >> 8 & 255) / 255.0F;
-        float f2 = (float)(l & 255) / 255.0F;
+        float f = (float) (l >> 16 & 255) / 255.0F;
+        float f1 = (float) (l >> 8 & 255) / 255.0F;
+        float f2 = (float) (l & 255) / 255.0F;
 
         tessellator.setColorOpaque_F(f, f1, f2);
 
-        IIcon iicon = renderer.getBlockIconFromSideAndMetadata(block, 0, renderer.blockAccess.getBlockMetadata(x, y, z));
-        renderer.drawCrossedSquares(iicon, x + 1/32D, y, z + 1/32D, 1.0F);
-        
+        IIcon iicon = renderer
+                .getBlockIconFromSideAndMetadata(block, 0, renderer.blockAccess.getBlockMetadata(x, y, z));
+        renderer.drawCrossedSquares(iicon, x + 1 / 32D, y, z + 1 / 32D, 1.0F);
+
         renderer.clearOverrideBlockTexture();
     }
 
@@ -82,7 +81,7 @@ public class RenderBlockTFPlants implements ISimpleBlockRenderingHandler {
     }
 
     private void renderMossPatch(int x, int y, int z, Block block, RenderBlocks renderer) {
-        renderer.setRenderBounds(0, 0, 0, 1, 1/16D, 1);
+        renderer.setRenderBounds(0, 0, 0, 1, 1 / 16D, 1);
         renderer.renderStandardBlock(block, x, y, z);
     }
 

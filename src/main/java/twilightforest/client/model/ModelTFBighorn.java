@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.model.ModelSheep2;
 
 public class ModelTFBighorn extends ModelSheep2 {
+
     public final ModelRenderer horn1;
     public final ModelRenderer horn2;
 

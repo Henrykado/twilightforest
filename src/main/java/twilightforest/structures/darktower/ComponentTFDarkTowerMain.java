@@ -25,7 +25,6 @@ import twilightforest.TFTreasure;
 import twilightforest.block.BlockTFTowerDevice;
 import twilightforest.block.TFBlocks;
 import twilightforest.entity.TFCreatures;
-import twilightforest.item.TFItems;
 import twilightforest.structures.StructureTFComponent;
 import twilightforest.structures.StructureTFDecorator;
 import twilightforest.structures.TFMaze;
@@ -1040,25 +1039,26 @@ public class ComponentTFDarkTowerMain extends ComponentTFDarkTowerWing {
         placeBlockRotated(world, Blocks.crafting_table, 0, 14, y + 2, 4, rotation, sbb);
 
         // recipes in frames?
-        /*placeItemFrameRotated(world, 13, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
-        placeItemFrameRotated(world, 14, y + 2, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
-        placeItemFrameRotated(world, 15, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
-        placeItemFrameRotated(world, 13, y + 3, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
-        placeItemFrameRotated(world, 14, y + 3, 1, rotation, 0, new ItemStack(Items.ghast_tear), sbb);
-        placeItemFrameRotated(world, 15, y + 3, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
-        placeItemFrameRotated(world, 13, y + 4, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
-        placeItemFrameRotated(world, 14, y + 4, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
-        placeItemFrameRotated(world, 15, y + 4, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
-
-        placeItemFrameRotated(world, 17, y + 2, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
-        placeItemFrameRotated(world, 17, y + 2, 4, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
-        placeItemFrameRotated(world, 17, y + 2, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
-        placeItemFrameRotated(world, 17, y + 3, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
-        placeItemFrameRotated(world, 17, y + 3, 4, rotation, 1, new ItemStack(TFItems.carminite), sbb);
-        placeItemFrameRotated(world, 17, y + 3, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
-        placeItemFrameRotated(world, 17, y + 4, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
-        placeItemFrameRotated(world, 17, y + 4, 4, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
-        placeItemFrameRotated(world, 17, y + 4, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);*/
+        /*
+         * placeItemFrameRotated(world, 13, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
+         * placeItemFrameRotated(world, 14, y + 2, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
+         * placeItemFrameRotated(world, 15, y + 2, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
+         * placeItemFrameRotated(world, 13, y + 3, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
+         * placeItemFrameRotated(world, 14, y + 3, 1, rotation, 0, new ItemStack(Items.ghast_tear), sbb);
+         * placeItemFrameRotated(world, 15, y + 3, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
+         * placeItemFrameRotated(world, 13, y + 4, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
+         * placeItemFrameRotated(world, 14, y + 4, 1, rotation, 0, new ItemStack(Items.redstone), sbb);
+         * placeItemFrameRotated(world, 15, y + 4, 1, rotation, 0, new ItemStack(TFItems.borerEssence), sbb);
+         * placeItemFrameRotated(world, 17, y + 2, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
+         * placeItemFrameRotated(world, 17, y + 2, 4, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
+         * placeItemFrameRotated(world, 17, y + 2, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
+         * placeItemFrameRotated(world, 17, y + 3, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
+         * placeItemFrameRotated(world, 17, y + 3, 4, rotation, 1, new ItemStack(TFItems.carminite), sbb);
+         * placeItemFrameRotated(world, 17, y + 3, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
+         * placeItemFrameRotated(world, 17, y + 4, 3, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
+         * placeItemFrameRotated(world, 17, y + 4, 4, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 0), sbb);
+         * placeItemFrameRotated(world, 17, y + 4, 5, rotation, 1, new ItemStack(TFBlocks.towerWood, 1, 1), sbb);
+         */
 
         if (y < this.height - 13) {
             // device bottom

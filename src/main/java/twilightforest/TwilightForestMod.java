@@ -67,6 +67,7 @@ import twilightforest.tileentity.TileEntityTFTowerBossSpawner;
 import twilightforest.tileentity.TileEntityTFTowerBuilder;
 import twilightforest.tileentity.TileEntityTFTrophy;
 import twilightforest.world.WorldProviderTwilightForest;
+import vazkii.botania.common.item.ModItems;
 
 @Mod(modid = TwilightForestMod.ID, name = "The Twilight Forest", version = TwilightForestMod.VERSION)
 public class TwilightForestMod {

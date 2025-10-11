@@ -867,7 +867,7 @@ public class EntityTFHydra extends EntityLiving implements IBossDisplayData, IEn
 
         if (damagesource.getSourceOfDamage() instanceof EntityIceArrow
                 || (damagesource.getEntity() instanceof EntityPlayer player
-                    && player.getCurrentEquippedItem().getItem() instanceof ItemTFIceSword)) {
+                        && player.getCurrentEquippedItem().getItem() instanceof ItemTFIceSword)) {
             damageAmount += 4;
         }
 

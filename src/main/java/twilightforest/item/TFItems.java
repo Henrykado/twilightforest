@@ -17,7 +17,7 @@ public class TFItems {
     public static ItemArmor.ArmorMaterial ARMOR_FIERY = EnumHelper
             .addArmorMaterial("FIERY", 25, new int[] { 3, 9, 7, 3 }, 10);
     public static ItemArmor.ArmorMaterial ARMOR_STEELEAF = EnumHelper
-            .addArmorMaterial("STEELEAF", 20, new int[] { 2, 7, 6, 2 }, 20);
+            .addArmorMaterial("STEELEAF", 20, new int[] { 3, 8, 6, 3 }, 20);
     public static ItemArmor.ArmorMaterial ARMOR_KNIGHTLY = EnumHelper
             .addArmorMaterial("KNIGHTMETAL", 24, new int[] { 3, 7, 2, 2 }, 8);
     public static ItemArmor.ArmorMaterial ARMOR_PHANTOM = EnumHelper
@@ -153,10 +153,10 @@ public class TFItems {
     public static Item doorCanopy;
     public static Item doorMangrove;
     public static Item doorDarkwood;
-    /*public static Item doorTime;
-    public static Item doorTrans;
-    public static Item doorMine;
-    public static Item doorSort;*/
+    /*
+     * public static Item doorTime; public static Item doorTrans; public static Item doorMine; public static Item
+     * doorSort;
+     */
 
     public static Item metaItem;
 
@@ -339,10 +339,12 @@ public class TFItems {
         doorCanopy = new ItemTFDoor(1).setUnlocalizedName("doorCanopy").setMaxStackSize(1);
         doorMangrove = new ItemTFDoor(2).setUnlocalizedName("doorMangrove").setMaxStackSize(1);
         doorDarkwood = new ItemTFDoor(3).setUnlocalizedName("doorDarkwood").setMaxStackSize(1);
-        /*doorTime = new ItemTFDoor(4).setUnlocalizedName("doorTime").setMaxStackSize(1);
-        doorTrans = new ItemTFDoor(5).setUnlocalizedName("doorTrans").setMaxStackSize(1);
-        doorMine = new ItemTFDoor(6).setUnlocalizedName("doorMine").setMaxStackSize(1);
-        doorSort = new ItemTFDoor(7).setUnlocalizedName("doorSort").setMaxStackSize(1);*/
+        /*
+         * doorTime = new ItemTFDoor(4).setUnlocalizedName("doorTime").setMaxStackSize(1); doorTrans = new
+         * ItemTFDoor(5).setUnlocalizedName("doorTrans").setMaxStackSize(1); doorMine = new
+         * ItemTFDoor(6).setUnlocalizedName("doorMine").setMaxStackSize(1); doorSort = new
+         * ItemTFDoor(7).setUnlocalizedName("doorSort").setMaxStackSize(1);
+         */
 
         metaItem = new ItemTFMeta();
 
@@ -373,8 +375,8 @@ public class TFItems {
         registerTFItem(ironwoodAxe, "Ironwood Axe");
         registerTFItem(ironwoodHoe, "Ironwood Hoe");
         registerTFItem(torchberries, "Torchberries");
-        //registerTFItem(venisonRaw, "Raw Venison");
-        //registerTFItem(venisonCooked, "Venison Steak");
+        // registerTFItem(venisonRaw, "Raw Venison");
+        // registerTFItem(venisonCooked, "Venison Steak");
         registerTFItem(hydraChop, "Hydra Chop");
         registerTFItem(fieryBlood, "Fiery Blood");
         registerTFItem(trophy, "Hydra Trophy");
@@ -392,13 +394,13 @@ public class TFItems {
         registerTFItem(steeleafLegs, "Steeleaf Legs");
         registerTFItem(steeleafBoots, "Steeleaf Boots");
         registerTFItem(steeleafSword, "Steeleaf Sword");
-        //registerTFItem(steeleafShovel, "Steeleaf Shovel");
+        // registerTFItem(steeleafShovel, "Steeleaf Shovel");
         registerTFItem(steeleafPick, "Steeleaf Pick");
-        //registerTFItem(steeleafAxe, "Steeleaf Axe");
-        //registerTFItem(steeleafHoe, "Steeleaf Hoe");
+        // registerTFItem(steeleafAxe, "Steeleaf Axe");
+        // registerTFItem(steeleafHoe, "Steeleaf Hoe");
         registerTFItem(minotaurAxe, "Minotaur Axe");
         registerTFItem(mazebreakerPick, "Mazebreaker");
-        //registerTFItem(transformPowder, "Transformation Powder");
+        // registerTFItem(transformPowder, "Transformation Powder");
         registerTFItem(meefRaw, "Raw Meef");
         registerTFItem(meefSteak, "Meef Steak");
         registerTFItem(meefStroganoff, "Meef Stroganoff");
@@ -406,7 +408,7 @@ public class TFItems {
         registerTFItem(emptyMagicMap, "Blank Magic Map");
         registerTFItem(emptyMazeMap, "Blank Maze Map");
         registerTFItem(emptyOreMap, "Blank Maze/Ore Map");
-        //registerTFItem(oreMagnet, "Ore Magnet");
+        // registerTFItem(oreMagnet, "Ore Magnet");
         registerTFItem(crumbleHorn, "Crumble Horn");
         registerTFItem(peacockFan, "Peacock Feather Fan");
         registerTFItem(moonwormQueen, "Moonworm Queen");
@@ -416,7 +418,7 @@ public class TFItems {
         registerTFItem(charmOfKeeping2, "Charm of Keeping II");
         registerTFItem(charmOfKeeping3, "Charm of Keeping III");
         registerTFItem(towerKey, "Tower Key");
-        //registerTFItem(borerEssence, "Borer Essence");
+        // registerTFItem(borerEssence, "Borer Essence");
         registerTFItem(carminite, "Carminite");
         registerTFItem(experiment115, "Experiment 115");
         registerTFItem(armorShard, "Armor Shards");
@@ -424,8 +426,8 @@ public class TFItems {
         registerTFItem(shardCluster, "Shard Cluster");
         registerTFItem(knightlyHelm, "Knightly Helm");
         registerTFItem(knightlyPlate, "Knightly Plate");
-        //registerTFItem(knightlyLegs, "Knightly Legs");
-        //registerTFItem(knightlyBoots, "Knightly Boots");
+        // registerTFItem(knightlyLegs, "Knightly Legs");
+        // registerTFItem(knightlyBoots, "Knightly Boots");
         registerTFItem(knightlySword, "Knightly Sword");
         registerTFItem(knightlyPick, "Knightly Pick");
         registerTFItem(knightlyAxe, "Knightly Axe");
@@ -453,7 +455,7 @@ public class TFItems {
         registerTFItem(enderBow);
         registerTFItem(iceSword);
         registerTFItem(glassSword);
-        //registerTFItem(knightmetalRing);
+        // registerTFItem(knightmetalRing);
         registerTFItem(chainBlock);
         registerTFItem(cubeTalisman);
         registerTFItem(cubeOfAnnihilation);
@@ -461,10 +463,9 @@ public class TFItems {
         registerTFItem(doorCanopy);
         registerTFItem(doorMangrove);
         registerTFItem(doorDarkwood);
-        /*registerTFItem(doorTime);
-        registerTFItem(doorTrans);
-        registerTFItem(doorMine);
-        registerTFItem(doorSort);*/
+        /*
+         * registerTFItem(doorTime); registerTFItem(doorTrans); registerTFItem(doorMine); registerTFItem(doorSort);
+         */
 
         registerTFItem(metaItem);
 
