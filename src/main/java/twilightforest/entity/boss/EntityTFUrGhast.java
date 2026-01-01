@@ -26,6 +26,7 @@ import twilightforest.TFTreasure;
 import twilightforest.TwilightForestMod;
 import twilightforest.block.BlockTFTowerDevice;
 import twilightforest.block.TFBlocks;
+import twilightforest.entity.EntityIceArrow;
 import twilightforest.entity.EntityTFMiniGhast;
 import twilightforest.entity.EntityTFTowerGhast;
 import twilightforest.world.ChunkProviderTwilightForest;
@@ -93,7 +94,8 @@ public class EntityTFUrGhast extends EntityTFTowerGhast implements IBossDisplayD
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(250); // max health
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(TwilightForestMod.urGhastHealth); // max
+                                                                                                                  // health
     }
 
     @Override
@@ -175,6 +177,9 @@ public class EntityTFUrGhast extends EntityTFTowerGhast implements IBossDisplayD
 
         // in tantrum mode take only 1/4 damage
         if (this.isInTantrum()) {
+            if (source.getEntity() instanceof EntityIceArrow) {
+                damage *= 2;
+            }
             damage /= 4;
         }
 

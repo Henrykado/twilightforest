@@ -25,8 +25,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import twilightforest.TFAchievementPage;
 import twilightforest.TFFeature;
-import twilightforest.block.BlockTFPlant;
-import twilightforest.block.TFBlocks;
 import twilightforest.entity.EntityTFMosquitoSwarm;
 import twilightforest.world.TFGenHugeLilyPad;
 import twilightforest.world.TFWorld;
@@ -81,9 +79,10 @@ public class TFBiomeSwamp extends TFBiomeBase {
     public WorldGenerator getRandomWorldGenForGrass(Random par1Random) {
         if (par1Random.nextInt(4) == 0) {
             return new WorldGenTallGrass(Blocks.tallgrass, 2);
-        } else if (par1Random.nextInt(4) == 0) {
-            return new WorldGenTallGrass(TFBlocks.plant, BlockTFPlant.META_MAYAPPLE);
-        } else {
+        } /*
+           * else if (par1Random.nextInt(4) == 0) { return new WorldGenTallGrass(TFBlocks.plant,
+           * BlockTFPlant.META_MAYAPPLE); }
+           */ else {
             return new WorldGenTallGrass(Blocks.tallgrass, 1);
         }
     }

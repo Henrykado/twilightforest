@@ -46,7 +46,7 @@ public class EntityTFHydra extends EntityLiving implements IBossDisplayData, IEn
     private static int HEAD_RESPAWN_TICKS = 100;
     private static int HEAD_MAX_DAMAGE = 120;
     private static float ARMOR_MULTIPLIER = 8.0F;
-    private static int MAX_HEALTH = 360;
+    private static int MAX_HEALTH = TwilightForestMod.hydraHealth;
     private static float HEADS_ACTIVITY_FACTOR = 0.3F;
 
     private static int SECONDARY_FLAME_CHANCE = 10;

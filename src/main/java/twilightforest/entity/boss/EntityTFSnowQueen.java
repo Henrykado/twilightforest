@@ -104,9 +104,9 @@ public class EntityTFSnowQueen extends EntityMob implements IBossDisplayData, IE
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(7.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
         this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(200.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(TwilightForestMod.snowQueenHealth);
     }
 
     protected void entityInit() {

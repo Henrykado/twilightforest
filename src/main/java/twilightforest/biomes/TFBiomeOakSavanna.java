@@ -10,8 +10,6 @@ import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import twilightforest.block.BlockTFPlant;
-import twilightforest.block.TFBlocks;
 import twilightforest.world.TFGenCanopyOak;
 import twilightforest.world.TFGenNoTree;
 
@@ -50,9 +48,10 @@ public class TFBiomeOakSavanna extends TFBiomeTwilightForest {
     public WorldGenerator getRandomWorldGenForGrass(Random par1Random) {
         if (par1Random.nextInt(10) == 0) {
             return new WorldGenTallGrass(Blocks.tallgrass, 2);
-        } else if (par1Random.nextInt(10) == 0) {
-            return new WorldGenTallGrass(TFBlocks.plant, BlockTFPlant.META_MAYAPPLE);
-        } else {
+        } /*
+           * else if (par1Random.nextInt(10) == 0) { return new WorldGenTallGrass(TFBlocks.plant,
+           * BlockTFPlant.META_MAYAPPLE); }
+           */ else {
             return new WorldGenTallGrass(Blocks.tallgrass, 1);
         }
     }

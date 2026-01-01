@@ -8,8 +8,8 @@ dependencies {
     devOnlyNonPublishable("ganymedes01.etfuturum:Et-Futurum-Requiem:2.6.2.6-GTNH:dev")
     compileOnly("curse.maven:skinport-234948:3212017")
     compileOnly("com.github.GTNewHorizons:Mobs-Info:0.5.4-GTNH:dev")
-    implementation rfg.deobf("curse.maven:botania-225643:2283837")
+    compileOnly("curse.maven:botania-225643:2283837")
 
     // For Thaumcraft runtime
-    compileOnly ("com.github.GTNewHorizons:Baubles-Expanded:2.1.15-GTNH:dev")
+    compileOnly("com.github.GTNewHorizons:Baubles-Expanded:2.1.15-GTNH:dev")
 }

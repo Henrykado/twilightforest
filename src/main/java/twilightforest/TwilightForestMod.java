@@ -67,7 +67,6 @@ import twilightforest.tileentity.TileEntityTFTowerBossSpawner;
 import twilightforest.tileentity.TileEntityTFTowerBuilder;
 import twilightforest.tileentity.TileEntityTFTrophy;
 import twilightforest.world.WorldProviderTwilightForest;
-import vazkii.botania.common.item.ModItems;
 
 @Mod(modid = TwilightForestMod.ID, name = "The Twilight Forest", version = TwilightForestMod.VERSION)
 public class TwilightForestMod {
@@ -98,6 +97,9 @@ public class TwilightForestMod {
     public static boolean disableUncrafting;
     public static boolean oldMapGen;
     public static String portalCreationItemString;
+    public static int urGhastHealth = 350;
+    public static int snowQueenHealth = 240;
+    public static int hydraHealth = 500;
 
     // integration
     public static boolean isGTNHLoaded = false;
@@ -1024,6 +1026,11 @@ public class TwilightForestMod {
                 Configuration.CATEGORY_GENERAL,
                 "PortalCreationItem",
                 "diamond").comment = "Item to create the Twilight Forest Portal.  Defaults to 'diamond'";
+        urGhastHealth = configFile
+                .getInt(Configuration.CATEGORY_GENERAL, "urGhastHealth", 350, 1, Integer.MAX_VALUE, "");
+        hydraHealth = configFile.getInt(Configuration.CATEGORY_GENERAL, "hydraHealth", 500, 1, Integer.MAX_VALUE, "");
+        snowQueenHealth = configFile
+                .getInt(Configuration.CATEGORY_GENERAL, "snowQueenHealth", 240, 1, Integer.MAX_VALUE, "");
 
         canopyCoverage = (float) (configFile.get("Performance", "CanopyCoverage", 1.7).getDouble(1.7));
         configFile.get(

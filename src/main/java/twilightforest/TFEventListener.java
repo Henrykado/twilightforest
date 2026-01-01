@@ -66,6 +66,7 @@ import twilightforest.entity.EntityTFCharmEffect;
 import twilightforest.entity.EntityTFPinchBeetle;
 import twilightforest.entity.EntityTFYeti;
 import twilightforest.integration.TFBaublesIntegration;
+import twilightforest.item.ItemTFFieryArmor;
 import twilightforest.item.ItemTFKnightlyArmor;
 import twilightforest.item.ItemTFPhantomArmor;
 import twilightforest.item.ItemTFSteeleafArmor;
@@ -761,11 +762,13 @@ public class TFEventListener {
     }
 
     public boolean isWearingKnightmetalSet(EntityPlayer player) {
-        return (player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() instanceof ItemTFKnightlyArmor)
-                && (player.inventory.armorInventory[2] != null && player.inventory.armorInventory[2].getItem() instanceof ItemTFKnightlyArmor);
+        return (player.inventory.armorInventory[3] != null
+                && player.inventory.armorInventory[3].getItem() instanceof ItemTFKnightlyArmor)
+                && (player.inventory.armorInventory[2] != null
+                        && player.inventory.armorInventory[2].getItem() instanceof ItemTFKnightlyArmor);
     }
 
-    public boolean isWeaingSteelleafSet(EntityPlayer player) {
+    public boolean isWearingSteelleafSet(EntityPlayer player) {
         int count = 0;
         for (int i = 0; i < 4; i++) {
             count += player.inventory.armorInventory[i] != null
@@ -774,16 +777,25 @@ public class TFEventListener {
         return count == 4;
     }
 
+    public boolean isWearingFierySet(EntityPlayer player) {
+        int count = 0;
+        for (int i = 0; i < 4; i++) {
+            count += player.inventory.armorInventory[i] != null
+                    && player.inventory.armorInventory[i].getItem() instanceof ItemTFFieryArmor ? 1 : 0;
+        }
+        return count == 4;
+    }
+
     @SubscribeEvent
     public boolean livingUpdate(LivingUpdateEvent event) {
         if (event.entity instanceof EntityPlayer player) {
-            //Stop the player from sneaking while riding an unfriendly creature
+            // Stop the player from sneaking while riding an unfriendly creature
             if (event.entity.isSneaking() && isRidingUnfriendly(event.entityLiving)) {
                 event.entity.setSneaking(false);
             }
 
             if (!player.worldObj.isRemote && player.worldObj.getWorldTime() % 200 == 0
-                    && isWeaingSteelleafSet(player)
+                    && isWearingSteelleafSet(player)
                     && player.worldObj.isDaytime()
                     && player.worldObj.canBlockSeeTheSky(
                             MathHelper.floor_double(player.posX),
@@ -791,8 +803,10 @@ public class TFEventListener {
                             MathHelper.floor_double(player.posZ))) {
                 player.heal(1);
             }
-            else if (!player.worldObj.isRemote && isWearingKnightmetalSet(player)) {
-                // boost dmg
+
+            if (isWearingFierySet(player) && player.isBurning()) {
+                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 90, 1));
+                player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 90, 2));
             }
         }
         return true;
@@ -800,7 +814,8 @@ public class TFEventListener {
 
     @SubscribeEvent
     public void knightmetalSetBonus(LivingHurtEvent event) {
-        if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer && isWearingKnightmetalSet((EntityPlayer) event.entity)) {
+        if (!event.entity.worldObj.isRemote && event.source.getSourceOfDamage() instanceof EntityPlayer
+                && isWearingKnightmetalSet((EntityPlayer) event.source.getSourceOfDamage())) {
             event.ammount += 1;
         }
     }

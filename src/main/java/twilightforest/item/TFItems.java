@@ -13,11 +13,11 @@ public class TFItems {
     public static ItemArmor.ArmorMaterial ARMOR_NAGA = EnumHelper
             .addArmorMaterial("NAGA_SCALE", 21, new int[] { 2, 7, 6, 3 }, 15);
     public static ItemArmor.ArmorMaterial ARMOR_IRONWOOD = EnumHelper
-            .addArmorMaterial("IRONWOOD", 40, new int[] { 1, 5, 4, 1 }, 15);
+            .addArmorMaterial("IRONWOOD", 40, new int[] { 2, 6, 5, 2 }, 15);
     public static ItemArmor.ArmorMaterial ARMOR_FIERY = EnumHelper
             .addArmorMaterial("FIERY", 25, new int[] { 3, 9, 7, 3 }, 10);
     public static ItemArmor.ArmorMaterial ARMOR_STEELEAF = EnumHelper
-            .addArmorMaterial("STEELEAF", 20, new int[] { 3, 8, 6, 3 }, 20);
+            .addArmorMaterial("STEELEAF", 20, new int[] { 3, 8, 6, 3 }, 10);
     public static ItemArmor.ArmorMaterial ARMOR_KNIGHTLY = EnumHelper
             .addArmorMaterial("KNIGHTMETAL", 24, new int[] { 3, 7, 2, 2 }, 8);
     public static ItemArmor.ArmorMaterial ARMOR_PHANTOM = EnumHelper

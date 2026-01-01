@@ -12,13 +12,18 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import thaumcraft.api.IVisDiscountGear;
+import thaumcraft.api.aspects.Aspect;
 import twilightforest.TwilightForestMod;
 
-public class ItemTFFieryArmor extends ItemArmor {
+@Optional.Interface(iface = "thaumcraft.api.IVisDiscountGear", modid = "Thaumcraft")
+public class ItemTFFieryArmor extends ItemArmor implements IVisDiscountGear {
 
     public ItemTFFieryArmor(ItemArmor.ArmorMaterial par2EnumArmorMaterial, int renderIndex, int armorType) {
         super(par2EnumArmorMaterial, renderIndex, armorType);
@@ -85,6 +90,17 @@ public class ItemTFFieryArmor extends ItemArmor {
             boolean par4) {
         super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
         par3List.add(StatCollector.translateToLocal(getUnlocalizedName() + ".tooltip"));
+        // par3List.add(StatCollector.translateToLocal(getUnlocalizedName() + ".tooltip2"));
+        par3List.add(
+                EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("tc.visdiscount")
+                        + ": "
+                        + this.getVisDiscount(par1ItemStack, par2EntityPlayer, (Aspect) null)
+                        + "%");
+        par3List.add(
+                EnumChatFormatting.DARK_PURPLE + StatCollector.translateToLocal("tc.visdiscount")
+                        + " (Ignis): "
+                        + this.getVisDiscount(par1ItemStack, par2EntityPlayer, Aspect.FIRE)
+                        + "%");
     }
 
     /**
@@ -99,5 +115,13 @@ public class ItemTFFieryArmor extends ItemArmor {
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
         return TwilightForestMod.proxy.getFieryArmorModel(armorSlot);
+    }
+
+    @Override
+    public int getVisDiscount(ItemStack stack, EntityPlayer player, Aspect aspect) {
+        int discount = 3;
+        if (armorType == 3 || armorType == 0) discount = 2;
+        if (aspect == Aspect.FIRE) discount = 5;
+        return discount;
     }
 }

@@ -409,7 +409,7 @@ public class BlockTFPlant extends BlockBush implements IShearable {
     @Override
     public void getSubBlocks(Item item, CreativeTabs par2CreativeTabs, List<ItemStack> itemList) {
         itemList.add(new ItemStack(this, 1, META_MOSSPATCH));
-        itemList.add(new ItemStack(this, 1, META_MAYAPPLE));
+        // itemList.add(new ItemStack(this, 1, META_MAYAPPLE));
         // itemList.add(new ItemStack(this, 1, META_CLOVERPATCH));
         itemList.add(new ItemStack(this, 1, 8));
         itemList.add(new ItemStack(this, 1, 9));

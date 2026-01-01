@@ -10,9 +10,6 @@ import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import twilightforest.block.BlockTFPlant;
-import twilightforest.block.TFBlocks;
-
 public class TFBiomeTwilightForestVariant extends TFBiomeBase {
 
     public TFBiomeTwilightForestVariant(int i) {
@@ -48,9 +45,10 @@ public class TFBiomeTwilightForestVariant extends TFBiomeBase {
     public WorldGenerator getRandomWorldGenForGrass(Random par1Random) {
         if (par1Random.nextInt(4) != 0) {
             return new WorldGenTallGrass(Blocks.tallgrass, 2);
-        } else if (par1Random.nextBoolean()) {
-            return new WorldGenTallGrass(TFBlocks.plant, BlockTFPlant.META_MAYAPPLE);
-        } else {
+        } /*
+           * else if (par1Random.nextBoolean()) { return new WorldGenTallGrass(TFBlocks.plant,
+           * BlockTFPlant.META_MAYAPPLE); }
+           */ else {
             return new WorldGenTallGrass(Blocks.tallgrass, 1);
         }
     }

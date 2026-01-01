@@ -534,7 +534,7 @@ public class TFRecipes {
                 new ItemStack(TFBlocks.starIce, 1),
                 new ItemStack(Blocks.ice),
                 new ItemStack(Items.glowstone_dust));
-				
+
         if (!Mods.GTNH.isLoaded()) {
             GameRegistry.addShapelessRecipe(
                     new ItemStack(TFItems.knightMetal, 9),

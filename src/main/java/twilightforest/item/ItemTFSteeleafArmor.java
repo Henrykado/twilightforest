@@ -1,10 +1,15 @@
 package twilightforest.item;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,6 +50,14 @@ public class ItemTFSteeleafArmor extends ItemArmor {
         // repair with steeleaf ingots
         return par2ItemStack.getItem() == TFItems.steeleafIngot ? true
                 : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List<String> par3List,
+            boolean par4) {
+        super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
+        par3List.add(EnumChatFormatting.DARK_GREEN + StatCollector.translateToLocal(getUnlocalizedName() + ".tooltip"));
     }
 
     /**
