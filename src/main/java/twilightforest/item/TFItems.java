@@ -153,6 +153,7 @@ public class TFItems {
     public static Item doorCanopy;
     public static Item doorMangrove;
     public static Item doorDarkwood;
+    public static Item twilightDiamond;
     /*
      * public static Item doorTime; public static Item doorTrans; public static Item doorMine; public static Item
      * doorSort;
@@ -339,6 +340,7 @@ public class TFItems {
         doorCanopy = new ItemTFDoor(1).setUnlocalizedName("doorCanopy").setMaxStackSize(1);
         doorMangrove = new ItemTFDoor(2).setUnlocalizedName("doorMangrove").setMaxStackSize(1);
         doorDarkwood = new ItemTFDoor(3).setUnlocalizedName("doorDarkwood").setMaxStackSize(1);
+        twilightDiamond = new ItemTF().setUnlocalizedName("twilightDiamond");
         /*
          * doorTime = new ItemTFDoor(4).setUnlocalizedName("doorTime").setMaxStackSize(1); doorTrans = new
          * ItemTFDoor(5).setUnlocalizedName("doorTrans").setMaxStackSize(1); doorMine = new
@@ -463,6 +465,7 @@ public class TFItems {
         registerTFItem(doorCanopy);
         registerTFItem(doorMangrove);
         registerTFItem(doorDarkwood);
+        registerTFItem(twilightDiamond, "Twilight Diamond");
         /*
          * registerTFItem(doorTime); registerTFItem(doorTrans); registerTFItem(doorMine); registerTFItem(doorSort);
          */

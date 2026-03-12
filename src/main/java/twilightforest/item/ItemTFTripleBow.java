@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
@@ -22,21 +23,21 @@ public class ItemTFTripleBow extends ItemTFBowBase {
     /**
      * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
      */
-    public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer,
+    public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer entityPlayer,
             int par4) {
         int j = this.getMaxItemUseDuration(par1ItemStack) - par4;
 
-        ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, j);
+        ArrowLooseEvent event = new ArrowLooseEvent(entityPlayer, par1ItemStack, j);
         MinecraftForge.EVENT_BUS.post(event);
         if (event.isCanceled()) {
             return;
         }
         j = event.charge;
 
-        boolean flag = par3EntityPlayer.capabilities.isCreativeMode
+        boolean flag = entityPlayer.capabilities.isCreativeMode
                 || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-        if (flag || par3EntityPlayer.inventory.hasItem(Items.arrow)) {
+        if (flag || entityPlayer.inventory.hasItem(Items.arrow)) {
             float f = (float) j / 20.0F;
             f = (f * f + f * 2.0F) / 3.0F;
 
@@ -48,14 +49,22 @@ public class ItemTFTripleBow extends ItemTFBowBase {
                 f = 1.0F;
             }
 
-            EntityArrow entityarrow = new EntityArrow(par2World, par3EntityPlayer, f * 2.0F);
+            EntityArrow entityarrow = new EntityArrow(par2World, entityPlayer, f * 2.0F);
             // other arrows with slight deviation
-            EntityArrow entityarrow1 = new EntityArrow(par2World, par3EntityPlayer, f * 2.0F);
-            entityarrow1.motionY += 0.007499999832361937D * 20F;
-            entityarrow1.posY += 0.025F;
-            EntityArrow entityarrow2 = new EntityArrow(par2World, par3EntityPlayer, f * 2.0F);
-            entityarrow2.motionY -= 0.007499999832361937D * 20F;
-            entityarrow2.posY -= 0.025F;
+            EntityArrow entityarrow1 = new EntityArrow(par2World, entityPlayer, f * 2.0F);
+            EntityArrow entityarrow2 = new EntityArrow(par2World, entityPlayer, f * 2.0F);
+            if (entityPlayer.isSneaking()) {
+                entityarrow1.setLocationAndAngles(entityPlayer.posX, entityPlayer.posY + (double)entityPlayer.getEyeHeight(), entityPlayer.posZ, entityPlayer.rotationYaw + 3, entityPlayer.rotationPitch);
+                changeArrowYaw(entityarrow1, (entityarrow1.rotationYaw + 3) / 180.0F * (float)Math.PI, f);
+
+                entityarrow2.setLocationAndAngles(entityPlayer.posX, entityPlayer.posY + (double)entityPlayer.getEyeHeight(), entityPlayer.posZ, entityPlayer.rotationYaw - 3, entityPlayer.rotationPitch);
+                changeArrowYaw(entityarrow2, (entityarrow2.rotationYaw - 3) / 180.0F * (float)Math.PI, f);
+            } else {
+                entityarrow1.motionY += 0.007499999832361937D * 20F;
+                entityarrow1.posY += 0.025F;
+                entityarrow2.motionY -= 0.007499999832361937D * 20F;
+                entityarrow2.posY -= 0.025F;
+            }
 
             if (f == 1.0F) {
                 entityarrow.setIsCritical(true);
@@ -85,9 +94,9 @@ public class ItemTFTripleBow extends ItemTFBowBase {
                 entityarrow2.setFire(100);
             }
 
-            par1ItemStack.damageItem(1, par3EntityPlayer);
+            par1ItemStack.damageItem(1, entityPlayer);
             par2World.playSoundAtEntity(
-                    par3EntityPlayer,
+                    entityPlayer,
                     "random.bow",
                     1.0F,
                     1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
@@ -95,7 +104,7 @@ public class ItemTFTripleBow extends ItemTFBowBase {
             if (flag) {
                 entityarrow.canBePickedUp = 2;
             } else {
-                par3EntityPlayer.inventory.consumeInventoryItem(Items.arrow);
+                entityPlayer.inventory.consumeInventoryItem(Items.arrow);
             }
             entityarrow1.canBePickedUp = 2;
             entityarrow2.canBePickedUp = 2;
@@ -106,6 +115,15 @@ public class ItemTFTripleBow extends ItemTFBowBase {
                 par2World.spawnEntityInWorld(entityarrow2);
             }
         }
+    }
+
+    private void changeArrowYaw(EntityArrow entityarrow, float arrowYaw, float f) {
+        entityarrow.posX -= MathHelper.cos(arrowYaw) * 0.16F;
+        entityarrow.posZ -= MathHelper.sin(arrowYaw) * 0.16F;
+        entityarrow.motionX = -MathHelper.sin(arrowYaw) * MathHelper.cos(entityarrow.rotationPitch / 180.0F * (float)Math.PI);
+        entityarrow.motionZ = MathHelper.cos(arrowYaw) * MathHelper.cos(entityarrow.rotationPitch / 180.0F * (float)Math.PI);
+        entityarrow.motionY = -MathHelper.sin(entityarrow.rotationPitch / 180.0F * (float)Math.PI);
+        entityarrow.setThrowableHeading(entityarrow.motionX, entityarrow.motionY, entityarrow.motionZ, f * 3F, 1.0F);
     }
 
 }

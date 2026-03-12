@@ -22,9 +22,9 @@ import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import twilightforest.biomes.TFBiomeBase;
 import twilightforest.block.BlockTFPortal;
 import twilightforest.block.TFBlocks;
+import twilightforest.item.TFItems;
 import twilightforest.world.ChunkProviderTwilightForest;
 import twilightforest.world.WorldProviderTwilightForest;
-import vazkii.botania.common.item.ModItems;
 
 /**
  * This class listens for ticks in the world. If the player is near a diamond in the water, this class attempts to open
@@ -136,8 +136,7 @@ public class TFTickHandler {
     @SubscribeEvent
     public void onItemDroppedByPlayer(ItemTossEvent event) {
         if (!TwilightForestMod.disablePortalCreation && !event.isCanceled()
-                && event.entityItem.getEntityItem().getItem() == ModItems.manaResource
-                && event.entityItem.getEntityItem().getItemDamage() == 9) {
+                && event.entityItem.getEntityItem().getItem() == TFItems.twilightDiamond) {
             // Check if player is opped
             if (TwilightForestMod.adminOnlyPortals && !MinecraftServer.getServer().getConfigurationManager()
                     .func_152596_g(event.player.getGameProfile())) {

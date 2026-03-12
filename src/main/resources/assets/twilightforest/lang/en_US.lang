@@ -565,6 +565,8 @@ tooltip.tf.harbinger=A Harbinger, but of what?
 
 item.tfspawnegg.name=Spawn
 
+item.twilightDiamond.name=Twilight Diamond
+
 itemGroup.twilightForest=Twilight Forest
 
 entity.TwilightForest.Wild Boar.name=Wild Boar

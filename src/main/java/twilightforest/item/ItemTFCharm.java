@@ -2,6 +2,8 @@ package twilightforest.item;
 
 import java.util.List;
 
+import baubles.api.expanded.BaubleExpandedSlots;
+import baubles.api.expanded.IBaubleExpanded;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,8 +18,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import twilightforest.TwilightForestMod;
 
-@Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
-public class ItemTFCharm extends ItemTF implements IBauble {
+@Optional.Interface(iface = "baubles.api.expanded.IBaubleExpanded", modid = "Baubles")
+public class ItemTFCharm extends ItemTF implements IBaubleExpanded {
 
     protected ItemTFCharm() {
         super();
@@ -47,7 +49,12 @@ public class ItemTFCharm extends ItemTF implements IBauble {
 
     @Override
     public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.UNIVERSAL;
+        return null;
+    }
+
+    @Override
+    public String[] getBaubleTypes(ItemStack itemstack) {
+        return new String[] { BaubleExpandedSlots.universalType };
     }
 
     @Override
