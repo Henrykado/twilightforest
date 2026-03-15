@@ -79,7 +79,7 @@ public class ItemTFKnightlyArmor extends ItemArmor {
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List<String> par3List,
             boolean par4) {
         super.addInformation(par1ItemStack, par2EntityPlayer, par3List, par4);
-        par3List.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal(getUnlocalizedName() + ".tooltip"));
+        par3List.add(EnumChatFormatting.YELLOW + StatCollector.translateToLocal(getUnlocalizedName() + ".tooltip"));
     }
 
     /**

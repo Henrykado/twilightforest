@@ -518,6 +518,7 @@ item.magicBeans.name=Magic Beans
 item.giantPick.name=Giant's Pickaxe
 item.giantSword.name=Giant's Sword
 item.tripleBow.name=Tri-bow
+item.tripleBow.tooltip=Use while crouching to shoot the arrows horizontally.
 item.seekerBow.name=Seeker Bow
 item.iceBow.name=Ice Bow
 item.enderBow.name=Ender Bow
