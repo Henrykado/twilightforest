@@ -102,11 +102,11 @@ public class EntityTFNaga extends EntityMob implements IMob, IBossDisplayData, I
     public float getMaxHealthPerDifficulty() {
         if (worldObj != null) {
             if (worldObj.difficultySetting == EnumDifficulty.EASY) {
-                return 150;
-            } else if (worldObj.difficultySetting == EnumDifficulty.NORMAL) {
-                return 220;
-            } else if (worldObj.difficultySetting == EnumDifficulty.HARD) {
                 return 280;
+            } else if (worldObj.difficultySetting == EnumDifficulty.NORMAL) {
+                return 320;
+            } else if (worldObj.difficultySetting == EnumDifficulty.HARD) {
+                return 360;
             } else {
                 // ????
                 return 220;

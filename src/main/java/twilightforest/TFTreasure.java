@@ -216,6 +216,7 @@ public class TFTreasure {
                 uncommon.add(Items.arrow, 12);
                 uncommon.add(Blocks.torch, 12);
                 rare.add(TFItems.nagaScale, 1);
+                rare.add(TFItems.steeleafIngot, 3);
                 if (!Mods.GTNH.isLoaded()) rare.add(TFBlocks.uncraftingTable, 1);
                 // rare.add(TFItems.transformPowder, 12);
                 ultrarare.add(TFItems.peacockFan, 1);
@@ -262,7 +263,7 @@ public class TFTreasure {
                 uncommon.add(Items.pumpkin_seeds, 4);
                 uncommon.add(Items.arrow, 12);
                 uncommon.add(new ItemStack(TFItems.critter, 4, 0));
-                rare.add(TFItems.steeleafIngot, 6);
+                uncommon.add(TFItems.steeleafIngot, 6);
                 rare.add(Blocks.web, 3);
                 rare.add(Items.shears, 1);
                 rare.add(Items.saddle, 1);
@@ -456,6 +457,7 @@ public class TFTreasure {
                 common.add(new ItemStack(TFItems.critter, 5, 0));
                 common.add(Items.redstone, 12);
                 common.add(Items.glowstone_dust, 12);
+                uncommon.add(TFItems.steeleafIngot, 6);
                 // uncommon.add(TFItems.charmOfKeeping1, 1);
                 uncommon.add(TFItems.towerKey, 1);
                 rare.add(TFItems.charmOfLife1, 1);
@@ -611,6 +613,7 @@ public class TFTreasure {
                 common.add(Items.melon_seeds, 6);
                 common.add(new ItemStack(Items.dye, 12, 15));
                 uncommon.add(TFBlocks.uberousSoil, 6);
+                uncommon.add(TFItems.steeleafIngot, 6);
                 rare.add(TFItems.magicBeans, 1);
             }
             case 22 -> {
