@@ -298,7 +298,7 @@ public class EntityTFNaga extends EntityMob implements IMob, IBossDisplayData, I
 
         // NAGA SMASH!
         if (isCollidedHorizontally) {
-            if (hasTarget() || (hasHome() && this.posY < this.getHomePosition().posY - 2)) breakNearbyBlocks();
+            if (hasTarget() || (hasHome() && this.posY < this.getHomePosition().posY - 1)) breakNearbyBlocks();
             else wanderRandomly();
         }
 

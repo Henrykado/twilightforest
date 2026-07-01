@@ -56,6 +56,7 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import twilightforest.biomes.TFBiomeBase;
@@ -804,9 +805,37 @@ public class TFEventListener {
                 player.heal(1);
             }
 
+            if (player.dimension == TwilightForestMod.dimensionID && player.worldObj.getWorldTime() % 3 == 0) {
+                Item heldItem = player.getHeldItem() != null ? player.getHeldItem().getItem() : null;
+                for (String i : TwilightForestMod.weakerWeapons) {
+                    String[] j = i.split(":");
+                    if (heldItem == GameRegistry.findItem(j[0], j[1])) {
+                        player.addPotionEffect(new PotionEffect(Potion.weakness.id, 9, 1));
+                    }
+                }
+
+                int armorCounter = 0;
+                for (int i = 0; i < 4; i++) {
+                    Item armor = player.getCurrentArmor(i) != null ? player.getCurrentArmor(i).getItem() : null;
+                    for (String j : new String[] { "minecraft:diamond_helmet", "minecraft:diamond_chestplate",
+                            "minecraft:diamond_leggings", "minecraft:diamond_boots", "minecraft:iron_helmet",
+                            "minecraft:iron_chestplate", "minecraft:iron_leggings", "minecraft:iron_boots",
+                            "minecraft:golden_helmet", "minecraft:golden_chestplate", "minecraft:golden_leggings",
+                            "minecraft:golden_boots" }) {
+                        String[] k = j.split(":");
+                        if (armor != null && armor == GameRegistry.findItem(k[0], k[1])) {
+                            armorCounter++;
+                        }
+                    }
+                }
+                if (armorCounter > 0) {
+                    player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 9, armorCounter - 1));
+                }
+            }
+
             if (isWearingFierySet(player) && player.isBurning()) {
-                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 90, 1));
-                player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 90, 2));
+                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 110, 1));
+                player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 110, 2));
             }
         }
         return true;

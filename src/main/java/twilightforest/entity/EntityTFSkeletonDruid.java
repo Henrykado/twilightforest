@@ -137,6 +137,10 @@ public class EntityTFSkeletonDruid extends EntityMob implements IRangedAttackMob
         for (i = 0; i < numberOfItemsToDrop; ++i) {
             this.dropItem(Items.bone, 1);
         }
+
+        if (rand.nextInt(100) == 0) {
+            this.dropItem(TFItems.steeleafIngot, 1);
+        }
     }
 
     /**

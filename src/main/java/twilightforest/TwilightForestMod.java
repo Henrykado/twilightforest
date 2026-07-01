@@ -101,6 +101,7 @@ public class TwilightForestMod {
     public static int urGhastHealth = 350;
     public static int snowQueenHealth = 240;
     public static int hydraHealth = 500;
+    public static String[] weakerWeapons;
 
     // integration
     public static boolean isGTNHLoaded = false;
@@ -1026,11 +1027,16 @@ public class TwilightForestMod {
                 Configuration.CATEGORY_GENERAL,
                 "PortalCreationItem",
                 "diamond").comment = "Item to create the Twilight Forest Portal.  Defaults to 'diamond'";
-        urGhastHealth = configFile
-                .getInt(Configuration.CATEGORY_GENERAL, "urGhastHealth", 350, 1, Integer.MAX_VALUE, "");
-        hydraHealth = configFile.getInt(Configuration.CATEGORY_GENERAL, "hydraHealth", 500, 1, Integer.MAX_VALUE, "");
-        snowQueenHealth = configFile
-                .getInt(Configuration.CATEGORY_GENERAL, "snowQueenHealth", 240, 1, Integer.MAX_VALUE, "");
+        urGhastHealth = configFile.getInt("urGhastHealth", "general", 350, 1, Integer.MAX_VALUE, "");
+        hydraHealth = configFile.getInt("hydraHealth", "general", 500, 1, Integer.MAX_VALUE, "");
+        snowQueenHealth = configFile.getInt("snowQueenHealth", "general", 240, 1, Integer.MAX_VALUE, "");
+        weakerWeapons = configFile.getStringList(
+                "weakerWeapons",
+                "general",
+                new String[] { "minecraft:wooden_sword", "minecraft:stone_sword", "minecraft:iron_sword",
+                        "minecraft:golden_sword", "minecraft:diamond_sword" },
+                "Weapons that give Weakness while inside the Twilight forest");
+
         portalMaxSize = configFile.get(Configuration.CATEGORY_GENERAL, "portalMaxSize", 15).getInt();
         configFile.get(
                 Configuration.CATEGORY_GENERAL,
