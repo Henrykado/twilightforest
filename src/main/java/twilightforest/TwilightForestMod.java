@@ -5,7 +5,6 @@ import net.minecraft.block.BlockDispenser;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
@@ -97,6 +96,8 @@ public class TwilightForestMod {
     public static boolean disableUncrafting;
     public static boolean oldMapGen;
     public static String portalCreationItemString;
+    public static int portalMaxSize;
+    public static java.util.Set<String> timeCoreExcludedBlocks;
     public static int urGhastHealth = 350;
     public static int snowQueenHealth = 240;
     public static int hydraHealth = 500;
@@ -407,7 +408,7 @@ public class TwilightForestMod {
     @EventHandler
     public void startServer(FMLServerStartingEvent event) {
         // dispenser behaviors
-        registerDispenseBehaviors(event.getServer());
+        registerDispenseBehaviors();
 
         // event.registerServerCommand(new CommandTFFeature());
         event.registerServerCommand(new CommandTFProgress());
@@ -958,9 +959,8 @@ public class TwilightForestMod {
     /**
      * Register all dispenser behaviors.
      */
-    private void registerDispenseBehaviors(MinecraftServer minecraftServer) {
-        BlockDispenser.dispenseBehaviorRegistry
-                .putObject(TFItems.spawnEgg, new BehaviorTFMobEggDispense(minecraftServer));
+    private void registerDispenseBehaviors() {
+        BlockDispenser.dispenseBehaviorRegistry.putObject(TFItems.spawnEgg, new BehaviorTFMobEggDispense());
     }
 
     /**
@@ -1031,6 +1031,20 @@ public class TwilightForestMod {
         hydraHealth = configFile.getInt(Configuration.CATEGORY_GENERAL, "hydraHealth", 500, 1, Integer.MAX_VALUE, "");
         snowQueenHealth = configFile
                 .getInt(Configuration.CATEGORY_GENERAL, "snowQueenHealth", 240, 1, Integer.MAX_VALUE, "");
+        portalMaxSize = configFile.get(Configuration.CATEGORY_GENERAL, "portalMaxSize", 15).getInt();
+        configFile.get(
+                Configuration.CATEGORY_GENERAL,
+                "portalMaxSize",
+                15).comment = "Maximal size of water pool that can be turned into a portal. NxN square.";
+
+        String[] timeCoreExcludedDefault = { "minecraft:portal" };
+        String[] timeCoreExcludedNames = configFile
+                .get(Configuration.CATEGORY_GENERAL, "TimeCoreExcludedBlocks", timeCoreExcludedDefault).getStringList();
+        configFile.get(
+                Configuration.CATEGORY_GENERAL,
+                "TimeCoreExcludedBlocks",
+                timeCoreExcludedDefault).comment = "Registry names of blocks the Tree of Time will NOT give extra random ticks to (e.g. 'minecraft:portal'). Format: 'modid:blockname'.";
+        timeCoreExcludedBlocks = new java.util.HashSet<>(java.util.Arrays.asList(timeCoreExcludedNames));
 
         canopyCoverage = (float) (configFile.get("Performance", "CanopyCoverage", 1.7).getDouble(1.7));
         configFile.get(

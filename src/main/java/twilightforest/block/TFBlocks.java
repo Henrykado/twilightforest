@@ -10,6 +10,7 @@ import twilightforest.TwilightForestMod;
 import twilightforest.item.ItemBlockTFCritter;
 import twilightforest.item.ItemBlockTFMeta;
 import twilightforest.item.ItemBlockTFNagastone;
+import twilightforest.item.ItemBlockTFTree;
 
 public class TFBlocks {
 
@@ -287,7 +288,7 @@ public class TFBlocks {
         starIce = (new BlockTFStarIce()).setBlockName("StarIce");
 
         // register blocks with their pickup values
-        registerMyBlock(log);
+        registerMyBlock(log, ItemBlockTFTree.class);
         registerMyBlock(planks);
         registerMyBlock(
                 woodenSlab,
@@ -363,7 +364,7 @@ public class TFBlocks {
         registerMyBlock(sapling);
         registerMyBlock(moonworm, ItemBlockTFCritter.class);
         // registerMyBlock(magicLog);
-        registerMyBlock(magicLeaves);
+        registerMyBlock(magicLeaves, ItemBlockTFTree.class);
         // registerMyBlock(magicLogSpecial);
         registerMyBlock(towerWood);
         registerMyBlock(towerDevice);
@@ -381,7 +382,7 @@ public class TFBlocks {
                 ((BlockTFThorns) thorns).getNames());
         registerMyBlock(burntThorns, ItemBlock.class);
         registerMyBlock(thornRose, ItemBlock.class);
-        registerMyBlock(leaves3);
+        registerMyBlock(leaves3, ItemBlockTFTree.class);
         registerMyBlock(deadrock, twilightforest.item.ItemBlockTFDeadrock.class, deadrock, BlockTFDeadrock.names);
         registerMyBlock(darkleaves, ItemBlock.class);
         registerMyBlock(auroraPillar, ItemBlock.class);
