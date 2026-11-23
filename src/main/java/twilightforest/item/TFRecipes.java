@@ -26,6 +26,7 @@ public class TFRecipes {
         // ore dictionary
         OreDictionary.registerOre("logWood", new ItemStack(TFBlocks.log, 1, OreDictionary.WILDCARD_VALUE));
         // OreDictionary.registerOre("logWood", new ItemStack(TFBlocks.magicLog, 1, OreDictionary.WILDCARD_VALUE));
+        //OreDictionary.registerOre("slabWood", new ItemStack(TFBlocks.woodenSlab, 1, OreDictionary.WILDCARD_VALUE));
         for (int i = 0; i < 7; i++) OreDictionary.registerOre("treeSapling", new ItemStack(TFBlocks.sapling, 1, i));
         OreDictionary.registerOre("treeLeaves", new ItemStack(TFBlocks.leaves, 1, OreDictionary.WILDCARD_VALUE));
         // OreDictionary.registerOre("treeLeaves", new ItemStack(TFBlocks.magicLeaves, 1,
@@ -117,6 +118,7 @@ public class TFRecipes {
                 new ItemStack(TFBlocks.trapdoorDarkwood, 2, 0) };
         ItemStack[] stairs = new ItemStack[] { new ItemStack(TFBlocks.woodenStairsTwilight, 8, 0),
                 new ItemStack(TFBlocks.woodenStairsCanopy, 8, 0), new ItemStack(TFBlocks.woodenStairsMangrove, 8, 0),
+<<<<<<< HEAD
                 new ItemStack(TFBlocks.woodenStairsDarkwood, 8, 0) };
         /*
          * Block[] chests = new Block[] { TFBlocks.chestTwilight, TFBlocks.chestCanopy, TFBlocks.chestMangrove,
@@ -134,6 +136,34 @@ public class TFRecipes {
          * 1, i) }); GameRegistry.addRecipe( new ItemStack(TFBlocks.woodenSlab, 6, i), new Object[] { "###", '#', new
          * ItemStack(TFBlocks.planks, 1, i) }); }
          */
+
+        // register OreDictionary for TF wooden items
+        for (ItemStack stack : stairs) {
+            OreDictionary.registerOre("stairWood", stack);
+        }
+        for (ItemStack stack : trapdoors) {
+            OreDictionary.registerOre("trapdoorWood", stack);
+        }
+        for (Item item : doors) {
+            OreDictionary.registerOre("doorWood", item);
+        }
+
+        for (int i = 0; i < doors.length; i++) {
+            if (!TwilightForestMod.isGTNHLoaded) {
+                GameRegistry.addRecipe(
+                        new ItemStack(doors[i], 1, 0),
+                        new Object[] { "##", "##", "##", '#', new ItemStack(TFBlocks.planks, 1, i) });
+                GameRegistry.addRecipe(
+                        trapdoors[i],
+                        new Object[] { "###", "###", '#', new ItemStack(TFBlocks.planks, 1, i) });
+            }
+            GameRegistry.addRecipe(
+                    stairs[i],
+                    new Object[] { "#  ", "## ", "###", '#', new ItemStack(TFBlocks.planks, 1, i) });
+            GameRegistry.addRecipe(
+                    new ItemStack(TFBlocks.woodenSlab, 6, i),
+                    new Object[] { "###", '#', new ItemStack(TFBlocks.planks, 1, i) });
+        }
 
         // Dyes from TF plants
         GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 2, 13), new Object[] { TFBlocks.hugeWaterLily });

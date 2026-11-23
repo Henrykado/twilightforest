@@ -52,7 +52,7 @@ public class TFTickHandler {
 
         // check the player for being in a forbidden progression area, only every 20 ticks
         if (!world.isRemote && event.phase == TickEvent.Phase.END
-                && world.getWorldTime() % 20 == 0
+                && world.getTotalWorldTime() % 20 == 0
                 && world.getGameRules().getGameRuleBooleanValue(TwilightForestMod.ENFORCED_PROGRESSION_RULE)) {
             if (world.provider instanceof WorldProviderTwilightForest && !player.capabilities.isCreativeMode) {
                 checkBiomeForProgression(player, world);
@@ -61,7 +61,7 @@ public class TFTickHandler {
 
         // check and send nearby forbidden structures, every 100 ticks or so
         if (!world.isRemote && event.phase == TickEvent.Phase.END
-                && world.getWorldTime() % 100 == 0
+                && world.getTotalWorldTime() % 100 == 0
                 && world.getGameRules().getGameRuleBooleanValue(TwilightForestMod.ENFORCED_PROGRESSION_RULE)) {
             if (world.provider instanceof WorldProviderTwilightForest) {
                 if (!player.capabilities.isCreativeMode) {

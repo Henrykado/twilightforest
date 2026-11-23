@@ -3,18 +3,21 @@ package twilightforest.compat;
 import java.util.function.Supplier;
 
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.ModAPIManager;
 
 public enum Mods {
 
     GTNH("dreamcraft"),
     skinport("skinport"),
     NEI("NotEnoughItems"),
-    baubles("baubles"),
+    baubles("Baubles"),
     thaumcraft("thaumcraft"),
+    gregtech_nh("gregtech_nh"),
     endlessids("endlessids"),
     ticon("TConstruct"),
     tgregworks("TGregworks"),
-    EFR("etfuturum");
+    EFR("etfuturum"),
+    angelicaWeather(() -> Loader.isModLoaded("angelica") && ModAPIManager.INSTANCE.hasAPI("angelica|weather"));
 
     public final String modid;
     private final Supplier<Boolean> supplier;

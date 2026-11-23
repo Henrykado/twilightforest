@@ -15,6 +15,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Facing;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -24,17 +26,21 @@ import net.minecraft.world.chunk.Chunk;
 
 import com.falsepattern.endlessids.mixin.helpers.ChunkBiomeHook;
 
-import cpw.mods.fml.common.ObfuscationReflectionHelper;
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregtech.api.GregTechAPI;
+import gregtech.api.util.GTModHandler;
+import gregtech.api.util.GTUtility;
 import twilightforest.TFGenericPacketHandler;
 import twilightforest.TwilightForestMod;
 import twilightforest.biomes.TFBiomeBase;
 import twilightforest.compat.Mods;
 import twilightforest.item.ItemTFOreMagnet;
 import twilightforest.item.TFItems;
+import twilightforest.tileentity.TileEntityTFTimewoodClock;
 
 public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
 
@@ -51,6 +57,26 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
     @Override
     public void onBlockAdded(World world, int x, int y, int z) {
         world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
+    }
+
+    @Override
+    public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta) {
+        return (meta & 3) == META_TIME ? META_TIME : super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, meta);
+    }
+
+    @Override
+    public boolean hasTileEntity(int metadata) {
+        return (metadata & 3) == META_TIME;
+    }
+
+    @Override
+    public TileEntity createTileEntity(World world, int metadata) {
+        return new TileEntityTFTimewoodClock();
+    }
+
+    @Override
+    protected boolean canSilkHarvest() {
+        return true;
     }
 
     @Override
@@ -73,9 +99,8 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
             };
         } else {
             return switch (woodType) {
-                default -> orient == 0 && (side == 1 || side == 0) ? SPR_TIMETOP
-                        : (orient == 4 && (side == 5 || side == 4) ? SPR_TIMETOP
-                                : (orient == 8 && (side == 2 || side == 3) ? SPR_TIMETOP : SPR_TIMECLOCK));
+                default -> (side == 1 || side == 0) ? SPR_TIMETOP
+                        : (isTimeClockDisabled(orient) ? SPR_TIMECLOCKOFF : SPR_TIMECLOCK);
                 case META_TRANS -> orient == 0 && (side == 1 || side == 0) ? SPR_TRANSTOP
                         : (orient == 4 && (side == 5 || side == 4) ? SPR_TRANSTOP
                                 : (orient == 8 && (side == 2 || side == 3) ? SPR_TRANSTOP : SPR_TRANSHEART));
@@ -90,18 +115,38 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+        int meta = world.getBlockMetadata(x, y, z);
+        if ((meta & 3) == META_TIME && side != 0 && side != 1 && isBlockIndirectlyPowered(world, x, y, z)) {
+            return SPR_TIMECLOCKOFF;
+        }
+        return getIcon(side, meta);
+    }
+
+    @Override
     public void updateTick(World world, int x, int y, int z, Random rand) {
         int meta = world.getBlockMetadata(x, y, z);
+        int orient = meta & 12;
+        int woodType = meta & 3;
 
-        if ((meta & 12) == 12) {
+        if (woodType == META_TIME) {
+            orient = normalizeTimeClockState(world, x, y, z, orient);
+        }
+
+        if (woodType == META_TIME ? isTimeClockDisabled(orient) || world.isBlockIndirectlyGettingPowered(x, y, z)
+                : orient == 12) {
             // block is off, do not tick
             return;
         }
         if (!world.isRemote) {
-            switch (meta & 3) {
+            switch (woodType) {
                 case 0 -> {
                     // tree of time effect
-                    world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.click", 0.1F, 0.5F);
+                    TileEntityTFTimewoodClock clock = getTimewoodClock(world, x, y, z);
+                    if (clock == null || !clock.isMuted()) {
+                        world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.click", 0.1F, 0.5F);
+                    }
                     doTreeOfTimeEffect(world, x, y, z, rand);
                 }
                 case 1 ->
@@ -119,12 +164,45 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
     }
 
     @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor) {
+        int meta = world.getBlockMetadata(x, y, z);
+        if ((meta & 3) != META_TIME) {
+            return;
+        }
+        world.markBlockForUpdate(x, y, z);
+        if (!world.isRemote && !isTimeClockDisabled(meta & 12) && !world.isBlockIndirectlyGettingPowered(x, y, z)) {
+            world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
+        }
+    }
+
+    @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7,
             float par8, float par9) {
         int meta = world.getBlockMetadata(x, y, z);
 
         int orient = meta & 12;
         int woodType = meta & 3;
+
+        if (woodType == META_TIME) {
+            orient = normalizeTimeClockState(world, x, y, z, orient);
+            ItemStack heldItem = player.getHeldItem();
+            if (Mods.gregtech_nh.isLoaded() && heldItem != null && GregTechCompat.isSoftMallet(heldItem)) {
+                if (!world.isRemote && GregTechCompat.damageSoftMallet(heldItem, player)) {
+                    TileEntityTFTimewoodClock clock = getTimewoodClock(world, x, y, z);
+                    if (clock != null) {
+                        clock.setMuted(!clock.isMuted());
+                    }
+                }
+                return true;
+            }
+
+            int newOrient = orient ^ 12;
+            world.setBlockMetadataWithNotify(x, y, z, woodType | newOrient, 3);
+            if (!isTimeClockDisabled(newOrient)) {
+                world.scheduleBlockUpdate(x, y, z, this, this.tickRate(world));
+            }
+            return true;
+        }
 
         if (orient == 0) {
             // turn off
@@ -137,6 +215,69 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
             return true;
         }
         return false;
+    }
+
+    private static boolean isTimeClockDisabled(int orient) {
+        return (orient & 8) != 0;
+    }
+
+    private static int normalizeTimeClockState(World world, int x, int y, int z, int orient) {
+        if (orient != 4 && orient != 8) {
+            return orient;
+        }
+        int normalized = orient == 8 ? 12 : 0;
+        if (!world.isRemote) {
+            TileEntityTFTimewoodClock clock = getTimewoodClock(world, x, y, z);
+            if (clock != null) {
+                clock.setMuted(true);
+            }
+            world.setBlockMetadataWithNotify(x, y, z, normalized, 3);
+        }
+        return normalized;
+    }
+
+    private static TileEntityTFTimewoodClock getTimewoodClock(World world, int x, int y, int z) {
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        return tileEntity instanceof TileEntityTFTimewoodClock ? (TileEntityTFTimewoodClock) tileEntity : null;
+    }
+
+    private static boolean isBlockIndirectlyPowered(IBlockAccess world, int x, int y, int z) {
+        return getIndirectPowerLevel(world, x, y - 1, z, 0) > 0 || getIndirectPowerLevel(world, x, y + 1, z, 1) > 0
+                || getIndirectPowerLevel(world, x, y, z - 1, 2) > 0
+                || getIndirectPowerLevel(world, x, y, z + 1, 3) > 0
+                || getIndirectPowerLevel(world, x - 1, y, z, 4) > 0
+                || getIndirectPowerLevel(world, x + 1, y, z, 5) > 0;
+    }
+
+    private static int getIndirectPowerLevel(IBlockAccess world, int x, int y, int z, int side) {
+        Block block = world.getBlock(x, y, z);
+        if (!block.shouldCheckWeakPower(world, x, y, z, side)) {
+            return block.isProvidingWeakPower(world, x, y, z, side);
+        }
+        int power = 0;
+        for (int i = 0; i < 6; i++) {
+            power = Math.max(
+                    power,
+                    world.isBlockProvidingPowerTo(
+                            x + Facing.offsetsXForSide[i],
+                            y + Facing.offsetsYForSide[i],
+                            z + Facing.offsetsZForSide[i],
+                            i));
+        }
+        return power;
+    }
+
+    private static final class GregTechCompat {
+
+        @Optional.Method(modid = "gregtech_nh")
+        private static boolean isSoftMallet(ItemStack stack) {
+            return GTUtility.isStackInList(stack, GregTechAPI.sSoftMalletList);
+        }
+
+        @Optional.Method(modid = "gregtech_nh")
+        private static boolean damageSoftMallet(ItemStack stack, EntityPlayer player) {
+            return GTModHandler.damageOrDechargeItem(stack, 1, 1000, player);
+        }
     }
 
     /**
@@ -275,6 +416,15 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
     /**
      * The sorting tree finds two chests nearby and then attempts to sort a random item.
      */
+
+    // Compare stacks first
+    private boolean canMergeStacks(ItemStack a, ItemStack b) {
+        if (a == null || b == null || (a.getItem() != b.getItem()) || (a.getItemDamage() != b.getItemDamage())) {
+            return false;
+        }
+        return ItemStack.areItemStackTagsEqual(a, b);
+    }
+
     private void doSortingTreeEffect(World world, int x, int y, int z, Random rand) {
         // find all the chests nearby
         int XSEARCH = 16;
@@ -284,18 +434,50 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
         ArrayList<IInventory> chests = new ArrayList<>();
         int itemCount = 0;
 
-        for (int sx = x - XSEARCH; sx < x + XSEARCH; sx++) {
-            for (int sy = y - YSEARCH; sy < y + YSEARCH; sy++) {
-                for (int sz = z - ZSEARCH; sz < z + ZSEARCH; sz++) {
-                    if (world.getBlock(sx, sy, sz) == Blocks.chest) {
-                        IInventory thisChest = Blocks.chest.func_149951_m(world, sx, sy, sz);
+        int minX = x - XSEARCH;
+        int maxX = x + XSEARCH;
+        int minY = y - YSEARCH;
+        int maxY = y + YSEARCH;
+        int minZ = z - ZSEARCH;
+        int maxZ = z + ZSEARCH;
 
+        int minChunkX = minX >> 4;
+        int maxChunkX = maxX >> 4;
+        int minChunkZ = minZ >> 4;
+        int maxChunkZ = maxZ >> 4;
+
+        for (int chunkX = minChunkX; chunkX <= maxChunkX; chunkX++) {
+            for (int chunkZ = minChunkZ; chunkZ <= maxChunkZ; chunkZ++) {
+                if (!world.getChunkProvider().chunkExists(chunkX, chunkZ)) {
+                    continue;
+                }
+
+                Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
+
+                for (Object obj : chunk.chunkTileEntityMap.values()) {
+                    // only scan TE
+                    if (!(obj instanceof TileEntity)) {
+                        continue;
+                    }
+
+                    TileEntity te = (TileEntity) obj;
+                    int tx = te.xCoord;
+                    int ty = te.yCoord;
+                    int tz = te.zCoord;
+
+                    if (tx < minX || tx > maxX || ty < minY || ty > maxY || tz < minZ || tz > maxZ) {
+                        continue;
+                    }
+
+                    if (world.getBlock(tx, ty, tz) != Blocks.chest) {
+                        continue;
+                    }
+
+                    IInventory thisChest = Blocks.chest.func_149951_m(world, tx, ty, tz);
+                    if (te instanceof IInventory teInventory) {
                         // make sure we haven't counted this chest
-                        if (thisChest != null
-                                && !checkIfChestsContains(chests, (IInventory) world.getTileEntity(sx, sy, sz))) {
+                        if (thisChest != null && !checkIfChestsContains(chests, teInventory)) {
                             int itemsInChest = 0;
-
-                            // count items
                             for (int i = 0; i < thisChest.getSizeInventory(); i++) {
                                 if (thisChest.getStackInSlot(i) != null) {
                                     itemsInChest++;
@@ -391,11 +573,11 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
                     for (int slotNum = 0; slotNum < chest.getSizeInventory(); slotNum++) {
                         ItemStack currentItem = chest.getStackInSlot(slotNum);
 
-                        if (currentItem != null && currentItem != beingSorted && beingSorted.isItemEqual(currentItem)) {
+                        if (currentItem != null && currentItem != beingSorted
+                                && canMergeStacks(beingSorted, currentItem)) {
                             if (currentItem.stackSize <= (beingSorted.getMaxStackSize() - beingSorted.stackSize)) {
                                 chest.setInventorySlotContents(slotNum, null);
                                 beingSorted.stackSize += currentItem.stackSize;
-                                currentItem.stackSize = 0;
                             }
                         }
                     }
@@ -405,16 +587,12 @@ public class BlockTFMagicLogSpecial extends BlockTFMagicLog {
     }
 
     private boolean isSortingMatch(ItemStack beingSorted, ItemStack currentItem) {
-        return getCreativeTab(currentItem.getItem()).equals(getCreativeTab(beingSorted.getItem()));
-    }
-
-    private Object getCreativeTab(Item item) {
-        try {
-            return ObfuscationReflectionHelper.getPrivateValue(Item.class, item, 0);
-        } catch (IllegalArgumentException | SecurityException e) {
-            e.printStackTrace();
+        if (beingSorted == null || currentItem == null) {
+            return false;
         }
-        return null;
+        CreativeTabs tabA = beingSorted.getItem().getCreativeTab();
+        CreativeTabs tabB = currentItem.getItem().getCreativeTab();
+        return tabA != null && tabA == tabB;
     }
 
     /**
